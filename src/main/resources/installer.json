@@ -1,0 +1,18 @@
+{
+  "installer": {
+    "minecraft": "26.1-snapshot-9",
+    "fabricLoader": "0.18.4",
+    "fabricLoaderHash": "dc4682125d5db647d6ce80a98b98945835adcd4b"
+  },
+  "libraries": {
+    "org.jline:jline-terminal:3.21.0": "047579f05a0002f9c561cb10dcf2f744976c49ac",
+    "org.jline:jline-terminal-jansi:3.21.0": "27086834f4d9951f9c2c3b299782e114b56fcf51",
+    "net.minecrell:terminalconsoleappender:1.4.0": "70375667b84cee16ca5fa66258f7f6bddca24869",
+    "org.apache.logging.log4j:log4j-iostreams:2.20.0": "db3dfe3e15df5e8574636a4c03e5db68188be99c"
+  },
+  "fabricExtra": {
+    "org.jline:jline-reader:3.12.1": "4382ab1382c7b6f379377ed5f665dc2f6e1218bc",
+    "org.fusesource.jansi:jansi:1.18": "d9205bbcd4b5f9cd1effe752d18f73bd942d783f",
+    "net.fabricmc.fabric-api:fabric-api:0.143.5+26.1": "1fb17ebb5a374c881fa14678f1ca2a35478a9cdf"
+  }
+}
