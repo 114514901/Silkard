@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "silkard",
+	"version": "${version}",
+	"name": "silkard",
+	"description": "Fabric + Spigot",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://github.com/MohistMC/Silkard",
+		"sources": "https://github.com/MohistMC/Silkard"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/silkard/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.mohistmc.silkard.SilkardMod"
+		]
+	},
+	"mixins": [
+		"silkard.mixins.json",
+		{
+			"config": "silkard.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~26.1-",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

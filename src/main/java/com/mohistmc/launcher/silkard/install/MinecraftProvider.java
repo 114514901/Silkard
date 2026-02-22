@@ -1,5 +1,6 @@
 package com.mohistmc.launcher.silkard.install;
 
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -31,14 +32,14 @@ public class MinecraftProvider {
             for (Map.Entry<String, String> entry : Mirrors.getVersionManifest()) {
                 try (var stream = FileDownloader.read(entry.getValue())) {
                     var bytes = stream.readAllBytes();
-                    var element = new JsonParser().parse(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
+                    JsonObject element = JsonParser.parseString(new String(bytes, StandardCharsets.UTF_8)).getAsJsonObject();
                     var versions = element.getAsJsonArray("versions");
                     for (var version : versions) {
                         var id = version.getAsJsonObject().get("id").getAsString();
                         if (Objects.equals(id, info.installer.minecraft)) {
                             var url = version.getAsJsonObject().get("url").getAsString();
                             try (var versionStream = FileDownloader.read(url)) {
-                                var object = new JsonParser().parse(new String(versionStream.readAllBytes(), StandardCharsets.UTF_8)).getAsJsonObject();
+                                JsonObject object = JsonParser.parseString(new String(versionStream.readAllBytes(), StandardCharsets.UTF_8)).getAsJsonObject();
                                 var downloads = object.getAsJsonObject("downloads");
                                 var server = downloads.getAsJsonObject("server");
                                 var serverUrl = server.get("url").getAsString();

@@ -30,6 +30,10 @@ public class FabricInstaller {
 
     public static Map.Entry<String, List<Path>> applicationInstall() throws Exception {
         InputStream stream = SilkardLauncher.class.getResourceAsStream("/installer.json");
+        if (stream == null) {
+            throw new RuntimeException("Could not find installer.json resource");
+        }
+
         InstallInfo installInfo = new Gson().fromJson(new InputStreamReader(stream), InstallInfo.class);
         List<Supplier<Path>> suppliers = MinecraftProvider.checkMavenNoSource(installInfo.fabricDeps());
         Path path = Paths.get("libraries/net/fabricmc/fabric-loader", installInfo.installer.fabricLoader, "fabric-loader-" + installInfo.installer.fabricLoader + ".jar");
@@ -59,6 +63,10 @@ public class FabricInstaller {
                 .filter(it -> BUILTIN_MODS.stream().noneMatch(it::startsWith))
                 .map(it -> "libraries/" + Util.mavenToPath(it)).collect(Collectors.joining(File.pathSeparator));
         System.setProperty("silkard.classpath", gameLibs);
+        var builtinMods = info.fabricDeps().keySet().stream()
+                .filter(it -> BUILTIN_MODS.stream().anyMatch(it::startsWith))
+                .map(it -> "libraries/" + Util.mavenToPath(it)).collect(Collectors.joining(File.pathSeparator));
+        System.setProperty("silkard.builtinMods", builtinMods);
         var libs = new ArrayList<Path>();
         fabricDeps(path).keySet().stream().map(it -> Paths.get("libraries", Util.mavenToPath(it))).forEach(libs::add);
         info.fabricDeps().keySet()

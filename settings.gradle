@@ -9,3 +9,6 @@ pluginManagement {
 }
 
 rootProject.name = 'silkard'
+
+include ':server'
+project(':server').projectDir = file('projects/silkard')

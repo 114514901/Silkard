@@ -1,18 +1,27 @@
 package com.mohistmc.launcher.silkard;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider;
 import net.fabricmc.loader.impl.launch.FabricLauncher;
 import net.fabricmc.loader.impl.util.Arguments;
 
 public class SilkardGameProvider extends MinecraftGameProvider {
+    private Path extractedModFilePath;
 
     @Override
     public void initialize(FabricLauncher launcher) {
         System.setProperty("log4j2.configurationFile", "log4j2_silkard.xml");
-        for (var lib : System.getProperty("silkard.classpath").split(File.pathSeparator)) {
-            launcher.addToClassPath(Paths.get(lib));
+        try {
+            this.extractedModFilePath = extractModFile();
+            launcher.addToClassPath(extractedModFilePath);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        for (var libraryPath : System.getProperty("silkard.classpath").split(File.pathSeparator)) {
+            launcher.addToClassPath(Paths.get(libraryPath));
         }
         super.initialize(launcher);
     }
@@ -20,6 +29,13 @@ public class SilkardGameProvider extends MinecraftGameProvider {
     @Override
     public Arguments getArguments() {
         Arguments arguments = super.getArguments();
+        String existingModsArgument = arguments.get(Arguments.ADD_MODS);
+        var builtinMods = System.getProperty("silkard.builtinMods");
+        var modsPath = this.extractedModFilePath.toString() + File.pathSeparator + builtinMods;
+        if (existingModsArgument != null) {
+            modsPath = existingModsArgument + File.pathSeparator + modsPath;
+        }
+        arguments.put(Arguments.ADD_MODS, modsPath);
         arguments.addExtraArg("nogui");
         return arguments;
     }
@@ -33,4 +49,35 @@ public class SilkardGameProvider extends MinecraftGameProvider {
     public boolean isEnabled() {
         return true;
     }
+
+    private Path extractModFile() throws Exception {
+        var version = SilkardLauncher.getVersion();
+
+        var resourcePath = "META-INF/libraries/com/mohistmc/silkard/%s/silkard-%s-server.jar".formatted(version, version);
+        var inputStream = getClass().getModule().getResourceAsStream(resourcePath);
+
+        if (inputStream == null) {
+            inputStream = getClass().getClassLoader().getResourceAsStream(resourcePath);
+        }
+
+        if (inputStream == null) {
+            throw new RuntimeException("Could not find Silkard server jar file: " + resourcePath +
+                    ". Please ensure the resource file is properly packaged in the JAR.");
+        }
+
+        var targetDirectory = Paths.get("libraries", "com", "mohistmc", "silkard", version);
+        if (!Files.exists(targetDirectory)) {
+            Files.createDirectories(targetDirectory);
+        }
+
+        var extractedModFile = targetDirectory.resolve(version + ".jar");
+        try (var files = Files.list(targetDirectory)) {
+            for (Path oldFile : files.toList()) {
+                Files.delete(oldFile);
+            }
+            Files.copy(inputStream, extractedModFile);
+        }
+        return extractedModFile;
+    }
+
 }

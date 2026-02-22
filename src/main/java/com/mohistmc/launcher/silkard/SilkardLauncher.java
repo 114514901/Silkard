@@ -1,6 +1,5 @@
 package com.mohistmc.launcher.silkard;
 
-import com.mohistmc.launcher.silkard.install.FabricInstaller;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.management.ManagementFactory;
@@ -60,12 +59,17 @@ public class SilkardLauncher {
         return (SilkardLauncher.class.getPackage().getImplementationVersion() != null) ? SilkardLauncher.class.getPackage().getImplementationVersion() : "DEV";
     }
 
+    @SuppressWarnings("unchecked")
     private static Map.Entry<String, List<Path>> fabricInstall() throws Throwable {
         var path = Paths.get(".silkard", "gson.jar");
         if (!Files.exists(path)) {
             Files.createDirectories(path.getParent());
             Files.copy(Objects.requireNonNull(SilkardLauncher.class.getResourceAsStream("/gson.jar")), path);
         }
-        return FabricInstaller.applicationInstall();
+        try (var loader = new URLClassLoader(new URL[]{path.toUri().toURL(), SilkardLauncher.class.getProtectionDomain().getCodeSource().getLocation()}, ClassLoader.getPlatformClassLoader())) {
+            var cl = loader.loadClass("com.mohistmc.launcher.silkard.install.FabricInstaller");
+            var handle = MethodHandles.lookup().findStatic(cl, "applicationInstall", MethodType.methodType(Map.Entry.class));
+            return (Map.Entry<String, List<Path>>) handle.invoke();
+        }
     }
 }

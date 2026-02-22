@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -66,8 +68,14 @@ public record FileDownloader(String url, String target, String hash) implements 
         }
     }
 
-    static InputStream read(String url) throws IOException {
-        return redirect(new URL(url));
+    static InputStream read(String urlString) throws IOException {
+        try {
+            URI uri = new URI(urlString);
+            URL url = uri.toURL();
+            return redirect(url);
+        } catch (URISyntaxException e) {
+            throw new IOException("Invalid URL syntax: " + urlString, e);
+        }
     }
 
     private static InputStream redirect(URL url) throws IOException {
@@ -92,7 +100,14 @@ public record FileDownloader(String url, String target, String hash) implements 
             return connection.getInputStream();
         } else if (responseCode == HttpURLConnection.HTTP_MOVED_PERM || responseCode == HttpURLConnection.HTTP_MOVED_TEMP) {
             String location = URLDecoder.decode(connection.getHeaderField("Location"), StandardCharsets.UTF_8);
-            return redirect(new URL(url, location));
+            try {
+                URI baseUri = url.toURI();
+                URI resolvedUri = baseUri.resolve(location);
+                URL resolvedUrl = resolvedUri.toURL();
+                return redirect(resolvedUrl);
+            } catch (URISyntaxException e) {
+                throw new IOException("Invalid URI syntax during redirect: " + location, e);
+            }
         } else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND || responseCode == HttpURLConnection.HTTP_FORBIDDEN) {
             throw new RuntimeException("Not found " + url);
         } else {
