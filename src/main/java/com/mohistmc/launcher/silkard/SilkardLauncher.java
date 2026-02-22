@@ -1,7 +1,6 @@
 package com.mohistmc.launcher.silkard;
 
 import com.mohistmc.launcher.silkard.install.FabricInstaller;
-import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.management.ManagementFactory;
@@ -14,8 +13,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.jar.Attributes;
-import java.util.jar.Manifest;
 import java.util.stream.Stream;
 
 public class SilkardLauncher {
@@ -59,14 +56,8 @@ public class SilkardLauncher {
         }
     }
 
-    private static String getVersion() {
-        try (var stream = SilkardLauncher.class.getResourceAsStream("/META-INF/MANIFEST.MF")) {
-            var manifest = new Manifest(stream);
-            var attributes = manifest.getMainAttributes();
-            return attributes.getValue(Attributes.Name.IMPLEMENTATION_VERSION);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public static String getVersion() {
+        return (SilkardLauncher.class.getPackage().getImplementationVersion() != null) ? SilkardLauncher.class.getPackage().getImplementationVersion() : "DEV";
     }
 
     private static Map.Entry<String, List<Path>> fabricInstall() throws Throwable {
