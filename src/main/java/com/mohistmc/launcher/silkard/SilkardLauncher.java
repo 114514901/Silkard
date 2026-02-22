@@ -18,6 +18,7 @@ public class SilkardLauncher {
 
     static void main(String[] args) {
         System.setProperty("fabric.skipMcProvider", "true");
+        System.setProperty("org.jline.terminal.disableDeprecatedProviderWarning", String.valueOf(true));
         var logo = """
                  ███████╗██╗██╗     ██╗  ██╗ █████╗ ██████╗ ██████╗
                  ██╔════╝██║██║     ██║ ██╔╝██╔══██╗██╔══██╗██╔══██╗
