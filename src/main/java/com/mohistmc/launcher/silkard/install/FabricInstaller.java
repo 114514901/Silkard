@@ -37,19 +37,29 @@ public class FabricInstaller {
         InstallInfo installInfo = new Gson().fromJson(new InputStreamReader(stream), InstallInfo.class);
         List<Supplier<Path>> suppliers = MinecraftProvider.checkMavenNoSource(installInfo.fabricDeps());
         Path path = Paths.get("libraries/net/fabricmc/fabric-loader", installInfo.installer.fabricLoader, "fabric-loader-" + installInfo.installer.fabricLoader + ".jar");
+
         var installFabric = !Files.exists(path) || fabricClasspathMissing(path);
-        if (!suppliers.isEmpty() || installFabric) {
+        var minecraftJarMissing = minecraftJarMissing(installInfo);
+
+        if (!suppliers.isEmpty() || installFabric || minecraftJarMissing) {
             System.out.println("Downloading missing libraries ...");
             ExecutorService pool = Executors.newWorkStealingPool(8);
             CompletableFuture<?>[] array = suppliers.stream().map(MinecraftProvider.reportSupply(pool, System.out::println)).toArray(CompletableFuture[]::new);
-            if (installFabric) {
-                var futures = installFabric(installInfo, pool, System.out::println);
+
+            if (installFabric || minecraftJarMissing) {
+                var futures = installFabricAndMinecraft(installInfo, pool, System.out::println, minecraftJarMissing);
                 array = Stream.concat(Arrays.stream(futures), Arrays.stream(array)).toArray(CompletableFuture[]::new);
             }
+
             MinecraftProvider.handleFutures(System.out::println, array);
             pool.shutdownNow();
         }
         return classpath(installInfo, path);
+    }
+
+    private static boolean minecraftJarMissing(InstallInfo info) {
+        var mcPath = String.format("libraries/net/minecraft/server/%1$s/server-%1$s.jar", info.installer.minecraft);
+        return !Files.exists(Paths.get(mcPath));
     }
 
     private static final Set<String> BUILTIN_MODS = Set.of(
@@ -103,8 +113,19 @@ public class FabricInstaller {
     }
 
     @SuppressWarnings("unchecked")
-    private static CompletableFuture<Path>[] installFabric(InstallInfo info, ExecutorService pool, Consumer<String> logger) {
-        var minecraftData = MinecraftProvider.downloadMinecraftData(info, pool, logger);
+    private static CompletableFuture<Path>[] installFabricAndMinecraft(InstallInfo info, ExecutorService pool, Consumer<String> logger, boolean downloadMinecraft) {
+        CompletableFuture<Path> minecraftDataFuture = null;
+
+        if (downloadMinecraft) {
+            var minecraftData = MinecraftProvider.downloadMinecraftData(info, pool, logger);
+            minecraftDataFuture = minecraftData.thenCompose(data ->
+                    MinecraftProvider.reportSupply(pool, logger).apply(
+                            new FileDownloader(String.format(data.serverUrl(), info.installer.minecraft),
+                                    String.format("libraries/net/minecraft/server/%1$s/server-%1$s.jar", info.installer.minecraft), data.serverHash())
+                    )
+            );
+        }
+
         String coord = String.format("net.fabricmc:fabric-loader:%s", info.installer.fabricLoader);
         String dist = "libraries/" + Util.mavenToPath(coord);
         var installerFuture = MinecraftProvider.reportSupply(pool, logger).apply(new MavenDownloader(Mirrors.getMavenRepo(), coord, dist, info.installer.fabricLoaderHash))
@@ -118,10 +139,11 @@ public class FabricInstaller {
                         throw new RuntimeException(e);
                     }
                 });
-        var serverFuture = minecraftData.thenCompose(data -> MinecraftProvider.reportSupply(pool, logger).apply(
-                new FileDownloader(String.format(data.serverUrl(), info.installer.minecraft),
-                        String.format("libraries/net/minecraft/server/%1$s/server-%1$s.jar", info.installer.minecraft), data.serverHash())
-        ));
-        return new CompletableFuture[]{installerFuture, serverFuture};
+
+        if (minecraftDataFuture != null) {
+            return new CompletableFuture[]{installerFuture, minecraftDataFuture};
+        } else {
+            return new CompletableFuture[]{installerFuture};
+        }
     }
 }
