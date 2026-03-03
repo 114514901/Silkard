@@ -62,11 +62,6 @@ public class SilkardLauncher {
     }
 
     private static Map.Entry<String, List<Path>> fabricInstall() throws Throwable {
-        var path = Paths.get(".silkard", "gson.jar");
-        if (!Files.exists(path)) {
-            Files.createDirectories(path.getParent());
-            Files.copy(Objects.requireNonNull(SilkardLauncher.class.getResourceAsStream("/gson.jar")), path);
-        }
         return FabricInstaller.applicationInstall();
     }
 }
