@@ -563,7 +563,7 @@ accessible field net/minecraft/world/entity/ai/attributes/RangedAttribute maxVal
 mutable field net/minecraft/world/entity/ai/attributes/RangedAttribute maxValue D
 accessible field net/minecraft/world/entity/LivingEntity combatTracker Lnet/minecraft/world/damagesource/CombatTracker;
 mutable field net/minecraft/world/entity/LivingEntity combatTracker Lnet/minecraft/world/damagesource/CombatTracker;
-#protected net/minecraft/world/entity/LivingEntity skipDropExperience
+accessible field net/minecraft/world/entity/LivingEntity skipDropExperience Z
 accessible field net/minecraft/world/entity/Mob goalSelector Lnet/minecraft/world/entity/ai/goal/GoalSelector;
 mutable field net/minecraft/world/entity/Mob goalSelector Lnet/minecraft/world/entity/ai/goal/GoalSelector;
 accessible field net/minecraft/world/entity/Mob targetSelector Lnet/minecraft/world/entity/ai/goal/GoalSelector;
