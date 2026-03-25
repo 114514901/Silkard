@@ -1,8 +1,8 @@
 {
   "installer": {
     "minecraft": "26.1",
-    "fabricLoader": "0.18.4",
-    "fabricLoaderHash": "dc4682125d5db647d6ce80a98b98945835adcd4b"
+    "fabricLoader": "0.18.5",
+    "fabricLoaderHash": "ead70ea5aec413c7cf5bbfb0d42b883d08b3c2b9"
   },
   "libraries": {
     "org.jline:jline-terminal:3.30.6": "f10df14d2c96a8a4c758d3c4d325d42ae5d459b6",
