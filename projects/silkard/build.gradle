@@ -11,11 +11,12 @@ base {
 }
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	maven {
+		name = 'mohistmc'
+		url = 'https://maven.mohistmc.com/'
+	}
+	maven { url "https://maven.fabricmc.net/" }
+	mavenCentral()
 }
 
 loom {
@@ -39,7 +40,35 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-	
+
+	compileOnly "org.jetbrains:annotations:24.0.1"
+	include(implementation("org.yaml:snakeyaml:2.6"))
+	// LibraryLoader start
+	implementation 'org.checkerframework:checker-qual:3.33.0'
+	implementation 'org.eclipse.sisu:org.eclipse.sisu.inject:0.9.0.M2'
+	implementation 'org.codehaus.plexus:plexus-interpolation:1.26'
+	implementation 'org.codehaus.plexus:plexus-utils:3.5.1'
+	implementation 'com.google.protobuf:protobuf-java:3.25.1'
+	implementation('org.dom4j:dom4j:2.1.4') {
+		exclude group: 'javax.xml.bind'
+		exclude group: 'javax.xml.stream'
+		exclude group: 'jaxen'
+		exclude group: 'xpp3'
+	}
+	implementation "org.apache.maven:maven-artifact:3.9.14"
+	implementation 'org.apache.maven:maven-builder-support:3.9.14'
+	implementation 'org.apache.maven:maven-model:3.9.14'
+	implementation 'org.apache.maven:maven-model-builder:3.9.14'
+	implementation 'org.apache.maven:maven-repository-metadata:3.9.14'
+	implementation 'org.apache.maven:maven-resolver-provider:3.9.14'
+	implementation 'org.apache.maven.resolver:maven-resolver-api:1.9.27'
+	implementation 'org.apache.maven.resolver:maven-resolver-connector-basic:1.9.27'
+	implementation 'org.apache.maven.resolver:maven-resolver-impl:1.9.27'
+	implementation 'org.apache.maven.resolver:maven-resolver-named-locks:1.9.27'
+	implementation 'org.apache.maven.resolver:maven-resolver-spi:1.9.27'
+	implementation 'org.apache.maven.resolver:maven-resolver-transport-http:1.9.27'
+	implementation 'org.apache.maven.resolver:maven-resolver-util:1.9.27'
+	// LibraryLoader end
 }
 
 processResources {
@@ -52,6 +81,7 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 25
+	it.options.warnings = false
 }
 
 java {

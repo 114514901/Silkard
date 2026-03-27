@@ -27,6 +27,12 @@
 - Seamless plugin support from Bukkit/Spigot ecosystem
 - Optimized performance and stability for modded environments
 
+✅ **Core Integration**
+- [x] Bukkit API ([282dad0e](https://hub.spigotmc.org/stash/projects/SPIGOT/repos/bukkit/commits/282dad0e))
+- [x] CraftBukkit ([19bf84656](https://hub.spigotmc.org/stash/projects/SPIGOT/repos/craftbukkit/commits/19bf84656))
+- [x] Spigot ([a759b629](https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot/commits/a759b629))
+
+
 ## ⚙️ Technical Stack
 
 | Component   | Source                                                              | Purpose         | Status |
