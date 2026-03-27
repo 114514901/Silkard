@@ -1,0 +1,46 @@
+package com.mohistmc.silkard.injected.world.inventory;
+
+import com.mohistmc.silkard.util.ContextStateException;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import org.bukkit.craftbukkit.entity.CraftHumanEntity;
+import org.bukkit.inventory.InventoryView;
+
+public interface ContextAbstractContainerMenu {
+
+    default boolean silkard$checkReachable() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setCheckReachable(boolean checkReachable) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default InventoryView getBukkitView() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void setBukkitView(InventoryView view) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void transferTo(AbstractContainerMenu other, CraftHumanEntity player) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default Component getTitle() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void setTitle(Component title) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void broadcastCarriedItem() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void startOpen() {
+
+    }
+}

@@ -1,0 +1,241 @@
+package com.mohistmc.silkard.injected.server.level;
+
+import com.mohistmc.silkard.injected.world.entity.player.ContextPlayer;
+import com.mohistmc.silkard.util.ContextStateException;
+import com.mojang.datafixers.util.Either;
+import java.util.Optional;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Unit;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.border.WorldBorder;
+import org.bukkit.WeatherType;
+import org.bukkit.craftbukkit.entity.CraftPlayer;
+import org.bukkit.event.player.PlayerSpawnChangeEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
+import org.jetbrains.annotations.Nullable;
+
+public interface ContextServerPlayer extends ContextPlayer {
+
+    @Override
+    default CraftPlayer getBukkitEntity() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default int nextContainerCounterInt() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default boolean silkard$initialized() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default String silkard$locale() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setLocale(String locale) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default long silkard$timeOffset() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setTimeOffset(long timeOffset) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default boolean silkard$relativeTime() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setRelativeTime(boolean relativeTime) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default Component silkard$listName() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setListName(Component listName) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default org.bukkit.Location silkard$compassTarget() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setCompassTarget(org.bukkit.Location compassTarget) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default int silkard$newExp(){
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setNewExp(int newExp) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default int silkard$newLevel() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setNewLevel(int newLevel) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default int silkard$newTotalExp() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setNewTotalExp(int newTotalExp) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default boolean silkard$keepLevel() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setKeepLevel(boolean keepLevel) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default double silkard$maxHealthCache() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setMaxHealthCache(double maxHealthCache) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default boolean silkard$joining() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setJoining(boolean joining) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default boolean silkard$sentListPacket() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setSentListPacket(boolean sentListPacket) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default Integer silkard$clientViewDistance() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setClientViewDistance(Integer clientViewDistance) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default String silkard$kickLeaveMessage() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setKickLeaveMessage(String kickLeaveMessage) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default BlockPos getSpawnPoint(ServerLevel worldserver) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default String silkard$displayName() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setDisplayName(String displayName) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void spawnIn(Level world, boolean flag) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default Entity changeDimension(ServerLevel worldserver, PlayerTeleportEvent.TeleportCause cause) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default Either<Player.BedSleepingProblem, Unit> getBedResult(BlockPos blockposition, Direction enumdirection) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void teleportTo(ServerLevel worldserver, double d0, double d1, double d2, float f, float f1, PlayerTeleportEvent.TeleportCause cause) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void setRespawnPosition(ResourceKey<Level> resourcekey, @Nullable BlockPos blockposition, float f, boolean flag, boolean flag1, PlayerSpawnChangeEvent.Cause cause) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default long getPlayerTime() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default WeatherType getPlayerWeather() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void setPlayerWeather(WeatherType type, boolean plugin) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void updateWeather(float oldRain, float newRain, float oldThunder, float newThunder) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void tickWeather() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void resetPlayerWeather() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void forceSetPositionRotation(double x, double y, double z, float yaw, float pitch) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void reset() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void pushChangeDimensionCause(PlayerTeleportEvent.TeleportCause cause) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void pushChangeSpawnCause(PlayerSpawnChangeEvent.Cause cause) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setTransferCookieConnection(CraftPlayer.TransferCookieConnection transferCookieConnection) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default CraftPlayer.TransferCookieConnection silkard$transferCookieConnection() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default int silkard$listOrder() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$setListOrder(int listOrder) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void resendItemInHarnds() {
+        throw new ContextStateException("Not implemented");
+    }
+}

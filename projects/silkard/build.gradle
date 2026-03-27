@@ -45,6 +45,7 @@ dependencies {
 	include(implementation("org.yaml:snakeyaml:2.6"))
 	include(implementation("org.jline:jline:3.30.4"))
 	include(implementation("org.apache.logging.log4j:log4j-iostreams:2.25.2"))
+	include(implementation("org.apache.logging.log4j:log4j-iostreams:2.25.2"))
 	// LibraryLoader start
 	implementation 'org.checkerframework:checker-qual:3.33.0'
 	implementation 'org.eclipse.sisu:org.eclipse.sisu.inject:0.9.0.M2'
@@ -84,6 +85,7 @@ processResources {
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 25
 	it.options.warnings = false
+	options.compilerArgs += "-Xlint:-removal"
 }
 
 java {
