@@ -160,11 +160,11 @@ public interface ContextEntity extends ContextEntityAccess {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$generation() {
+    default boolean silkard_generation() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setGeneration(boolean gen) {
+    default void silkard_generation(boolean gen) {
         throw new ContextStateException("Not implemented");
     }
 

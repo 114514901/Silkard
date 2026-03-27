@@ -122,7 +122,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
         Preconditions.checkArgument(health >= 0 && health <= this.getMaxHealth(), "Health value (%s) must be between 0 and %s", health, this.getMaxHealth());
 
         // during world generation, we don't want to run logic for dropping items and xp
-        if (getHandle().generation && health == 0) {
+        if (getHandle().silkard_generation() && health == 0) {
             getHandle().discard(null); // Add Bukkit remove cause
             return;
         }
@@ -178,7 +178,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
     }
 
     private List<Block> getLineOfSight(Set<Material> transparent, int maxDistance, int maxLength) {
-        Preconditions.checkState(!getHandle().generation, "Cannot get line of sight during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot get line of sight during world generation");
 
         if (transparent == null) {
             transparent = Sets.newHashSet(Material.AIR, Material.CAVE_AIR, Material.VOID_AIR);
@@ -236,7 +236,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public RayTraceResult rayTraceBlocks(double maxDistance, FluidCollisionMode fluidCollisionMode) {
-        Preconditions.checkState(!getHandle().generation, "Cannot ray tray blocks during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot ray tray blocks during world generation");
 
         Location eyeLocation = this.getEyeLocation();
         Vector direction = eyeLocation.getDirection();
@@ -332,7 +332,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     private void damage(double amount, DamageSource damageSource) {
         Preconditions.checkArgument(damageSource != null, "damageSource cannot be null");
-        Preconditions.checkState(!getHandle().generation, "Cannot damage entity during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot damage entity during world generation");
 
         entity.hurt(damageSource, (float) amount);
     }
@@ -458,7 +458,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
     @Override
     @SuppressWarnings("unchecked")
     public <T extends Projectile> T launchProjectile(Class<? extends T> projectile, Vector velocity) {
-        Preconditions.checkState(!getHandle().generation, "Cannot launch projectile during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot launch projectile during world generation");
 
         net.minecraft.world.level.Level level = ((CraftWorld) getWorld()).getHandle();
         net.minecraft.world.entity.Entity launch = null;
@@ -555,7 +555,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public boolean hasLineOfSight(Entity other) {
-        Preconditions.checkState(!getHandle().generation, "Cannot check line of sight during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot check line of sight during world generation");
 
         return getHandle().hasLineOfSight(((CraftEntity) other).getHandle());
     }
@@ -628,7 +628,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public boolean setLeashHolder(Entity holder) {
-        if (getHandle().generation || !(getHandle() instanceof Leashable)) {
+        if (getHandle().silkard_generation() || !(getHandle() instanceof Leashable)) {
             return false;
         }
 
@@ -682,7 +682,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public boolean isClimbing() {
-        Preconditions.checkState(!getHandle().generation, "Cannot check if climbing during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot check if climbing during world generation");
 
         return getHandle().onClimbable();
     }
@@ -707,7 +707,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
     @Override
     public void attack(Entity target) {
         Preconditions.checkArgument(target != null, "target == null");
-        Preconditions.checkState(!getHandle().generation, "Cannot attack during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot attack during world generation");
 
         if (getHandle() instanceof net.minecraft.world.entity.player.Player) {
             ((net.minecraft.world.entity.player.Player) getHandle()).attack(((CraftEntity) target).getHandle());
@@ -718,14 +718,14 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public void swingMainHand() {
-        Preconditions.checkState(!getHandle().generation, "Cannot swing hand during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot swing hand during world generation");
 
         getHandle().swing(InteractionHand.MAIN_HAND, true);
     }
 
     @Override
     public void swingOffHand() {
-        Preconditions.checkState(!getHandle().generation, "Cannot swing hand during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot swing hand during world generation");
 
         getHandle().swing(InteractionHand.OFF_HAND, true);
     }

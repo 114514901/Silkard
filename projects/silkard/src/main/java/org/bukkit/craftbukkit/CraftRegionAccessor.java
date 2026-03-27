@@ -382,7 +382,7 @@ public abstract class CraftRegionAccessor implements RegionAccessor {
         net.minecraft.world.entity.Entity entity = createEntity(location, clazz, true);
 
         if (!isNormalWorld()) {
-            entity.generation = true;
+            entity.silkard_generation(true);
         }
 
         return (T) entity.getBukkitEntity();
@@ -440,7 +440,7 @@ public abstract class CraftRegionAccessor implements RegionAccessor {
         }
 
         if (!isNormalWorld()) {
-            entity.generation = true;
+            entity.silkard_generation(true);
         }
 
         if (function != null) {

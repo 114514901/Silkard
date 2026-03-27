@@ -105,7 +105,7 @@ public abstract class CraftBoat extends CraftVehicle implements Boat {
 
     @Override
     public boolean setLeashHolder(Entity holder) {
-        if (getHandle().generation) {
+        if (getHandle().silkard_generation()) {
             return false;
         }
 

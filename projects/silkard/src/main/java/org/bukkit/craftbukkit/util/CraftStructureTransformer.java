@@ -86,7 +86,7 @@ public class CraftStructureTransformer {
         if (region == null) {
             return true;
         }
-        entity.generation = true;
+        entity.silkard_generation(true);
         CraftEntity craftEntity = entity.getBukkitEntity();
         int x = entity.getBlockX();
         int y = entity.getBlockY();

@@ -18,7 +18,7 @@ public abstract class CraftMob extends CraftLivingEntity implements Mob {
 
     @Override
     public void setTarget(LivingEntity target) {
-        Preconditions.checkState(!getHandle().generation, "Cannot set target during world generation");
+        Preconditions.checkState(!getHandle().silkard_generation(), "Cannot set target during world generation");
 
         net.minecraft.world.entity.Mob entity = getHandle();
         if (target == null) {
