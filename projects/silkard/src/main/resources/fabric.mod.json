@@ -19,6 +19,7 @@
 			"com.mohistmc.silkard.SilkardMod"
 		]
 	},
+	"accessWidener" : "silkard.classtweaker",
 	"mixins": [
 		"silkard.mixins.json",
 		{

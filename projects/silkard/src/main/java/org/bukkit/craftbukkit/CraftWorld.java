@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.mohistmc.silkard.injected.server.level.ContextTicket;
 import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
@@ -418,7 +419,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
 
         TicketStorage chunkDistanceManager = this.world.getChunkSource().ticketStorage;
 
-        if (chunkDistanceManager.addTicket(ChunkPos.pack(x, z), Ticket.of(TicketType.PLUGIN_TICKET, ChunkMap.FORCED_TICKET_LEVEL, plugin))) { // keep in-line with force loading, add at level 31
+        if (chunkDistanceManager.addTicket(ChunkPos.pack(x, z), ContextTicket.of(TicketType.PLUGIN_TICKET, ChunkMap.FORCED_TICKET_LEVEL, plugin))) { // keep in-line with force loading, add at level 31
             this.getChunkAt(x, z); // ensure loaded
             return true;
         }
@@ -431,7 +432,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
         Preconditions.checkNotNull(plugin, "null plugin");
 
         TicketStorage chunkDistanceManager = this.world.getChunkSource().ticketStorage;
-        return chunkDistanceManager.removeTicket(ChunkPos.pack(x, z), Ticket.of(TicketType.PLUGIN_TICKET, ChunkMap.FORCED_TICKET_LEVEL, plugin)); // keep in-line with force loading, remove at level 31
+        return chunkDistanceManager.removeTicket(ChunkPos.pack(x, z), ContextTicket.of(TicketType.PLUGIN_TICKET, ChunkMap.FORCED_TICKET_LEVEL, plugin)); // keep in-line with force loading, remove at level 31
     }
 
     @Override
@@ -439,7 +440,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
         Preconditions.checkNotNull(plugin, "null plugin");
 
         TicketStorage chunkDistanceManager = this.world.getChunkSource().ticketStorage;
-        chunkDistanceManager.removeTicketIf((ticket, i) -> ticket.getType() == TicketType.PLUGIN_TICKET && Objects.equals(ticket.key, plugin), null);
+        chunkDistanceManager.removeTicketIf((ticket, i) -> ticket.getType() == TicketType.PLUGIN_TICKET && Objects.equals(ticket.silkard_key(), plugin), null);
     }
 
     @Override
@@ -454,7 +455,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
         ImmutableList.Builder<Plugin> ret = ImmutableList.builder();
         for (Ticket ticket : tickets) {
             if (ticket.getType() == TicketType.PLUGIN_TICKET) {
-                ret.add((Plugin) ticket.key);
+                ret.add((Plugin) ticket.silkard_key());
             }
         }
 
@@ -480,7 +481,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
                     chunk = this.getChunkAt(ChunkPos.getX(chunkKey), ChunkPos.getZ(chunkKey));
                 }
 
-                ret.computeIfAbsent((Plugin) ticket.key, (key) -> ImmutableList.builder()).add(chunk);
+                ret.computeIfAbsent((Plugin) ticket.silkard_key(), (key) -> ImmutableList.builder()).add(chunk);
             }
         }
 

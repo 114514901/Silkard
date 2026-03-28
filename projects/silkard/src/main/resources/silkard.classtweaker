@@ -543,6 +543,7 @@ accessible field net/minecraft/world/level/storage/SavedDataStorage cache Ljava/
 accessible field net/minecraft/world/level/storage/TagValueInput input Lnet/minecraft/nbt/CompoundTag;
 accessible field net/minecraft/world/scores/Objective displayName Lnet/minecraft/network/chat/Component;
 accessible field net/minecraft/world/scores/criteria/ObjectiveCriteria CRITERIA_CACHE Ljava/util/Map;
+accessible method net/minecraft/server/level/TicketType register (Ljava/lang/String;JI)Lnet/minecraft/server/level/TicketType;
 
 accessible field net/minecraft/network/protocol/handshake/ClientIntentionPacket hostName Ljava/lang/String;
 mutable field net/minecraft/network/protocol/handshake/ClientIntentionPacket hostName Ljava/lang/String;
@@ -737,3 +738,5 @@ transitive-inject-interface	net/minecraft/world/level/storage/LevelStorageSource
 transitive-inject-interface	net/minecraft/world/level/storage/PlayerDataStorage	com/mohistmc/silkard/injected/world/level/storage/ContextPlayerDataStorage
 transitive-inject-interface	net/minecraft/world/level/storage/PrimaryLevelData	com/mohistmc/silkard/injected/world/level/storage/ContextPrimaryLevelData
 transitive-inject-interface	net/minecraft/world/level/storage/loot/LootTable	com/mohistmc/silkard/injected/world/level/storage/loot/ContextLootTable
+transitive-inject-interface	net/minecraft/server/level/TicketType	com/mohistmc/silkard/injected/server/level/ContextTicketType
+transitive-inject-interface	net/minecraft/server/level/Ticket	com/mohistmc/silkard/injected/server/level/ContextTicket

@@ -1,0 +1,24 @@
+package com.mohistmc.silkard.mixin.vanilla.server.level;
+
+import com.mohistmc.silkard.injected.server.level.ContextTicket;
+import net.minecraft.server.level.Ticket;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+
+/**
+ * @author Mgazul
+ * @date 2026/3/28 20:33
+ */
+@Mixin(Ticket.class)
+public class MixinTicket implements ContextTicket {
+
+    // CraftBukkit start
+    @Unique
+    public Object key;
+
+    @Override
+    public void silkard_key(Object key) {
+       this.key = key;
+    }
+    // CraftBukkit end
+}
