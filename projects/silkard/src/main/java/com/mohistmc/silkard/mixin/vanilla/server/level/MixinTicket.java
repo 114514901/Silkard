@@ -1,7 +1,10 @@
 package com.mohistmc.silkard.mixin.vanilla.server.level;
 
 import com.mohistmc.silkard.injected.server.level.ContextTicket;
+import io.izzel.arclight.mixin.TransformAccess;
 import net.minecraft.server.level.Ticket;
+import net.minecraft.server.level.TicketType;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
@@ -21,4 +24,10 @@ public class MixinTicket implements ContextTicket {
        this.key = key;
     }
     // CraftBukkit end
+
+    @Unique
+    @TransformAccess(Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC)
+    private static Ticket of(TicketType tickettype, int i, Object key) {
+        return ContextTicket.of(tickettype, i, key);
+    }
 }

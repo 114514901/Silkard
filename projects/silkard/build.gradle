@@ -46,6 +46,9 @@ dependencies {
 	include(implementation("org.jline:jline:3.30.4"))
 	include(implementation("org.apache.logging.log4j:log4j-iostreams:2.25.2"))
 	include(implementation("org.apache.logging.log4j:log4j-iostreams:2.25.2"))
+	include(implementation("com.mohistmc:mixin-tools:1.2.7"){
+		exclude group: 'org.spongepowered'
+	})
 	// LibraryLoader start
 	implementation 'org.checkerframework:checker-qual:3.33.0'
 	implementation 'org.eclipse.sisu:org.eclipse.sisu.inject:0.9.0.M2'

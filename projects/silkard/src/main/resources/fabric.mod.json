@@ -4,8 +4,9 @@
 	"version": "${version}",
 	"name": "silkard",
 	"description": "Fabric + Spigot",
+	"plugin": "com.mohistmc.silkard.SilkardMixinPlugin",
 	"authors": [
-		"Me!"
+		"MohistMC"
 	],
 	"contact": {
 		"homepage": "https://github.com/MohistMC/Silkard",
