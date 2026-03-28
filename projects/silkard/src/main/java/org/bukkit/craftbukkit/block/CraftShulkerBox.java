@@ -45,23 +45,23 @@ public class CraftShulkerBox extends CraftLootable<ShulkerBoxBlockEntity> implem
     @Override
     public void open() {
         requirePlaced();
-        if (!getTileEntity().opened && getWorldHandle() instanceof net.minecraft.world.level.Level) {
+        if (!getTileEntity().silkard_opened() && getWorldHandle() instanceof net.minecraft.world.level.Level) {
             net.minecraft.world.level.Level level = getTileEntity().getLevel();
             level.blockEvent(getPosition(), getTileEntity().getBlockState().getBlock(), 1, 1);
             level.playSound(null, getPosition(), SoundEvents.SHULKER_BOX_OPEN, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
         }
-        getTileEntity().opened = true;
+        getTileEntity().silkard_opened(true);
     }
 
     @Override
     public void close() {
         requirePlaced();
-        if (getTileEntity().opened && getWorldHandle() instanceof net.minecraft.world.level.Level) {
+        if (getTileEntity().silkard_opened() && getWorldHandle() instanceof net.minecraft.world.level.Level) {
             net.minecraft.world.level.Level level = getTileEntity().getLevel();
             level.blockEvent(getPosition(), getTileEntity().getBlockState().getBlock(), 1, 0);
             level.playSound(null, getPosition(), SoundEvents.SHULKER_BOX_OPEN, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
         }
-        getTileEntity().opened = false;
+        getTileEntity().silkard_opened(false);
     }
 
     @Override

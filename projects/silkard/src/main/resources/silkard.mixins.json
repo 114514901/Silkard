@@ -4,7 +4,9 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "ExampleMixin",
-    "vanilla.world.entity.MixinEntity"
+    "vanilla.world.entity.MixinEntity",
+    "vanilla.world.level.block.entity.MixinContainerOpenersCounter",
+    "vanilla.world.level.block.entity.MixinShulkerBoxBlockEntity"
   ],
   "injectors": {
     "defaultRequire": 1

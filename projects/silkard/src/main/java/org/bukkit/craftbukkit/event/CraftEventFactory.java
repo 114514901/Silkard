@@ -1952,7 +1952,7 @@ public class CraftEventFactory {
         }
 
         // SPIGOT-8041: Do not call event unless entity has been spawned into world
-        if (!entity.inWorld) {
+        if (!entity.silkard_inWorld()) {
             return;
         }
 

@@ -1,8 +1,13 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity;
 
 import com.mohistmc.silkard.injected.world.entity.ContextEntity;
+import com.mohistmc.silkard.util.ContextStateException;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 /**
@@ -10,20 +15,107 @@ import org.spongepowered.asm.mixin.Unique;
  * @date 2026/3/28 05:14
  */
 @Mixin(Entity.class)
-public class MixinEntity implements ContextEntity {
+public abstract class MixinEntity implements ContextEntity {
 
+    // @formatter:off
+    @Shadow private float yRot;
+    @Shadow private Level level;
+    @Shadow @Final public abstract double getX();
+    @Shadow @Final public abstract double getZ();
+    // CraftBukkit start
+    @Unique public boolean forceDrops;
+    @Unique public boolean persist = true;
+    @Unique public boolean visibleByDefault = true;
+    @Unique public boolean valid;
+    @Unique public boolean inWorld = false;
+    @Unique public boolean generation;
+    @Unique public int maxAirTicks = getDefaultMaxAirSupply(); // CraftBukkit - SPIGOT-6907: re-implement LivingEntity#setMaximumAir()
+    @Unique public org.bukkit.projectiles.ProjectileSource projectileSource; // For projectiles only
+    @Unique public boolean lastDamageCancelled; // SPIGOT-5339, SPIGOT-6252, SPIGOT-6777: Keep track if the event was canceled
+    @Unique public boolean persistentInvisibility = false;
+    @Unique public BlockPos lastLavaContact;
+    // Marks an entity, that it was removed by a plugin via Entity#remove
+    // Main use case currently is for SPIGOT-7487, preventing dropping of leash when leash is removed
+    @Unique public boolean pluginRemoved = false;
+    // @formatter:on
 
-    @Unique
-    public boolean generation;
+    public float getBukkitYaw() {
+        return this.yRot;
+    }
+
+    public boolean isChunkLoaded() {
+        return level.hasChunk((int) Math.floor(this.getX()) >> 4, (int) Math.floor(this.getZ()) >> 4);
+    }
+    // CraftBukkit end
 
     @Override
     public boolean silkard_generation() {
-       return generation;
+        return generation;
     }
 
     @Override
     public void silkard_generation(boolean gen) {
-       generation = gen;
+        generation = gen;
     }
 
+    @Override
+    public boolean silkard_pluginRemoved() {
+       return pluginRemoved;
+    }
+
+    @Override
+    public void silkard_pluginRemoved(boolean pluginRemoved) {
+       this.pluginRemoved = pluginRemoved;
+    }
+
+
+    @Override
+    public boolean silkard_valid() {
+       return valid;
+    }
+
+    @Override
+    public void silkard_valid(boolean valid) {
+       this.valid = valid;
+    }
+
+    @Override
+    public boolean silkard_inWorld() {
+       return inWorld;
+    }
+
+    @Override
+    public void silkard_inWorld(boolean inWorld) {
+       this.inWorld = inWorld;
+    }
+
+    @Override
+    public boolean silkard_visibleByDefault() {
+       return visibleByDefault;
+    }
+
+    @Override
+    public void silkard_visibleByDefault(boolean visibleByDefault) {
+       this.visibleByDefault = visibleByDefault;
+    }
+
+    @Override
+    public boolean silkard_persist() {
+       return persist;
+    }
+
+    @Override
+    public void silkard_persist(boolean persist) {
+        this.persist = persist;
+    }
+
+    @Override
+    public boolean silkard_persistentInvisibility() {
+       return persistentInvisibility;
+    }
+
+    @Override
+    public void silkard_persistentInvisibility(boolean persistentInvisibility) {
+        this.persistentInvisibility = persistentInvisibility;
+    }
 }

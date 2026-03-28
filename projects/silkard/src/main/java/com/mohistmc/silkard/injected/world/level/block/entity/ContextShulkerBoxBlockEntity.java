@@ -6,19 +6,11 @@ import org.bukkit.entity.HumanEntity;
 
 public interface ContextShulkerBoxBlockEntity {
 
-    default List<HumanEntity> silkard$transaction() {
+    default boolean silkard_opened() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setTransaction(List<HumanEntity> transaction) {
-        throw new ContextStateException("Not implemented");
-    }
-
-    default boolean silkard$opened() {
-        throw new ContextStateException("Not implemented");
-    }
-
-    default void silkard$setOpened(boolean opened) {
+    default void silkard_opened(boolean opened) {
         throw new ContextStateException("Not implemented");
     }
 }

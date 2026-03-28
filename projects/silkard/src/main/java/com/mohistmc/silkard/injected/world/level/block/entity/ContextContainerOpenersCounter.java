@@ -7,11 +7,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public interface ContextContainerOpenersCounter {
 
-    default boolean silkard$opened() {
+    default boolean silkard_opened() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setOpened(boolean opened) {
+    default void silkard_opened(boolean opened) {
         throw new ContextStateException("Not implemented");
     }
 

@@ -24,11 +24,11 @@ import java.util.Set;
 
 public interface ContextEntity extends ContextEntityAccess {
 
-    default boolean silkard$inWorld() {
+    default boolean silkard_inWorld() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setInWorld(boolean inWorld) {
+    default void silkard_inWorld(boolean inWorld) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -40,27 +40,27 @@ public interface ContextEntity extends ContextEntityAccess {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$persist() {
+    default boolean silkard_persist() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setPersist(boolean persist) {
+    default void silkard_persist(boolean persist) {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$visibleByDefault() {
+    default boolean silkard_visibleByDefault() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setVisibleByDefault(boolean visibleByDefault) {
+    default void silkard_visibleByDefault(boolean visibleByDefault) {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$valid() {
+    default boolean silkard_valid() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setValid(boolean valid) {
+    default void silkard_valid(boolean valid) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -88,11 +88,11 @@ public interface ContextEntity extends ContextEntityAccess {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$persistentInvisibility() {
+    default boolean silkard_persistentInvisibility() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setPersistentInvisibility(boolean persistentInvisibility) {
+    default void silkard_persistentInvisibility(boolean persistentInvisibility) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -201,11 +201,11 @@ public interface ContextEntity extends ContextEntityAccess {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$pluginRemoved() {
+    default boolean silkard_pluginRemoved() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setPluginRemoved(boolean pluginRemoved) {
+    default void silkard_pluginRemoved(boolean pluginRemoved) {
         throw new ContextStateException("Not implemented");
     }
 

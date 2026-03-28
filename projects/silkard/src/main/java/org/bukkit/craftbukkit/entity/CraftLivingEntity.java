@@ -837,7 +837,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public void setInvisible(boolean invisible) {
-        getHandle().persistentInvisibility = invisible;
+        getHandle().silkard_persistentInvisibility(invisible);
         getHandle().setSharedFlag(5, invisible);
     }
 

@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.block;
 
+import com.mohistmc.silkard.bukkit.DoubleChestCombiner;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
@@ -49,8 +50,8 @@ public class CraftChest extends CraftLootable<ChestBlockEntity> implements Chest
         ChestBlock blockChest = (ChestBlock) data.getBlock();
         MenuProvider nms = blockChest.getMenuProvider(data, world.getHandle(), this.getPosition(), true);
 
-        if (nms instanceof ChestBlock.DoubleChestCombiner.Dummy.DoubleInventory) {
-            inventory = new CraftInventoryDoubleChest((ChestBlock.DoubleChestCombiner.Dummy.DoubleInventory) nms);
+        if (nms instanceof DoubleChestCombiner.Dummy.DoubleInventory) {
+            inventory = new CraftInventoryDoubleChest((DoubleChestCombiner.Dummy.DoubleInventory) nms);
         }
         return inventory;
     }
@@ -58,27 +59,27 @@ public class CraftChest extends CraftLootable<ChestBlockEntity> implements Chest
     @Override
     public void open() {
         requirePlaced();
-        if (!getTileEntity().openersCounter.opened && getWorldHandle() instanceof net.minecraft.world.level.Level) {
+        if (!getTileEntity().openersCounter.silkard_opened() && getWorldHandle() instanceof net.minecraft.world.level.Level) {
             BlockState block = getTileEntity().getBlockState();
             int openCount = getTileEntity().openersCounter.getOpenerCount();
 
             getTileEntity().openersCounter.onAPIOpen((net.minecraft.world.level.Level) getWorldHandle(), getPosition(), block);
             getTileEntity().openersCounter.openerAPICountChanged((net.minecraft.world.level.Level) getWorldHandle(), getPosition(), block, openCount, openCount + 1);
         }
-        getTileEntity().openersCounter.opened = true;
+        getTileEntity().openersCounter.silkard_opened(true);
     }
 
     @Override
     public void close() {
         requirePlaced();
-        if (getTileEntity().openersCounter.opened && getWorldHandle() instanceof net.minecraft.world.level.Level) {
+        if (getTileEntity().openersCounter.silkard_opened() && getWorldHandle() instanceof net.minecraft.world.level.Level) {
             BlockState block = getTileEntity().getBlockState();
             int openCount = getTileEntity().openersCounter.getOpenerCount();
 
             getTileEntity().openersCounter.onAPIClose((net.minecraft.world.level.Level) getWorldHandle(), getPosition(), block);
             getTileEntity().openersCounter.openerAPICountChanged((net.minecraft.world.level.Level) getWorldHandle(), getPosition(), block, openCount, 0);
         }
-        getTileEntity().openersCounter.opened = false;
+        getTileEntity().openersCounter.silkard_opened(false);
     }
 
     @Override

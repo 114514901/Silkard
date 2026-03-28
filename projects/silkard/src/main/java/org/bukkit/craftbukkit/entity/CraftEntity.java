@@ -63,6 +63,7 @@ import org.bukkit.util.BoundingBox;
 import org.bukkit.util.NumberConversions;
 import org.bukkit.util.Vector;
 
+@SuppressWarnings("removal")
 public abstract class CraftEntity implements org.bukkit.entity.Entity {
     private static PermissibleBase perm;
     private static final CraftPersistentDataTypeRegistry DATA_TYPE_REGISTRY = new CraftPersistentDataTypeRegistry();
@@ -207,7 +208,7 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
         if (location.getWorld() != null && !location.getWorld().equals(getWorld())) {
             // Prevent teleportation to an other world during world generation
             Preconditions.checkState(!entity.silkard_generation(), "Cannot teleport entity to an other world during world generation");
-            entity.teleport(new TeleportTransition(((CraftWorld) location.getWorld()).getHandle(), CraftLocation.toVec3D(location), Vec3.ZERO, location.getPitch(), location.getYaw(), Set.of(), TeleportTransition.DO_NOTHING, TeleportCause.PLUGIN));
+            entity.teleport(new TeleportTransition(((CraftWorld) location.getWorld()).getHandle(), CraftLocation.toVec3D(location), Vec3.ZERO, location.getPitch(), location.getYaw(), Set.of(), TeleportTransition.DO_NOTHING/*, TeleportCause.PLUGIN*/));
             return true;
         }
 
@@ -296,7 +297,7 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
 
     @Override
     public void remove() {
-        entity.pluginRemoved = true;
+        entity.silkard_pluginRemoved(true);
         entity.discard(getHandle().silkard_generation() ? null : EntityRemoveEvent.Cause.PLUGIN);
     }
 
@@ -307,7 +308,7 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
 
     @Override
     public boolean isValid() {
-        return entity.isAlive() && entity.valid && entity.isChunkLoaded() && isInWorld();
+        return entity.isAlive() && entity.silkard_valid() && entity.isChunkLoaded() && isInWorld();
     }
 
     @Override
@@ -317,12 +318,12 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
 
     @Override
     public boolean isPersistent() {
-        return entity.persist;
+        return entity.silkard_persist();
     }
 
     @Override
     public void setPersistent(boolean persistent) {
-        entity.persist = persistent;
+        entity.silkard_persist(persistent);
     }
 
     public Vector getMomentum() {
@@ -560,7 +561,7 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
 
     @Override
     public void setVisibleByDefault(boolean visible) {
-        if (getHandle().visibleByDefault != visible) {
+        if (getHandle().silkard_visibleByDefault() != visible) {
             if (visible) {
                 // Making visible by default, reset and show to all players
                 for (Player player : server.getOnlinePlayers()) {
@@ -573,13 +574,13 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
                 }
             }
 
-            getHandle().visibleByDefault = visible;
+            getHandle().silkard_visibleByDefault(visible);
         }
     }
 
     @Override
     public boolean isVisibleByDefault() {
-        return getHandle().visibleByDefault;
+        return getHandle().silkard_visibleByDefault();
     }
 
     @Override
@@ -782,7 +783,7 @@ public abstract class CraftEntity implements org.bukkit.entity.Entity {
 
     @Override
     public boolean isInWorld() {
-        return getHandle().inWorld;
+        return getHandle().silkard_inWorld();
     }
 
     @Override
