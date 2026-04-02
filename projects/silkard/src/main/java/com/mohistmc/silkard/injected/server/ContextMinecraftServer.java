@@ -41,7 +41,7 @@ public interface ContextMinecraftServer {
         throw new ContextStateException("Not implemented");
     }
 
-    default java.util.Queue<Runnable> silkard$processQueue() {
+    default java.util.Queue<Runnable> silkard_processQueue() {
         throw new ContextStateException("Not implemented");
     }
 

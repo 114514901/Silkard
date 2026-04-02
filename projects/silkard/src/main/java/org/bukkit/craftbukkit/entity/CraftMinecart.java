@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.entity;
 
+import com.mohistmc.silkard.injected.world.entity.vehicle.minecart.ContextAbstractMinecart;
 import java.util.Optional;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
@@ -35,18 +36,18 @@ public abstract class CraftMinecart extends CraftVehicle implements Minecart {
     @Override
     public void setMaxSpeed(double speed) {
         if (speed >= 0D) {
-            getHandle().maxSpeed = speed;
+            getHandle().silkard_maxSpeed(speed);
         }
     }
 
     @Override
     public boolean isSlowWhenEmpty() {
-        return getHandle().slowWhenEmpty;
+        return getHandle().silkard_slowWhenEmpty();
     }
 
     @Override
     public void setSlowWhenEmpty(boolean slow) {
-        getHandle().slowWhenEmpty = slow;
+        getHandle().silkard_slowWhenEmpty(slow);
     }
 
     @Override
@@ -120,11 +121,11 @@ public abstract class CraftMinecart extends CraftVehicle implements Minecart {
 
     @Override
     public double getPoweredRailAccelerationMultiplier() {
-        return getHandle().powRailAccelMult;
+        return getHandle().silkard_powRailAccelMult();
     }
 
     @Override
     public void setPoweredRailAccelerationMultiplier(double multiplier) {
-        getHandle().powRailAccelMult = multiplier;
+        getHandle().silkard_powRailAccelMult(multiplier);
     }
 }

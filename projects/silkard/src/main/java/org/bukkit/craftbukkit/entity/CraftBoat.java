@@ -37,46 +37,46 @@ public abstract class CraftBoat extends CraftVehicle implements Boat {
 
     @Override
     public double getMaxSpeed() {
-        return getHandle().maxSpeed;
+        return getHandle().silkard_maxSpeed();
     }
 
     @Override
     public void setMaxSpeed(double speed) {
         if (speed >= 0D) {
-            getHandle().maxSpeed = speed;
+            getHandle().silkard_maxSpeed(speed);
         }
     }
 
     @Override
     public double getOccupiedDeceleration() {
-        return getHandle().occupiedDeceleration;
+        return getHandle().silkard_occupiedDeceleration();
     }
 
     @Override
     public void setOccupiedDeceleration(double speed) {
         if (speed >= 0D) {
-            getHandle().occupiedDeceleration = speed;
+            getHandle().silkard_occupiedDeceleration(speed);
         }
     }
 
     @Override
     public double getUnoccupiedDeceleration() {
-        return getHandle().unoccupiedDeceleration;
+        return getHandle().silkard_unoccupiedDeceleration();
     }
 
     @Override
     public void setUnoccupiedDeceleration(double speed) {
-        getHandle().unoccupiedDeceleration = speed;
+        getHandle().silkard_unoccupiedDeceleration(speed);
     }
 
     @Override
     public boolean getWorkOnLand() {
-        return getHandle().landBoats;
+        return getHandle().silkard_landBoats();
     }
 
     @Override
     public void setWorkOnLand(boolean workOnLand) {
-        getHandle().landBoats = workOnLand;
+        getHandle().silkard_landBoats(workOnLand);
     }
 
     @Override

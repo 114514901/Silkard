@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.block;
 
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import net.minecraft.core.BlockPos;
@@ -75,7 +76,7 @@ public class CraftConduit extends CraftBlockEntityState<ConduitBlockEntity> impl
     public int getRange() {
         ensureNoWorldGeneration();
         ConduitBlockEntity conduit = (ConduitBlockEntity) getTileEntityFromWorld();
-        return (conduit != null) ? ConduitBlockEntity.getRange(conduit.effectBlocks) : 0;
+        return (conduit != null) ? BukkitUtils.getRange(conduit.effectBlocks) : 0;
     }
 
     @Override
@@ -102,7 +103,7 @@ public class CraftConduit extends CraftBlockEntityState<ConduitBlockEntity> impl
             conduit.destroyTarget = EntityReference.of(newTarget);
         }
 
-        ConduitBlockEntity.updateAndAttackTarget((ServerLevel) conduit.getLevel(), getPosition(), data, conduit, conduit.effectBlocks.size() >= 42, false);
+        BukkitUtils.updateAndAttackTarget((ServerLevel) conduit.getLevel(), getPosition(), data, conduit, conduit.effectBlocks.size() >= 42, false);
         return true;
     }
 

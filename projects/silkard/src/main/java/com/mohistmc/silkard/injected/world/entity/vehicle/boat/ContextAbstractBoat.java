@@ -4,35 +4,35 @@ import com.mohistmc.silkard.util.ContextStateException;
 
 public interface ContextAbstractBoat {
 
-    default double silkard$maxSpeed() {
+    default double silkard_maxSpeed() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxSpeed(double maxSpeed) {
+    default void silkard_maxSpeed(double maxSpeed) {
         throw new ContextStateException("Not implemented");
     }
 
-    default double silkard$occupiedDeceleration() {
+    default double silkard_occupiedDeceleration() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setOccupiedDeceleration(double occupiedDeceleration) {
+    default void silkard_occupiedDeceleration(double occupiedDeceleration) {
         throw new ContextStateException("Not implemented");
     }
 
-    default double silkard$unoccupiedDeceleration() {
+    default double silkard_unoccupiedDeceleration() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setUnoccupiedDeceleration(double occupiedDeceleration) {
+    default void silkard_unoccupiedDeceleration(double occupiedDeceleration) {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$landBoats() {
+    default boolean silkard_landBoats() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setLandBoats(boolean landBoats) {
+    default void silkard_landBoats(boolean landBoats) {
         throw new ContextStateException("Not implemented");
     }
 }

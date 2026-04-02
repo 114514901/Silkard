@@ -548,6 +548,9 @@ accessible field net/minecraft/core/component/DataComponentPatch map Lit/unimi/d
 accessible field net/minecraft/core/component/DataComponentPatch$Builder map Lit/unimi/dsi/fastutil/objects/Reference2ObjectMap;
 accessible method net/minecraft/server/commands/ReloadCommand discoverNewPacks (Lnet/minecraft/server/packs/repository/PackRepository;Lnet/minecraft/world/level/storage/WorldData;Ljava/util/Collection;)Ljava/util/Collection;
 accessible field net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings palette I
+accessible field net/minecraft/server/players/PlayerList LOGGER Lorg/slf4j/Logger;
+accessible method net/minecraft/world/level/block/entity/ConduitBlockEntity updateAndAttackTarget (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/ConduitBlockEntity;Z)V
+accessible method net/minecraft/world/level/block/entity/ConduitBlockEntity updateDestroyTarget (Lnet/minecraft/world/entity/EntityReference;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/world/entity/EntityReference;
 
 accessible field net/minecraft/network/protocol/handshake/ClientIntentionPacket hostName Ljava/lang/String;
 mutable field net/minecraft/network/protocol/handshake/ClientIntentionPacket hostName Ljava/lang/String;
@@ -714,6 +717,7 @@ transitive-inject-interface	net/minecraft/world/level/block/entity/SculkCatalyst
 transitive-inject-interface	net/minecraft/world/level/block/entity/ContainerOpenersCounter	com/mohistmc/silkard/injected/world/level/block/entity/ContextContainerOpenersCounter
 transitive-inject-interface	net/minecraft/world/level/block/entity/FurnaceBlockEntity	com/mohistmc/silkard/injected/world/level/block/entity/ContextFurnaceBlockEntity
 transitive-inject-interface	net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity	com/mohistmc/silkard/injected/world/level/block/entity/ContextShulkerBoxBlockEntity
+transitive-inject-interface	net/minecraft/world/level/block/entity/JukeboxBlockEntity	com/mohistmc/silkard/injected/world/level/block/entity/ContextJukeboxBlockEntity
 transitive-inject-interface	net/minecraft/world/level/border/WorldBorder	com/mohistmc/silkard/injected/world/level/border/ContextWorldBorder
 transitive-inject-interface	net/minecraft/world/level/chunk/ChunkAccess	com/mohistmc/silkard/injected/world/level/chunk/ContextChunkAccess
 transitive-inject-interface	net/minecraft/world/level/chunk/ChunkGenerator	com/mohistmc/silkard/injected/world/level/chunk/ContextChunkGenerator

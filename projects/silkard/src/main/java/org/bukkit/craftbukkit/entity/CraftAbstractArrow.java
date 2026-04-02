@@ -61,7 +61,7 @@ public class CraftAbstractArrow extends CraftProjectile implements AbstractArrow
 
     @Override
     public ProjectileSource getShooter() {
-        return getHandle().projectileSource;
+        return getHandle().silkard_projectileSource();
     }
 
     @Override
@@ -71,7 +71,7 @@ public class CraftAbstractArrow extends CraftProjectile implements AbstractArrow
         } else {
             getHandle().setOwner(null);
         }
-        getHandle().projectileSource = shooter;
+        getHandle().silkard_projectileSource(shooter);
     }
 
     @Override

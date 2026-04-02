@@ -5,43 +5,43 @@ import org.bukkit.util.Vector;
 
 public interface ContextAbstractMinecart {
 
-    default double silkard$powRailAccelMult() {
+    default boolean silkard_slowWhenEmpty() {
         throw new ContextStateException("Not implemented");
     }
 
-    default double silkard$maxSpeed() {
+    default void silkard_slowWhenEmpty(boolean slowWhenEmpty) {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setPowRailAccelMult(double powRailAccelMult) {
+    default double silkard_maxSpeed() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxSpeed(double maxSpeed) {
+    default void silkard_maxSpeed(double maxSpeed) {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$slowWhenEmpty() {
+    default void silkard_powRailAccelMult(double powRailAccelMult) {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setSlowWhenEmpty(boolean slowWhenEmpty) {
+    default double silkard_powRailAccelMult() {
         throw new ContextStateException("Not implemented");
     }
 
     default Vector getFlyingVelocityMod() {
-        throw new ContextStateException("Not implemented");
+        throw new IllegalStateException("Not implemented");
     }
 
     default void setFlyingVelocityMod(Vector flying) {
-        throw new ContextStateException("Not implemented");
+        throw new IllegalStateException("Not implemented");
     }
 
     default Vector getDerailedVelocityMod() {
-        throw new ContextStateException("Not implemented");
+        throw new IllegalStateException("Not implemented");
     }
 
     default void setDerailedVelocityMod(Vector derailed) {
-        throw new ContextStateException("Not implemented");
+        throw new IllegalStateException("Not implemented");
     }
 }

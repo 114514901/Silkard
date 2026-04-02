@@ -69,6 +69,11 @@ public class MixinMinecraftServer implements ContextMinecraftServer {
     }
 
     @Override
+    public java.util.Queue<Runnable> silkard_processQueue() {
+        return processQueue;
+    }
+
+    @Override
     public int silkard_autosavePeriod() {
         return autosavePeriod;
     }

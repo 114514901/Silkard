@@ -17,11 +17,11 @@ public interface ContextMob extends ContextNeutralMob {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$aware() {
+    default boolean silkard_aware() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setAware(boolean aware){
+    default void silkard_aware(boolean aware){
         throw new ContextStateException("Not implemented");
     }
 

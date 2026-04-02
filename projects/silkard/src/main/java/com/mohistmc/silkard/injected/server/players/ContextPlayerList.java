@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerLoginPacketListenerImpl;
+import net.minecraft.server.players.NameAndId;
 import net.minecraft.stats.ServerStatsCounter;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -47,7 +48,7 @@ public interface ContextPlayerList {
         throw new ContextStateException("Not implemented");
     }
 
-    default ServerStatsCounter getPlayerStats(UUID uuid, String displayName) {
+    default ServerStatsCounter getPlayerStats(NameAndId gameprofile) {
         throw new ContextStateException("Not implemented");
     }
 

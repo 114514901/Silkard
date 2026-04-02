@@ -2,13 +2,22 @@ package com.mohistmc.silkard.bukkit;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.commands.ReloadCommand;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.packs.repository.PackRepository;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityReference;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.ConduitBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.WorldData;
 import net.minecraft.world.phys.AABB;
 import org.bukkit.Bukkit;
@@ -51,4 +60,30 @@ public class BukkitUtils {
         minecraftserver.reloadResources(collection1);
     }
     // CraftBukkit end
+
+    public static int getRange(List<BlockPos> effectBlocks) {
+        // CraftBukkit end
+        int i = effectBlocks.size();
+        int j = i / 7 * 16;
+        // CraftBukkit start
+        return j;
+    }
+
+    public static void updateAndAttackTarget(final ServerLevel level, final BlockPos worldPosition, final BlockState blockState, final ConduitBlockEntity entity, final boolean isActive, boolean damageTarget) {
+        EntityReference<LivingEntity> entityreference = ConduitBlockEntity.updateDestroyTarget(entity.destroyTarget, level, worldPosition, isActive);
+        LivingEntity livingentity = EntityReference.getLivingEntity(entityreference, level);
+
+        // CraftBukkit start
+        if (damageTarget && livingentity != null) {
+            if (livingentity.hurtServer(level, level.damageSources().magic().directBlock(level, worldPosition), 4.0F)) {
+                level.playSound((Entity) null, livingentity.getX(), livingentity.getY(), livingentity.getZ(), SoundEvents.CONDUIT_ATTACK_TARGET, SoundSource.BLOCKS, 1.0F, 1.0F);
+            }
+            // CraftBukkit end
+        }
+
+        if (!Objects.equals(entityreference, entity.destroyTarget)) {
+            entity.destroyTarget = entityreference;
+            level.sendBlockUpdated(worldPosition, blockState, blockState, 2);
+        }
+    }
 }

@@ -37,12 +37,12 @@ public abstract class CraftMob extends CraftLivingEntity implements Mob {
 
     @Override
     public void setAware(boolean aware) {
-        getHandle().aware = aware;
+        getHandle().silkard_aware(aware);
     }
 
     @Override
     public boolean isAware() {
-        return getHandle().aware;
+        return getHandle().silkard_aware();
     }
 
     @Override

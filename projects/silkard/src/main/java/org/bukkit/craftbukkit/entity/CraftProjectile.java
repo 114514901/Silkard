@@ -11,7 +11,7 @@ public abstract class CraftProjectile extends CraftEntity implements Projectile 
 
     @Override
     public ProjectileSource getShooter() {
-        return getHandle().projectileSource;
+        return getHandle().silkard_projectileSource();
     }
 
     @Override
@@ -21,7 +21,7 @@ public abstract class CraftProjectile extends CraftEntity implements Projectile 
         } else {
             getHandle().setOwner(null);
         }
-        getHandle().projectileSource = shooter;
+        getHandle().silkard_projectileSource(shooter);
     }
 
     @Override
