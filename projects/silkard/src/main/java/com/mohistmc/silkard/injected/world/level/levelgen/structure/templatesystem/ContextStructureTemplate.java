@@ -5,7 +5,7 @@ import org.bukkit.craftbukkit.persistence.CraftPersistentDataContainer;
 
 public interface ContextStructureTemplate {
 
-    default CraftPersistentDataContainer silkard$persistentDataContainer() {
+    default CraftPersistentDataContainer silkard_persistentDataContainer() {
         throw new ContextStateException("Not implemented");
     }
 }

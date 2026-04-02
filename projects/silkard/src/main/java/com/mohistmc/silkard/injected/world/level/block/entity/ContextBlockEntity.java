@@ -11,11 +11,11 @@ import org.bukkit.inventory.InventoryHolder;
 
 public interface ContextBlockEntity {
 
-    default CraftPersistentDataContainer silkard$persistentDataContainer() {
+    default CraftPersistentDataContainer silkard_persistentDataContainer() {
         throw new ContextStateException("Not implemented");
     }
 
-    default InventoryHolder silkard$getOwner() {
+    default InventoryHolder silkard_getOwner() {
         throw new ContextStateException("Not implemented");
     }
 

@@ -8,15 +8,11 @@ import org.bukkit.craftbukkit.persistence.DirtyCraftPersistentDataContainer;
 
 public interface ContextChunkAccess {
 
-    default DirtyCraftPersistentDataContainer silkard$persistentDataContainer() {
+    default DirtyCraftPersistentDataContainer silkard_persistentDataContainer() {
         throw new ContextStateException("Not implemented");
     }
 
     default void setBiome(int i, int j, int k, Holder<Biome> biome) {
-        throw new ContextStateException("Not implemented");
-    }
-
-    default Registry<Biome> silkard$biomeRegistry() {
         throw new ContextStateException("Not implemented");
     }
 }

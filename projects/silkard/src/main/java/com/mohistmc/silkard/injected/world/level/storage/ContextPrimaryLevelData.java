@@ -7,11 +7,11 @@ import net.minecraft.world.level.dimension.LevelStem;
 
 public interface ContextPrimaryLevelData {
 
-    default Registry<LevelStem> silkard$customDimensions() {
+    default Registry<LevelStem> silkard_customDimensions() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCustomDimensions(Registry<LevelStem> customDimensions) {
+    default void silkard_customDimensions(Registry<LevelStem> customDimensions) {
         throw new ContextStateException("Not implemented");
     }
 

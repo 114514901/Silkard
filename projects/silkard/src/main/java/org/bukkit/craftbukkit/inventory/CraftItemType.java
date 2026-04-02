@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import net.minecraft.core.Holder;
@@ -165,7 +166,7 @@ public class CraftItemType<M extends ItemMeta> extends CraftRegistryItem<Item> i
 
     @Override
     public boolean isFuel() {
-        return MinecraftServer.getServer().fuelValues().isFuel(new net.minecraft.world.item.ItemStack(getHandle()));
+        return BukkitUtils.getServer().fuelValues().isFuel(new net.minecraft.world.item.ItemStack(getHandle()));
     }
 
     @Override

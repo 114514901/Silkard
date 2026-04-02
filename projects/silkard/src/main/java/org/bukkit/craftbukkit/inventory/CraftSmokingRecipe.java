@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.inventory;
 
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.bukkit.NamespacedKey;
@@ -26,6 +27,6 @@ public class CraftSmokingRecipe extends SmokingRecipe implements CraftRecipe {
     public void addToCraftingManager() {
         ItemStack result = this.getResult();
 
-        MinecraftServer.getServer().getRecipeManager().addRecipe(new RecipeHolder<>(CraftRecipe.toMinecraft(this.getKey()), new net.minecraft.world.item.crafting.SmokingRecipe(getCommon(), CraftRecipe.getBook(this), toNMS(this.getInputChoice(), true), CraftItemStack.asNMSTemplate(result), getExperience(), getCookingTime())));
+        BukkitUtils.getServer().getRecipeManager().addRecipe(new RecipeHolder<>(CraftRecipe.toMinecraft(this.getKey()), new net.minecraft.world.item.crafting.SmokingRecipe(getCommon(), CraftRecipe.getBook(this), toNMS(this.getInputChoice(), true), CraftItemStack.asNMSTemplate(result), getExperience(), getCookingTime())));
     }
 }

@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.inventory;
 
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.bukkit.NamespacedKey;
@@ -25,7 +26,7 @@ public class CraftImbueRecipe extends ImbueRecipe implements CraftRecipe {
 
     @Override
     public void addToCraftingManager() {
-        MinecraftServer.getServer().getRecipeManager().addRecipe(
+        BukkitUtils.getServer().getRecipeManager().addRecipe(
                 new RecipeHolder<>(CraftRecipe.toMinecraft(this.getKey()),
                         new net.minecraft.world.item.crafting.ImbueRecipe(getCommon(),
                                 CraftRecipe.getBook(this),

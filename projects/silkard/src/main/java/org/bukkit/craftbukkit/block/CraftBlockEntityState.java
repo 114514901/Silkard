@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.block;
 
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import java.util.Set;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponentMap;
@@ -53,7 +54,7 @@ public class CraftBlockEntityState<T extends BlockEntity> extends CraftBlockStat
 
     protected RegistryAccess getRegistryAccess() {
         LevelAccessor worldHandle = getWorldHandle();
-        return (worldHandle != null) ? worldHandle.registryAccess() : MinecraftServer.getDefaultRegistryAccess();
+        return (worldHandle != null) ? worldHandle.registryAccess() : BukkitUtils.getDefaultRegistryAccess();
     }
 
     private T createSnapshot(T tileEntity) {
@@ -190,7 +191,7 @@ public class CraftBlockEntityState<T extends BlockEntity> extends CraftBlockStat
 
     @Override
     public PersistentDataContainer getPersistentDataContainer() {
-        return this.getSnapshot().persistentDataContainer;
+        return this.getSnapshot().silkard_persistentDataContainer();
     }
 
     @Nullable

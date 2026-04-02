@@ -29,7 +29,7 @@ public interface ContextMinecraftServer {
         throw new ContextStateException("Not implemented");
     }
 
-    default Commands silkard$getVanillaCommands() {
+    default Commands vanillaCommandDispatcher() {
         throw new ContextStateException("Not implemented");
     }
 
@@ -49,7 +49,7 @@ public interface ContextMinecraftServer {
         throw new ContextStateException("Not implemented");
     }
 
-    default WorldLoader.DataLoadContext silkard$worldLoader() {
+    default WorldLoader.DataLoadContext silkard_worldLoader() {
         throw new ContextStateException("Not implemented");
     }
 
@@ -61,15 +61,15 @@ public interface ContextMinecraftServer {
         throw new ContextStateException("Not implemented");
     }
 
-    default OptionSet silkard$options() {
+    default OptionSet silkard_options() {
         throw new ContextStateException("Not implemented");
     }
 
-    default ConsoleCommandSender silkard$console() {
+    default ConsoleCommandSender silkard_console() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setConsole(ConsoleCommandSender console) {
+    default void silkard_console(ConsoleCommandSender console) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -121,11 +121,11 @@ public interface ContextMinecraftServer {
         throw new ContextStateException("Not implemented");
     }
 
-    default int silkard$autosavePeriod() {
+    default int silkard_autosavePeriod() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setAutosavePeriod(int autosavePeriod) {
+    default void silkard_autosavePeriod(int autosavePeriod) {
         throw new ContextStateException("Not implemented");
     }
 }

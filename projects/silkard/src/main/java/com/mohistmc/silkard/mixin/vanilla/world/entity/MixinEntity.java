@@ -59,6 +59,26 @@ public abstract class MixinEntity implements ContextEntity {
     }
 
     @Override
+    public int silkard_maxAirTicks() {
+        return maxAirTicks;
+    }
+
+    @Override
+    public void silkard_maxAirTicks(int maxAirTicks) {
+        this.maxAirTicks = maxAirTicks;
+    }
+
+    @Override
+    public org.bukkit.projectiles.ProjectileSource silkard_projectileSource() {
+       return projectileSource;
+    }
+
+    @Override
+    public void silkard_projectileSource(org.bukkit.projectiles.ProjectileSource projectileSource) {
+        this.projectileSource = projectileSource;
+    }
+
+    @Override
     public boolean silkard_pluginRemoved() {
        return pluginRemoved;
     }

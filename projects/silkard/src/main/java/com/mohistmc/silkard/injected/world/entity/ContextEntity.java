@@ -64,19 +64,19 @@ public interface ContextEntity extends ContextEntityAccess {
         throw new ContextStateException("Not implemented");
     }
 
-    default int silkard$maxAirTicks() {
+    default int silkard_maxAirTicks() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxAirTicks(int maxAirTicks) {
+    default void silkard_maxAirTicks(int maxAirTicks) {
         throw new ContextStateException("Not implemented");
     }
 
-    default org.bukkit.projectiles.ProjectileSource silkard$projectileSource() {
+    default org.bukkit.projectiles.ProjectileSource silkard_projectileSource() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setProjectileSource(org.bukkit.projectiles.ProjectileSource projectileSource) {
+    default void silkard_projectileSource(org.bukkit.projectiles.ProjectileSource projectileSource) {
         throw new ContextStateException("Not implemented");
     }
 

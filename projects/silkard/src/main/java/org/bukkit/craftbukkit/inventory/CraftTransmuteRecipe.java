@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.inventory;
 
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import net.minecraft.advancements.criterion.MinMaxBounds;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -26,7 +27,7 @@ public class CraftTransmuteRecipe extends TransmuteRecipe implements CraftRecipe
 
     @Override
     public void addToCraftingManager() {
-        MinecraftServer.getServer().getRecipeManager().addRecipe(
+        BukkitUtils.getServer().getRecipeManager().addRecipe(
                 new RecipeHolder<>(CraftRecipe.toMinecraft(this.getKey()),
                         new net.minecraft.world.item.crafting.TransmuteRecipe(getCommon(),
                                 CraftRecipe.getBook(this),

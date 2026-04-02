@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import com.mojang.serialization.JsonOps;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -211,7 +212,7 @@ public final class CraftChatMessage {
     }
 
     public static String toJSON(Component component) {
-        return ChatSerializer.toJson(component, MinecraftServer.getDefaultRegistryAccess());
+        return ChatSerializer.toJson(component, BukkitUtils.getDefaultRegistryAccess());
     }
 
     public static String toJSONOrNull(Component component) {
@@ -222,7 +223,7 @@ public final class CraftChatMessage {
     public static Component fromJSON(String jsonMessage) throws JsonParseException {
         // Note: This also parses plain Strings to text components.
         // Note: An empty message (empty, or only consisting of whitespace) results in null rather than a parse exception.
-        return ChatSerializer.fromJson(jsonMessage, MinecraftServer.getDefaultRegistryAccess());
+        return ChatSerializer.fromJson(jsonMessage, BukkitUtils.getDefaultRegistryAccess());
     }
 
     public static Component fromJSONOrNull(String jsonMessage) {

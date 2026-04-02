@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.levelgen.WorldGenSettings;
 import net.minecraft.world.level.storage.LevelStorageSource;
 import net.minecraft.world.level.storage.PrimaryLevelData;
 import org.bukkit.event.entity.CreatureSpawnEvent;
@@ -22,7 +23,7 @@ public interface ContextServerLevel extends ContextLevel {
         throw new ContextStateException("Not implemented");
     }
 
-    default LevelStorageSource.LevelStorageAccess silkard$convertable() {
+    default LevelStorageSource.LevelStorageAccess silkard_storageSource() {
         throw new ContextStateException("Not implemented");
     }
 
@@ -67,6 +68,10 @@ public interface ContextServerLevel extends ContextLevel {
     }
 
     default void sendParticlesSource(ServerPlayer sender, ParticleOptions particle, boolean overrideLimiter, boolean alwaysShow, double x, double y, double z, int count, double xDist, double yDist, double zDist, double speed) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default WorldGenSettings getWorldGenSettings() {
         throw new ContextStateException("Not implemented");
     }
 }

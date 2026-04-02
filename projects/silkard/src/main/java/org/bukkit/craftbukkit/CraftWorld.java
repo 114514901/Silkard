@@ -1359,7 +1359,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
 
     @Override
     public File getWorldFolder() {
-        return world.storageSource.getLevelPath(LevelResource.ROOT).toFile().getParentFile();
+        return world.silkard_storageSource().getLevelPath(LevelResource.ROOT).toFile().getParentFile();
     }
 
     @Override

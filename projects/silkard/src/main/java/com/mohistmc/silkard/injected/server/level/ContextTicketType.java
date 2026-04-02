@@ -9,7 +9,6 @@ import net.minecraft.server.level.TicketType;
  */
 public interface ContextTicketType {
 
-    long pluginTimeout = 0L;
     TicketType PLUGIN = TicketType.register("plugin", 0L, 14);
     TicketType PLUGIN_TICKET = TicketType.register("plugin_ticket", 0L, 14);
 

@@ -1,5 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.server.level;
 
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import com.mohistmc.silkard.injected.server.level.ContextTicketType;
 import net.minecraft.server.level.TicketType;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,6 +18,6 @@ public abstract class MixinTicketType implements ContextTicketType {
 
     @Override
     public long timeout() {
-        return (((TicketType)(Object)this) != PLUGIN) ? this.timeout : pluginTimeout;
+        return (((TicketType)(Object)this) != PLUGIN) ? this.timeout : BukkitUtils.pluginTimeout;
     }
 }

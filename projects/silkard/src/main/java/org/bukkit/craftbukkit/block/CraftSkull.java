@@ -1,6 +1,7 @@
 package org.bukkit.craftbukkit.block;
 
 import com.google.common.base.Preconditions;
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
@@ -64,7 +65,7 @@ public class CraftSkull extends CraftBlockEntityState<SkullBlockEntity> implemen
             return false;
         }
 
-        NameAndId profile = MinecraftServer.getServer().services().nameToIdCache().get(name).orElse(null);
+        NameAndId profile = BukkitUtils.getServer().services().nameToIdCache().get(name).orElse(null);
         if (profile == null) {
             return false;
         }

@@ -12,4 +12,8 @@ public interface ContextWorldBorder {
     default void silkard$setWorld(Level world) {
         throw new ContextStateException("Not implemented");
     }
+
+    default void applyInitialSettings(long gameTime, boolean force) {
+        throw new ContextStateException("Not implemented");
+    }
 }

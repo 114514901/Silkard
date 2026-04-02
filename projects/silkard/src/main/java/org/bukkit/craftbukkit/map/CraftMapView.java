@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.map;
 
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,7 +32,7 @@ public final class CraftMapView implements MapView {
 
     @Override
     public int getId() {
-        return worldMap.id.id();
+        return worldMap.silkard_id().id();
     }
 
     @Override
@@ -52,14 +53,14 @@ public final class CraftMapView implements MapView {
     @Override
     public World getWorld() {
         ResourceKey<net.minecraft.world.level.Level> dimension = worldMap.dimension;
-        ServerLevel world = MinecraftServer.getServer().getLevel(dimension);
+        ServerLevel world = BukkitUtils.getServer().getLevel(dimension);
 
         if (world != null) {
             return world.getWorld();
         }
 
-        if (worldMap.uniqueId != null) {
-            return Bukkit.getServer().getWorld(worldMap.uniqueId);
+        if (worldMap.silkard_uniqueId() != null) {
+            return Bukkit.getServer().getWorld(worldMap.silkard_uniqueId());
         }
         return null;
     }
@@ -67,7 +68,7 @@ public final class CraftMapView implements MapView {
     @Override
     public void setWorld(World world) {
         worldMap.dimension = ((CraftWorld) world).getHandle().dimension();
-        worldMap.uniqueId = world.getUID();
+        worldMap.silkard_uniqueId(world.getUID());
     }
 
     @Override

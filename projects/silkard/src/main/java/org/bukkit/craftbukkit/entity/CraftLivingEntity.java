@@ -255,12 +255,12 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public int getMaximumAir() {
-        return getHandle().maxAirTicks;
+        return getHandle().silkard_maxAirTicks();
     }
 
     @Override
     public void setMaximumAir(int ticks) {
-        getHandle().maxAirTicks = ticks;
+        getHandle().silkard_maxAirTicks(ticks);
     }
 
     @Override
@@ -346,12 +346,12 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public int getMaximumNoDamageTicks() {
-        return getHandle().invulnerableDuration;
+        return getHandle().invulnerableDuration();
     }
 
     @Override
     public void setMaximumNoDamageTicks(int ticks) {
-        getHandle().invulnerableDuration = ticks;
+        getHandle().invulnerableDuration(ticks);
     }
 
     @Override
@@ -520,7 +520,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
                 launch = new LargeFireball(level, getHandle(), vec, 1);
             }
 
-            ((AbstractHurtingProjectile) launch).projectileSource = this;
+            ((AbstractHurtingProjectile) launch).silkard_projectileSource(this);
             launch.snapTo(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
         } else if (LlamaSpit.class.isAssignableFrom(projectile)) {
             Location location = getEyeLocation();
@@ -582,7 +582,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
         if (getHandle() instanceof Mob) {
             ((Mob) getHandle()).setCanPickUpLoot(pickup);
         } else {
-            getHandle().bukkitPickUpLoot = pickup;
+            getHandle().silkard_bukkitPickUpLoot(pickup);
         }
     }
 
@@ -591,7 +591,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
         if (getHandle() instanceof Mob) {
             return ((Mob) getHandle()).canPickUpLoot();
         } else {
-            return getHandle().bukkitPickUpLoot;
+            return getHandle().silkard_bukkitPickUpLoot();
         }
     }
 
@@ -689,7 +689,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public AttributeInstance getAttribute(Attribute attribute) {
-        return getHandle().craftAttributes.getAttribute(attribute);
+        return getHandle().silkard_craftAttributes().getAttribute(attribute);
     }
 
     @Override
@@ -746,17 +746,17 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
 
     @Override
     public void setCollidable(boolean collidable) {
-        getHandle().collides = collidable;
+        getHandle().silkard_collides(collidable);
     }
 
     @Override
     public boolean isCollidable() {
-        return getHandle().collides;
+        return getHandle().silkard_collides();
     }
 
     @Override
     public Set<UUID> getCollidableExemptions() {
-        return getHandle().collidableExemptions;
+        return getHandle().silkard_collidableExemptions();
     }
 
     @Override

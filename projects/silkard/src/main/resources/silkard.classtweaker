@@ -544,6 +544,10 @@ accessible field net/minecraft/world/level/storage/TagValueInput input Lnet/mine
 accessible field net/minecraft/world/scores/Objective displayName Lnet/minecraft/network/chat/Component;
 accessible field net/minecraft/world/scores/criteria/ObjectiveCriteria CRITERIA_CACHE Ljava/util/Map;
 accessible method net/minecraft/server/level/TicketType register (Ljava/lang/String;JI)Lnet/minecraft/server/level/TicketType;
+accessible field net/minecraft/core/component/DataComponentPatch map Lit/unimi/dsi/fastutil/objects/Reference2ObjectMap;
+accessible field net/minecraft/core/component/DataComponentPatch$Builder map Lit/unimi/dsi/fastutil/objects/Reference2ObjectMap;
+accessible method net/minecraft/server/commands/ReloadCommand discoverNewPacks (Lnet/minecraft/server/packs/repository/PackRepository;Lnet/minecraft/world/level/storage/WorldData;Ljava/util/Collection;)Ljava/util/Collection;
+accessible field net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings palette I
 
 accessible field net/minecraft/network/protocol/handshake/ClientIntentionPacket hostName Ljava/lang/String;
 mutable field net/minecraft/network/protocol/handshake/ClientIntentionPacket hostName Ljava/lang/String;
@@ -610,7 +614,6 @@ mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData tracking
 accessible field net/minecraft/world/level/saveddata/maps/MapItemSavedData unlimitedTracking Z
 mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData unlimitedTracking Z
 
-
 transitive-inject-interface	net/minecraft/advancements/AdvancementHolder	com/mohistmc/silkard/injected/advancements/ContextAdvancementHolder
 transitive-inject-interface	net/minecraft/commands/arguments/EntityArgument	com/mohistmc/silkard/injected/commands/arguments/ContextEntityArgument
 transitive-inject-interface	net/minecraft/commands/arguments/selector/EntitySelectorParser	com/mohistmc/silkard/injected/commands/arguments/selector/ContextEntitySelectorParser
@@ -618,7 +621,7 @@ transitive-inject-interface	net/minecraft/commands/Commands	com/mohistmc/silkard
 transitive-inject-interface	net/minecraft/commands/CommandSource	com/mohistmc/silkard/injected/commands/ContextCommandSource
 transitive-inject-interface	net/minecraft/commands/CommandSourceStack	com/mohistmc/silkard/injected/commands/ContextCommandSourceStack
 transitive-inject-interface	net/minecraft/network/chat/Component	com/mohistmc/silkard/injected/network/chat/ContextComponent
-transitive-inject-interface	net/minecraft/core/component/DataComponentPatch$Builder	com/mohistmc/silkard/injected/network/chat/ContextDataComponentPatch$Builder
+transitive-inject-interface	net/minecraft/core/component/DataComponentPatch$Builder	com/mohistmc/silkard/injected/core/component/ContextDataComponentPatch$Builder
 transitive-inject-interface	net/minecraft/network/chat/TextColor	com/mohistmc/silkard/injected/network/chat/ContextTextColor
 transitive-inject-interface	net/minecraft/network/Connection	com/mohistmc/silkard/injected/network/connection/ContextConnection
 transitive-inject-interface	net/minecraft/network/protocol/game/ClientboundSectionBlocksUpdatePacket	com/mohistmc/silkard/injected/network/protocol/game/ContextClientboundSectionBlocksUpdatePacket

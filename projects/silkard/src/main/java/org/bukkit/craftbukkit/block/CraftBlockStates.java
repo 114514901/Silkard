@@ -1,6 +1,7 @@
 package org.bukkit.craftbukkit.block;
 
 import com.google.common.base.Preconditions;
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -453,7 +454,7 @@ public final class CraftBlockStates {
 
     @Deprecated
     public static BlockState getBlockState(BlockPos blockPosition, Material material, @Nullable CompoundTag blockEntityTag) {
-        return getBlockState(MinecraftServer.getDefaultRegistryAccess(), blockPosition, material, blockEntityTag);
+        return getBlockState(BukkitUtils.getDefaultRegistryAccess(), blockPosition, material, blockEntityTag);
     }
 
     public static BlockState getBlockState(LevelReader world, BlockPos blockPosition, Material material, @Nullable CompoundTag blockEntityTag) {
@@ -468,7 +469,7 @@ public final class CraftBlockStates {
 
     @Deprecated
     public static BlockState getBlockState(net.minecraft.world.level.block.state.BlockState blockData, @Nullable CompoundTag blockEntityTag) {
-        return getBlockState(MinecraftServer.getDefaultRegistryAccess(), BlockPos.ZERO, blockData, blockEntityTag);
+        return getBlockState(BukkitUtils.getDefaultRegistryAccess(), BlockPos.ZERO, blockData, blockEntityTag);
     }
 
     public static BlockState getBlockState(LevelReader world, BlockPos blockPosition, net.minecraft.world.level.block.state.BlockState blockData, @Nullable CompoundTag blockEntityTag) {

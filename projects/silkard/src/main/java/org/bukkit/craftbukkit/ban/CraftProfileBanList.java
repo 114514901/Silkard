@@ -2,6 +2,7 @@ package org.bukkit.craftbukkit.ban;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
@@ -161,10 +162,10 @@ public class CraftProfileBanList implements ProfileBanList {
     }
 
     static NameAndId getProfileByUUID(UUID uuid) {
-        return (MinecraftServer.getServer() != null) ? MinecraftServer.getServer().services().nameToIdCache().get(uuid).orElse(null) : null;
+        return (BukkitUtils.getServer() != null) ? BukkitUtils.getServer().services().nameToIdCache().get(uuid).orElse(null) : null;
     }
 
     static NameAndId getProfileByName(String name) {
-        return (MinecraftServer.getServer() != null) ? MinecraftServer.getServer().services().nameToIdCache().get(name).orElse(null) : null;
+        return (BukkitUtils.getServer() != null) ? BukkitUtils.getServer().services().nameToIdCache().get(name).orElse(null) : null;
     }
 }

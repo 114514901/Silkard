@@ -161,7 +161,7 @@ public class CraftStructure implements Structure {
 
     @Override
     public PersistentDataContainer getPersistentDataContainer() {
-        return getHandle().persistentDataContainer;
+        return getHandle().silkard_persistentDataContainer();
     }
 
     public StructureTemplate getHandle() {

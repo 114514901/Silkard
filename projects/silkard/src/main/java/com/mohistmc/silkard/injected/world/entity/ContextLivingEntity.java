@@ -69,35 +69,35 @@ public interface ContextLivingEntity extends ContextEntity {
         throw new ContextStateException("Not implemented");
     }
 
-    default CraftAttributeMap silkard$craftAttributes() {
+    default CraftAttributeMap silkard_craftAttributes() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCraftAttributes(CraftAttributeMap craftAttributes) {
+    default void silkard_craftAttributes(CraftAttributeMap craftAttributes) {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$collides() {
+    default boolean silkard_collides() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCollides(boolean collides) {
+    default void silkard_collides(boolean collides) {
         throw new ContextStateException("Not implemented");
     }
 
-    default Set<UUID> silkard$collidableExemptions() {
+    default Set<UUID> silkard_collidableExemptions() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCollidableExemptions(Set<UUID> collidableExemptions) {
+    default void silkard_collidableExemptions(Set<UUID> collidableExemptions) {
         throw new ContextStateException("Not implemented");
     }
 
-    default boolean silkard$bukkitPickUpLoot() {
+    default boolean silkard_bukkitPickUpLoot() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setBukkitPickUpLoot(boolean bukkitPickUpLoot) {
+    default void silkard_bukkitPickUpLoot(boolean bukkitPickUpLoot) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -187,6 +187,14 @@ public interface ContextLivingEntity extends ContextEntity {
     }
 
     default MobEffectInstance removeEffectNoUpdate(Holder<MobEffect> holder, EntityPotionEffectEvent.Cause cause) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default int invulnerableDuration() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void invulnerableDuration(int duration) {
         throw new ContextStateException("Not implemented");
     }
 }

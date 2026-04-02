@@ -49,6 +49,7 @@ dependencies {
 	include(implementation("com.mohistmc:mixin-tools:1.2.7"){
 		exclude group: 'org.spongepowered'
 	})
+	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.5.3")))
 	// LibraryLoader start
 	implementation 'org.checkerframework:checker-qual:3.33.0'
 	implementation 'org.eclipse.sisu:org.eclipse.sisu.inject:0.9.0.M2'
