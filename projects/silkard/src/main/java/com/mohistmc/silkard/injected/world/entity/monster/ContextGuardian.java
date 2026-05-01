@@ -9,7 +9,7 @@ public interface ContextGuardian {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setGuardianAttackGoal(Guardian.GuardianAttackGoal guardianAttackGoal) {
+    default void silkard$guardianAttackGoal(Guardian.GuardianAttackGoal guardianAttackGoal) {
         throw new ContextStateException("Not implemented");
     }
 }

@@ -33,7 +33,7 @@ public class CraftPiglin extends CraftPiglinAbstract implements Piglin {
         Preconditions.checkArgument(material != null, "material cannot be null");
 
         Item item = CraftItemType.bukkitToMinecraft(material);
-        return getHandle().allowedBarterItems.add(item);
+        return getHandle().silkard$allowedBarterItems().add(item);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CraftPiglin extends CraftPiglinAbstract implements Piglin {
         Preconditions.checkArgument(material != null, "material cannot be null");
 
         Item item = CraftItemType.bukkitToMinecraft(material);
-        return getHandle().allowedBarterItems.remove(item);
+        return getHandle().silkard$allowedBarterItems().remove(item);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class CraftPiglin extends CraftPiglinAbstract implements Piglin {
         Preconditions.checkArgument(material != null, "material cannot be null");
 
         Item item = CraftItemType.bukkitToMinecraft(material);
-        return getHandle().interestItems.add(item);
+        return getHandle().silkard$interestItems().add(item);
     }
 
     @Override
@@ -57,17 +57,17 @@ public class CraftPiglin extends CraftPiglinAbstract implements Piglin {
         Preconditions.checkArgument(material != null, "material cannot be null");
 
         Item item = CraftItemType.bukkitToMinecraft(material);
-        return getHandle().interestItems.remove(item);
+        return getHandle().silkard$interestItems().remove(item);
     }
 
     @Override
     public Set<Material> getInterestList() {
-        return Collections.unmodifiableSet(getHandle().interestItems.stream().map(CraftItemType::minecraftToBukkit).collect(Collectors.toSet()));
+        return Collections.unmodifiableSet(getHandle().silkard$interestItems().stream().map(CraftItemType::minecraftToBukkit).collect(Collectors.toSet()));
     }
 
     @Override
     public Set<Material> getBarterList() {
-        return Collections.unmodifiableSet(getHandle().allowedBarterItems.stream().map(CraftItemType::minecraftToBukkit).collect(Collectors.toSet()));
+        return Collections.unmodifiableSet(getHandle().silkard$allowedBarterItems().stream().map(CraftItemType::minecraftToBukkit).collect(Collectors.toSet()));
     }
 
     @Override

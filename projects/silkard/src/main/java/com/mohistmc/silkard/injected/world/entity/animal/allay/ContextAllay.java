@@ -17,7 +17,7 @@ public interface ContextAllay {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setForceDancing(boolean forceDancing) {
+    default void silkard$forceDancing(boolean forceDancing) {
         throw new ContextStateException("Not implemented");
     }
 }

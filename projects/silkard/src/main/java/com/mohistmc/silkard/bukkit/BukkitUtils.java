@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.commands.ReloadCommand;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.entity.ConduitBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.WorldData;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.CraftRegistry;
 import org.bukkit.craftbukkit.CraftServer;
@@ -85,5 +87,41 @@ public class BukkitUtils {
             entity.destroyTarget = entityreference;
             level.sendBlockUpdated(worldPosition, blockState, blockState, 2);
         }
+    }
+
+    public static AABB createBoundingBox(BlockPos blockPos, Direction direction, boolean hasFramedMap) {
+        float shiftToBlockWall = 0.46875F;
+        Vec3 position = Vec3.atCenterOf(blockPos).relative(direction, -0.46875);
+        float width = hasFramedMap ? 1.0F : 0.75F;
+        float height = hasFramedMap ? 1.0F : 0.75F;
+        Direction.Axis axis = direction.getAxis();
+        double xSize = axis == Direction.Axis.X ? 0.0625 : width;
+        double ySize = axis == Direction.Axis.Y ? 0.0625 : height;
+        double zSize = axis == Direction.Axis.Z ? 0.0625 : width;
+        return AABB.ofSize(position, xSize, ySize, zSize);
+    }
+
+    public static AABB calculateBoundingBoxStatic(BlockPos pos, Direction direction, int width, int height) {
+        // CraftBukkit end
+        float f = 0.46875F;
+        Vec3 vec3 = Vec3.atCenterOf(pos).relative(direction, -0.46875D);
+        // CraftBukkit start
+        double d0 = offsetForPaintingSize(width);
+        double d1 = offsetForPaintingSize(height);
+        // CraftBukkit end
+        Direction direction1 = direction.getCounterClockWise();
+        Vec3 vec31 = vec3.relative(direction1, d0).relative(Direction.UP, d1);
+        Direction.Axis direction_axis = direction.getAxis();
+        // CraftBukkit start
+        double d2 = direction_axis == Direction.Axis.X ? 0.0625D : (double) width;
+        double d3 = (double) height;
+        double d4 = direction_axis == Direction.Axis.Z ? 0.0625D : (double) width;
+        // CraftBukkit end
+
+        return AABB.ofSize(vec31, d2, d3, d4);
+    }
+
+    private static double offsetForPaintingSize(int size) {
+        return size % 2 == 0 ? 0.5 : 0.0;
     }
 }

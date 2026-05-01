@@ -655,8 +655,8 @@ transitive-inject-interface	net/minecraft/world/damagesource/CombatEntry	com/moh
 transitive-inject-interface	net/minecraft/world/damagesource/CombatTracker	com/mohistmc/silkard/injected/world/damagesource/ContextCombatTracker
 transitive-inject-interface	net/minecraft/world/damagesource/DamageSource	com/mohistmc/silkard/injected/world/damagesource/ContextDamageSource
 transitive-inject-interface	net/minecraft/world/damagesource/DamageSources	com/mohistmc/silkard/injected/world/damagesource/ContextDamageSources
-transitive-inject-interface	net/minecraft/world/entity/boss/enderdragon/phases/EnderDragonPhase	com/mohistmc/silkard/injected/world/entity/boss/enderdragon/phases/ContextEnderDragonPhase
-transitive-inject-interface	net/minecraft/world/entity/animal/equine/AbstractHorse	com/mohistmc/silkard/injected/world/entity/ContextAbstractHorse
+transitive-inject-interface	net/minecraft/world/entity/animal/equine/AbstractHorse	com/mohistmc/silkard/injected/world/entity/animal/equine/ContextAbstractHorse
+transitive-inject-interface	net/minecraft/world/entity/animal/equine/Llama	com/mohistmc/silkard/injected/world/entity/animal/equine/ContextLlama
 transitive-inject-interface	net/minecraft/world/entity/AgeableMob	com/mohistmc/silkard/injected/world/entity/ContextAgeableMob
 transitive-inject-interface	net/minecraft/world/entity/animal/allay/Allay	com/mohistmc/silkard/injected/world/entity/animal/allay/ContextAllay
 transitive-inject-interface	net/minecraft/world/entity/animal/Animal	com/mohistmc/silkard/injected/world/entity/animal/ContextAnimal

@@ -4,10 +4,6 @@ import com.mohistmc.silkard.util.ContextStateException;
 
 public interface ContextAbstractHurtingProjectile {
 
-    default void setDirection(double d3, double d4, double d5) {
-        throw new ContextStateException("Not implemented");
-    }
-
     default float silkard$bukkitYield() {
         throw new ContextStateException("Not implemented");
     }
@@ -16,11 +12,11 @@ public interface ContextAbstractHurtingProjectile {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setBukkitYield(float yield) {
+    default void silkard$bukkitYield(float yield) {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setIsIncendiary(boolean incendiary) {
+    default void silkard$isIncendiary(boolean incendiary) {
         throw new ContextStateException("Not implemented");
     }
 }

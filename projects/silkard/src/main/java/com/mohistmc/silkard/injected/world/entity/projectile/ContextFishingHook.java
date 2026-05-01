@@ -8,7 +8,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMinLureTime(int minLureTime) {
+    default void silkard$minLureTime(int minLureTime) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -16,7 +16,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxLureTime(int maxLureTime) {
+    default void silkard$maxLureTime(int maxLureTime) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -24,7 +24,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMinLureAngle(float minLureAngle) {
+    default void silkard$minLureAngle(float minLureAngle) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -32,7 +32,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxLureAngle(float maxLureAngle) {
+    default void silkard$maxLureAngle(float maxLureAngle) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -40,7 +40,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setRainInfluenced(boolean rainInfluenced) {
+    default void silkard$rainInfluenced(boolean rainInfluenced) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -48,7 +48,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setSkyInfluenced(boolean skyInfluenced) {
+    default void silkard$skyInfluenced(boolean skyInfluenced) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -56,7 +56,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMinWaitTime(int minWaitTime) {
+    default void silkard$minWaitTime(int minWaitTime) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -64,7 +64,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxWaitTime(int minWaitTime) {
+    default void silkard$maxWaitTime(int minWaitTime) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -72,7 +72,7 @@ public interface ContextFishingHook {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setApplyLure(boolean applyLure) {
+    default void silkard$applyLure(boolean applyLure) {
         throw new ContextStateException("Not implemented");
     }
 }

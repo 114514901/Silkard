@@ -14,7 +14,7 @@ public class CraftShulkerBullet extends CraftProjectile implements ShulkerBullet
 
     @Override
     public ProjectileSource getShooter() {
-        return getHandle().projectileSource;
+        return getHandle().silkard_projectileSource();
     }
 
     @Override
@@ -24,7 +24,7 @@ public class CraftShulkerBullet extends CraftProjectile implements ShulkerBullet
         } else {
             getHandle().setOwner(null);
         }
-        getHandle().projectileSource = shooter;
+        getHandle().silkard_projectileSource(shooter);
     }
 
     @Override

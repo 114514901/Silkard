@@ -8,7 +8,7 @@ public interface ContextMinecartTNT {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setIsIncendiary(boolean isIncendiary) {
+    default void silkard$isIncendiary(boolean isIncendiary) {
         throw new ContextStateException("Not implemented");
     }
 }

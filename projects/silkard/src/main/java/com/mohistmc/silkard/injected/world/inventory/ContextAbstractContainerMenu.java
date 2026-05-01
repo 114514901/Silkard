@@ -2,6 +2,7 @@ package com.mohistmc.silkard.injected.world.inventory;
 
 import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import org.bukkit.craftbukkit.entity.CraftHumanEntity;
 import org.bukkit.inventory.InventoryView;
@@ -12,7 +13,7 @@ public interface ContextAbstractContainerMenu {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCheckReachable(boolean checkReachable) {
+    default void silkard$checkReachable(boolean checkReachable) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -21,6 +22,18 @@ public interface ContextAbstractContainerMenu {
     }
 
     default void setBukkitView(InventoryView view) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default Player containerOwner() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void containerOwner(Player containerOwner) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default InventoryView getBukkitView(AbstractContainerMenu other){
         throw new ContextStateException("Not implemented");
     }
 

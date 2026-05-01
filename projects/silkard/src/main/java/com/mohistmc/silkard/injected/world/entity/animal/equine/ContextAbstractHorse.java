@@ -8,7 +8,7 @@ public interface ContextAbstractHorse {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxDomestication(int maxDomestication) {
+    default void silkard$maxDomestication(int maxDomestication) {
         throw new ContextStateException("Not implemented");
     }
 }

@@ -12,7 +12,7 @@ public interface ContextBeehiveBlockEntity {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxBees(int maxBees) {
+    default void silkard$maxBees(int maxBees) {
         throw new ContextStateException("Not implemented");
     }
 
