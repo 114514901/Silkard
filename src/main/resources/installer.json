@@ -2,7 +2,7 @@
   "installer": {
     "minecraft": "26.1.2",
     "fabricLoader": "0.19.2",
-    "fabricLoaderHash": "f7687399005ad85e22a2e8e29b47c0b681890f8b"
+    "fabricLoaderHash": "cc647a5b22dbc49b9a3267cebcee25fc4882b108"
   },
   "libraries": {
     "org.jline:jline-terminal:3.30.6": "f10df14d2c96a8a4c758d3c4d325d42ae5d459b6",

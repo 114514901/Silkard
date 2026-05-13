@@ -630,7 +630,7 @@ transitive-inject-interface	net/minecraft/commands/CommandSourceStack	com/mohist
 transitive-inject-interface	net/minecraft/network/chat/Component	com/mohistmc/silkard/injected/network/chat/ContextComponent
 transitive-inject-interface	net/minecraft/core/component/DataComponentPatch$Builder	com/mohistmc/silkard/injected/core/component/ContextDataComponentPatch$Builder
 transitive-inject-interface	net/minecraft/network/chat/TextColor	com/mohistmc/silkard/injected/network/chat/ContextTextColor
-transitive-inject-interface	net/minecraft/network/Connection	com/mohistmc/silkard/injected/network/connection/ContextConnection
+transitive-inject-interface	net/minecraft/network/Connection	com/mohistmc/silkard/injected/network/ContextConnection
 transitive-inject-interface	net/minecraft/network/protocol/game/ClientboundSectionBlocksUpdatePacket	com/mohistmc/silkard/injected/network/protocol/game/ContextClientboundSectionBlocksUpdatePacket
 transitive-inject-interface	net/minecraft/network/protocol/game/ServerboundUseItemOnPacket	com/mohistmc/silkard/injected/network/protocol/game/ContextServerboundUseItemOnPacket
 transitive-inject-interface	net/minecraft/network/protocol/game/ServerboundUseItemPacket	com/mohistmc/silkard/injected/network/protocol/game/ContextServerboundUseItemPacket
@@ -639,7 +639,6 @@ transitive-inject-interface	net/minecraft/server/bossevents/CustomBossEvent	com/
 transitive-inject-interface	net/minecraft/server/MinecraftServer	com/mohistmc/silkard/injected/server/ContextMinecraftServer
 transitive-inject-interface	net/minecraft/server/level/ChunkHolder	com/mohistmc/silkard/injected/server/level/ContextChunkHolder
 transitive-inject-interface	net/minecraft/server/level/ChunkMap	com/mohistmc/silkard/injected/server/level/ContextChunkMap
-transitive-inject-interface	net/minecraft/server/level/DistanceManager	com/mohistmc/silkard/injected/server/level/ContextDistanceManager
 transitive-inject-interface	net/minecraft/server/level/ServerChunkCache	com/mohistmc/silkard/injected/server/level/ContextServerChunkCache
 transitive-inject-interface	net/minecraft/server/level/ServerEntity	com/mohistmc/silkard/injected/server/level/ContextServerEntity
 transitive-inject-interface	net/minecraft/server/level/ServerLevel	com/mohistmc/silkard/injected/server/level/ContextServerLevel
@@ -734,7 +733,7 @@ transitive-inject-interface	net/minecraft/world/level/chunk/ChunkAccess	com/mohi
 transitive-inject-interface	net/minecraft/world/level/chunk/ChunkGenerator	com/mohistmc/silkard/injected/world/level/chunk/ContextChunkGenerator
 transitive-inject-interface	net/minecraft/world/level/chunk/LevelChunk	com/mohistmc/silkard/injected/world/level/chunk/ContextLevelChunk
 transitive-inject-interface	net/minecraft/world/level/chunk/LevelChunkSection	com/mohistmc/silkard/injected/world/level/chunk/ContextLevelChunkSection
-transitive-inject-interface	net/minecraft/world/level/chunk/storage/RegionFileStorage	com/mohistmc/silkard/injected/world/level/chunk/ContextRegionFileStorage
+transitive-inject-interface	net/minecraft/world/level/chunk/storage/RegionFileStorage	com/mohistmc/silkard/injected/world/level/chunk/storage/ContextRegionFileStorage
 transitive-inject-interface	net/minecraft/world/level/BlockGetter	com/mohistmc/silkard/injected/world/level/ContextBlockGetter
 transitive-inject-interface	net/minecraft/world/level/Explosion	com/mohistmc/silkard/injected/world/level/ContextExplosion
 transitive-inject-interface	net/minecraft/world/level/Level	com/mohistmc/silkard/injected/world/level/ContextLevel
@@ -749,7 +748,7 @@ transitive-inject-interface	net/minecraft/world/level/levelgen/structure/templat
 transitive-inject-interface	net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager	com/mohistmc/silkard/injected/world/level/levelgen/structure/templatesystem/ContextStructureTemplateManager
 transitive-inject-interface	net/minecraft/world/level/portal/PortalForcer	com/mohistmc/silkard/injected/world/level/portal/ContextPortalForcer
 transitive-inject-interface	net/minecraft/world/level/saveddata/maps/MapItemSavedData	com/mohistmc/silkard/injected/world/level/saveddata/maps/ContextMapItemSavedData
-transitive-inject-interface	net/minecraft/world/level/NaturalSpawner$SpawnState	com/mohistmc/silkard/injected/world/level/spawner/ContextSpawnState
+transitive-inject-interface	net/minecraft/world/level/NaturalSpawner$SpawnState	com/mohistmc/silkard/injected/world/level/ContextSpawnState
 transitive-inject-interface	net/minecraft/world/level/storage/DerivedLevelData	com/mohistmc/silkard/injected/world/level/storage/ContextDerivedLevelData
 transitive-inject-interface	net/minecraft/world/level/storage/LevelStorageSource$LevelStorageAccess	com/mohistmc/silkard/injected/world/level/storage/ContextLevelStorageAccess
 transitive-inject-interface	net/minecraft/world/level/storage/LevelStorageSource	com/mohistmc/silkard/injected/world/level/storage/ContextLevelStorageSource

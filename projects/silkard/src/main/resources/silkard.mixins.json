@@ -2,8 +2,8 @@
   "required": true,
   "package": "com.mohistmc.silkard.mixin",
   "compatibilityLevel": "JAVA_25",
+  "plugin": "com.mohistmc.silkard.SilkardMixinPlugin",
   "mixins": [
-    "ExampleMixin",
     "vanilla.core.component.MixinDataComponentPatch$Builder",
     "vanilla.network.chat.MixinComponent",
     "vanilla.network.protocol.game.MixinClientboundSectionBlocksUpdatePacket",
