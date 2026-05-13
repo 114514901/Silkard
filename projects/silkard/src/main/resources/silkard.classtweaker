@@ -632,8 +632,6 @@ transitive-inject-interface	net/minecraft/core/component/DataComponentPatch$Buil
 transitive-inject-interface	net/minecraft/network/chat/TextColor	com/mohistmc/silkard/injected/network/chat/ContextTextColor
 transitive-inject-interface	net/minecraft/network/Connection	com/mohistmc/silkard/injected/network/ContextConnection
 transitive-inject-interface	net/minecraft/network/protocol/game/ClientboundSectionBlocksUpdatePacket	com/mohistmc/silkard/injected/network/protocol/game/ContextClientboundSectionBlocksUpdatePacket
-transitive-inject-interface	net/minecraft/network/protocol/game/ServerboundUseItemOnPacket	com/mohistmc/silkard/injected/network/protocol/game/ContextServerboundUseItemOnPacket
-transitive-inject-interface	net/minecraft/network/protocol/game/ServerboundUseItemPacket	com/mohistmc/silkard/injected/network/protocol/game/ContextServerboundUseItemPacket
 transitive-inject-interface	net/minecraft/network/syncher/SynchedEntityData	com/mohistmc/silkard/injected/network/syncher/ContextSynchedEntityData
 transitive-inject-interface	net/minecraft/server/bossevents/CustomBossEvent	com/mohistmc/silkard/injected/server/bossevents/ContextCustomBossEvent
 transitive-inject-interface	net/minecraft/server/MinecraftServer	com/mohistmc/silkard/injected/server/ContextMinecraftServer
@@ -656,7 +654,6 @@ transitive-inject-interface	net/minecraft/util/TickThrottler	com/mohistmc/silkar
 transitive-inject-interface	net/minecraft/world/Container	com/mohistmc/silkard/injected/world/ContextContainer
 transitive-inject-interface	net/minecraft/world/clock/ServerClockManager	com/mohistmc/silkard/injected/world/clock/ContextServerClockManager
 transitive-inject-interface	net/minecraft/world/damagesource/CombatEntry	com/mohistmc/silkard/injected/world/damagesource/ContextCombatEntry
-transitive-inject-interface	net/minecraft/world/damagesource/CombatTracker	com/mohistmc/silkard/injected/world/damagesource/ContextCombatTracker
 transitive-inject-interface	net/minecraft/world/damagesource/DamageSource	com/mohistmc/silkard/injected/world/damagesource/ContextDamageSource
 transitive-inject-interface	net/minecraft/world/damagesource/DamageSources	com/mohistmc/silkard/injected/world/damagesource/ContextDamageSources
 transitive-inject-interface	net/minecraft/world/entity/animal/equine/AbstractHorse	com/mohistmc/silkard/injected/world/entity/animal/equine/ContextAbstractHorse

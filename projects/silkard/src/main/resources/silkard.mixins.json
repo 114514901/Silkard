@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_25",
   "plugin": "com.mohistmc.silkard.SilkardMixinPlugin",
   "mixins": [
+    "vanilla.commands.MixinCommandSourceStack",
     "vanilla.core.component.MixinDataComponentPatch$Builder",
     "vanilla.network.chat.MixinComponent",
     "vanilla.network.protocol.game.MixinClientboundSectionBlocksUpdatePacket",
@@ -56,5 +57,5 @@
   },
   "overwrites": {
     "requireAnnotations": true
-	}
+  }
 }

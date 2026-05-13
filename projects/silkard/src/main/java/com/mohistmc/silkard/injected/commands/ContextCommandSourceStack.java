@@ -18,11 +18,11 @@ public interface ContextCommandSourceStack {
         throw new ContextStateException("Not implemented");
     }
 
-    default CommandNode<?> silkard$getCurrentCommand() {
+    default CommandNode<?> silkard$currentCommand() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCurrentCommand(CommandNode<?> node) {
+    default void silkard$currentCommand(CommandNode<?> node) {
         throw new ContextStateException("Not implemented");
     }
 }
