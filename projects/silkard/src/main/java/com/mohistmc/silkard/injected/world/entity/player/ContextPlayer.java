@@ -48,7 +48,7 @@ public interface ContextPlayer extends ContextLivingEntity {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setFauxSleeping(boolean fauxSleeping) {
+    default void silkard$fauxSleeping(boolean fauxSleeping) {
         throw new ContextStateException("Not implemented");
     }
 

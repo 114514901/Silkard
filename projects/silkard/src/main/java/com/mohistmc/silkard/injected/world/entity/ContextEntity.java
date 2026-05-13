@@ -84,7 +84,7 @@ public interface ContextEntity extends ContextEntityAccess {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setLastDamageCancelled(boolean lastDamageCancelled) {
+    default void silkard$lastDamageCancelled(boolean lastDamageCancelled) {
         throw new ContextStateException("Not implemented");
     }
 

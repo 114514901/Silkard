@@ -1262,10 +1262,6 @@ public final class CraftServer implements Server {
         return logger;
     }
 
-    public Terminal getTerminal() {
-        return console.terminal;
-    }
-
     @Override
     public PluginCommand getPluginCommand(String name) {
         Command command = commandMap.getCommand(name);

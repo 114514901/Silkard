@@ -877,7 +877,7 @@ public class CraftEventFactory {
         EntityDeathEvent event = new EntityDeathEvent(entity, bukkitDamageSource, drops, victim.getExpReward(world.getHandle(), damageSource.getEntity()));
         Bukkit.getServer().getPluginManager().callEvent(event);
 
-        victim.expToDrop = event.getDroppedExp();
+        victim.silkard$expToDrop(event.getDroppedExp());
 
         for (org.bukkit.inventory.ItemStack stack : event.getDrops()) {
             if (stack == null || stack.getType() == Material.AIR || stack.getAmount() == 0) continue;
@@ -893,14 +893,14 @@ public class CraftEventFactory {
         CraftDamageSource bukkitDamageSource = new CraftDamageSource(damageSource);
         PlayerDeathEvent event = new PlayerDeathEvent(entity, bukkitDamageSource, drops, victim.getExpReward(victim.level(), damageSource.getEntity()), 0, deathMessage);
         event.setKeepInventory(keepInventory);
-        event.setKeepLevel(victim.keepLevel); // SPIGOT-2222: pre-set keepLevel
+        event.setKeepLevel(victim.silkard$keepLevel()); // SPIGOT-2222: pre-set keepLevel
         Bukkit.getServer().getPluginManager().callEvent(event);
 
-        victim.keepLevel = event.getKeepLevel();
-        victim.newLevel = event.getNewLevel();
-        victim.newTotalExp = event.getNewTotalExp();
-        victim.expToDrop = event.getDroppedExp();
-        victim.newExp = event.getNewExp();
+        victim.silkard$keepLevel(event.getKeepLevel());
+        victim.silkard$newLevel(event.getNewLevel());
+        victim.silkard$newTotalExp(event.getNewTotalExp());
+        victim.silkard$expToDrop(event.getDroppedExp());
+        victim.silkard$newExp(event.getNewExp());
 
         for (org.bukkit.inventory.ItemStack stack : event.getDrops()) {
             if (stack == null || stack.getType() == Material.AIR) continue;
@@ -908,9 +908,9 @@ public class CraftEventFactory {
             if (stack instanceof CraftItemStack craftItemStack && craftItemStack.isForInventoryDrop()) {
                 victim.drop(CraftItemStack.asNMSCopy(stack), true, false, false); // SPIGOT-7800, SPIGOT-7801: Vanilla Behaviour for Player Inventory dropped items
             } else {
-                victim.forceDrops = true;
+                victim.silkard$forceDrops(true);
                 victim.spawnAtLocation(victim.level(), CraftItemStack.asNMSCopy(stack)); // SPIGOT-7806: Vanilla Behaviour for items not related to Player Inventory dropped items
-                victim.forceDrops = false;
+                victim.silkard$forceDrops(false);
             }
         }
 
@@ -1049,7 +1049,7 @@ public class CraftEventFactory {
         if (!event.isCancelled()) {
             event.getEntity().setLastDamageCause(event);
         } else {
-            damagee.lastDamageCancelled = true; // SPIGOT-5339, SPIGOT-6252, SPIGOT-6777: Keep track if the event was canceled
+            damagee.silkard$lastDamageCancelled(true); // SPIGOT-5339, SPIGOT-6252, SPIGOT-6777: Keep track if the event was canceled
         }
 
         return event;
@@ -1655,7 +1655,7 @@ public class CraftEventFactory {
         BlockPhysicsEvent event = new BlockPhysicsEvent(block, block.getBlockData());
         // Suppress during worldgen
         if (world instanceof Level) {
-            ((Level) world).getServer().server.getPluginManager().callEvent(event);
+            ((Level) world).getServer().silkard$server().getPluginManager().callEvent(event);
         }
         return event;
     }
@@ -1776,7 +1776,7 @@ public class CraftEventFactory {
         Entity entity = lootInfo.getOptionalParameter(LootContextParams.THIS_ENTITY);
         List<org.bukkit.inventory.ItemStack> bukkitLoot = loot.stream().map(CraftItemStack::asCraftMirror).collect(Collectors.toCollection(ArrayList::new));
 
-        LootGenerateEvent event = new LootGenerateEvent(world, (entity != null ? entity.getBukkitEntity() : null), inventory.getOwner(), lootTable.craftLootTable, CraftLootTable.convertContext(lootInfo), bukkitLoot, plugin);
+        LootGenerateEvent event = new LootGenerateEvent(world, (entity != null ? entity.getBukkitEntity() : null), inventory.getOwner(), lootTable.silkard$craftLootTable(), CraftLootTable.convertContext(lootInfo), bukkitLoot, plugin);
         Bukkit.getPluginManager().callEvent(event);
         return event;
     }
@@ -1884,8 +1884,8 @@ public class CraftEventFactory {
         // Handle based on explosion or damage source whether we need to call EntityExplodeEvent
         if (serverExplosion.getDirectSourceEntity() != null || serverExplosion.getDamageSource().getCausingDamager() != null) {
             EntityExplodeEvent event = CraftEventFactory.callEntityExplodeEvent((serverExplosion.getDirectSourceEntity() != null) ? serverExplosion.getDirectSourceEntity() : serverExplosion.getDamageSource().getCausingDamager(), blockList, serverExplosion.yield, serverExplosion.getBlockInteraction());
-            serverExplosion.wasCanceled = event.isCancelled();
-            serverExplosion.yield = event.getYield();
+            serverExplosion.silkard$setWasCanceled(event.isCancelled());
+            serverExplosion.silkard$setYield(event.getYield());
             return event.blockList();
         }
 
@@ -1893,9 +1893,9 @@ public class CraftEventFactory {
         Location location = CraftLocation.toBukkit(serverExplosion.center(), bworld);
         org.bukkit.block.Block block = location.getBlock();
         org.bukkit.block.BlockState blockState = (serverExplosion.getDamageSource().getDirectBlockState() != null) ? serverExplosion.getDamageSource().getDirectBlockState() : block.getState();
-        BlockExplodeEvent event = CraftEventFactory.callBlockExplodeEvent(block, blockState, blockList, serverExplosion.yield, serverExplosion.getBlockInteraction());
-        serverExplosion.wasCanceled = event.isCancelled();
-        serverExplosion.yield = event.getYield();
+        BlockExplodeEvent event = CraftEventFactory.callBlockExplodeEvent(block, blockState, blockList, serverExplosion.silkard$getYield(), serverExplosion.getBlockInteraction());
+        serverExplosion.silkard$setWasCanceled(event.isCancelled());
+        serverExplosion.silkard$setYield(event.getYield());
 
         return event.blockList();
     }

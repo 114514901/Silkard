@@ -551,6 +551,7 @@ accessible field net/minecraft/world/level/levelgen/structure/templatesystem/Str
 accessible field net/minecraft/server/players/PlayerList LOGGER Lorg/slf4j/Logger;
 accessible method net/minecraft/world/level/block/entity/ConduitBlockEntity updateAndAttackTarget (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/ConduitBlockEntity;Z)V
 accessible method net/minecraft/world/level/block/entity/ConduitBlockEntity updateDestroyTarget (Lnet/minecraft/world/entity/EntityReference;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/world/entity/EntityReference;
+accessible field net/minecraft/world/level/levelgen/structure/StructurePiece SHAPE_CHECK_BLOCKS Ljava/util/Set;
 
 accessible field net/minecraft/network/protocol/handshake/ClientIntentionPacket hostName Ljava/lang/String;
 mutable field net/minecraft/network/protocol/handshake/ClientIntentionPacket hostName Ljava/lang/String;
@@ -692,6 +693,7 @@ transitive-inject-interface	net/minecraft/world/inventory/AbstractContainerMenu	
 transitive-inject-interface	net/minecraft/world/inventory/AnvilMenu	com/mohistmc/silkard/injected/world/inventory/ContextAnvilMenu
 transitive-inject-interface	net/minecraft/world/inventory/ContainerLevelAccess	com/mohistmc/silkard/injected/world/inventory/ContextContainerLevelAccess
 transitive-inject-interface	net/minecraft/world/inventory/LecternMenu	com/mohistmc/silkard/injected/world/inventory/ContextLecternMenu
+transitive-inject-interface	net/minecraft/world/inventory/MerchantMenu	com/mohistmc/silkard/injected/world/inventory/ContextMerchantMenu
 transitive-inject-interface	net/minecraft/world/inventory/TransientCraftingContainer	com/mohistmc/silkard/injected/world/inventory/ContextTransientCraftingContainer
 transitive-inject-interface	net/minecraft/world/item/ItemStack	com/mohistmc/silkard/injected/world/item/ContextItemStack
 transitive-inject-interface	net/minecraft/world/item/crafting/Ingredient	com/mohistmc/silkard/injected/world/item/crafting/ContextIngredient

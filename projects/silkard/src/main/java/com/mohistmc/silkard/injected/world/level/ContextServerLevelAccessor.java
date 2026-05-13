@@ -7,7 +7,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 
 public interface ContextServerLevelAccessor {
 
-    default boolean addFreshEntityWithPassengers(Entity entity, CreatureSpawnEvent.SpawnReason reason) {
+    default void addFreshEntityWithPassengers(Entity entity, CreatureSpawnEvent.SpawnReason reason) {
         throw new ContextStateException("Not implemented");
     }
 

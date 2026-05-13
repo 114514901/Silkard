@@ -15,7 +15,7 @@ public interface ContextLootTable {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCraftLootTable(CraftLootTable craftLootTable) {
+    default void silkard$craftLootTable(CraftLootTable craftLootTable) {
         throw new ContextStateException("Not implemented");
     }
 }

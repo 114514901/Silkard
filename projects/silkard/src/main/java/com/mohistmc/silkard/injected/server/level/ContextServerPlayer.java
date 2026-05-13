@@ -47,7 +47,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setTimeOffset(long timeOffset) {
+    default void silkard$timeOffset(long timeOffset) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -55,7 +55,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setRelativeTime(boolean relativeTime) {
+    default void silkard$relativeTime(boolean relativeTime) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -63,7 +63,15 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setListName(Component listName) {
+    default void silkard$listName(Component listName) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default int silkard$listOrder() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default void silkard$listOrder(int listOrder) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -71,7 +79,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCompassTarget(org.bukkit.Location compassTarget) {
+    default void silkard$compassTarget(org.bukkit.Location compassTarget) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -79,7 +87,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setNewExp(int newExp) {
+    default void silkard$newExp(int newExp) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -87,7 +95,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setNewLevel(int newLevel) {
+    default void silkard$newLevel(int newLevel) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -95,7 +103,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setNewTotalExp(int newTotalExp) {
+    default void silkard$newTotalExp(int newTotalExp) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -103,7 +111,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setKeepLevel(boolean keepLevel) {
+    default void silkard$keepLevel(boolean keepLevel) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -111,7 +119,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaxHealthCache(double maxHealthCache) {
+    default void silkard$maxHealthCache(double maxHealthCache) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -127,7 +135,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setSentListPacket(boolean sentListPacket) {
+    default void silkard$setSentListPacketsilkard$sentListPacket(boolean sentListPacket) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -155,7 +163,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setDisplayName(String displayName) {
+    default void silkard$displayName(String displayName) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -219,19 +227,11 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setTransferCookieConnection(CraftPlayer.TransferCookieConnection transferCookieConnection) {
+    default void silkard$transferCookieConnection(CraftPlayer.TransferCookieConnection transferCookieConnection) {
         throw new ContextStateException("Not implemented");
     }
 
     default CraftPlayer.TransferCookieConnection silkard$transferCookieConnection() {
-        throw new ContextStateException("Not implemented");
-    }
-
-    default int silkard$listOrder() {
-        throw new ContextStateException("Not implemented");
-    }
-
-    default void silkard$setListOrder(int listOrder) {
         throw new ContextStateException("Not implemented");
     }
 

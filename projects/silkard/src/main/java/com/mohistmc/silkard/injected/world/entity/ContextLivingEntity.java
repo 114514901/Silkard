@@ -49,7 +49,7 @@ public interface ContextLivingEntity extends ContextEntity {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setExpToDrop(int expToDrop) {
+    default void silkard$expToDrop(int expToDrop) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -57,7 +57,7 @@ public interface ContextLivingEntity extends ContextEntity {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setForceDrops(boolean forceDrops) {
+    default void silkard$forceDrops(boolean forceDrops) {
         throw new ContextStateException("Not implemented");
     }
 
