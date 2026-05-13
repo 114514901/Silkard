@@ -2,10 +2,8 @@ package com.mohistmc.silkard.mixin.vanilla.world.level.saveddata.maps;
 
 import com.mohistmc.silkard.bukkit.BukkitUtils;
 import com.mohistmc.silkard.injected.world.level.saveddata.maps.ContextMapItemSavedData;
-import com.mohistmc.silkard.util.ContextStateException;
 import java.util.UUID;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.maps.MapId;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;

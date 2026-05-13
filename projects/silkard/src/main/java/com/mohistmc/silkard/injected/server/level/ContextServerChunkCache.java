@@ -2,7 +2,6 @@ package com.mohistmc.silkard.injected.server.level;
 
 import com.mohistmc.silkard.util.ContextStateException;
 import java.io.IOException;
-import net.minecraft.world.level.chunk.LevelChunk;
 
 public interface ContextServerChunkCache {
 

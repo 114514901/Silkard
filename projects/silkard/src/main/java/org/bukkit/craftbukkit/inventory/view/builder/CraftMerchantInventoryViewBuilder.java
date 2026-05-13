@@ -55,7 +55,7 @@ public class CraftMerchantInventoryViewBuilder<V extends InventoryView> extends 
             container = new MerchantMenu(serverPlayer.nextContainerCounterInt(), serverPlayer.getInventory(), this.merchant);
         }
 
-        container.checkReachable = super.checkReachable;
+        container.silkard$checkReachable(super.checkReachable);
         container.setTitle(CraftChatMessage.fromString(title)[0]);
         return (V) container.getBukkitView();
     }

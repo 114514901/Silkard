@@ -1,5 +1,6 @@
 package org.bukkit.craftbukkit.inventory;
 
+import com.mohistmc.silkard.bukkit.inventory.BukkitLecternInventory;
 import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.level.block.entity.LecternBlockEntity;
@@ -12,8 +13,8 @@ public class CraftInventoryLectern extends CraftInventory implements LecternInve
 
     public CraftInventoryLectern(Container inventory) {
         super(inventory);
-        if (inventory instanceof LecternBlockEntity.LecternInventory) {
-            this.tile = ((LecternBlockEntity.LecternInventory) inventory).getLectern();
+        if (inventory instanceof BukkitLecternInventory bukkitLecternInventory) {
+            this.tile = bukkitLecternInventory.getLectern();
         }
     }
 

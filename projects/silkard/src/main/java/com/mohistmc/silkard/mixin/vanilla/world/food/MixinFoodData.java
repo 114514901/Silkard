@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.food;
 
 import com.mohistmc.silkard.injected.world.food.ContextFoodData;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.food.FoodProperties;

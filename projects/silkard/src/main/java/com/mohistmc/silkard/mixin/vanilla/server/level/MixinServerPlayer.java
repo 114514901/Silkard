@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.server.level;
 
 import com.mohistmc.silkard.injected.server.level.ContextServerPlayer;
-import com.mohistmc.silkard.util.ContextStateException;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;

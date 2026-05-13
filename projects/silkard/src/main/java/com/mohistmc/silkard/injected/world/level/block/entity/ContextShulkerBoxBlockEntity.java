@@ -1,8 +1,6 @@
 package com.mohistmc.silkard.injected.world.level.block.entity;
 
 import com.mohistmc.silkard.util.ContextStateException;
-import java.util.List;
-import org.bukkit.entity.HumanEntity;
 
 public interface ContextShulkerBoxBlockEntity {
 

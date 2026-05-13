@@ -12,7 +12,7 @@ public interface ContextAnvilMenu {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setMaximumRepairCost(int maximumRepairCost) {
+    default void silkard$maximumRepairCost(int maximumRepairCost) {
         throw new ContextStateException("Not implemented");
     }
 }

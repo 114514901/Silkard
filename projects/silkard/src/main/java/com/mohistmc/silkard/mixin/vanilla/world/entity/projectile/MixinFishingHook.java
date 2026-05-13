@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity.projectile;
 
 import com.mohistmc.silkard.injected.world.entity.projectile.ContextFishingHook;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.world.entity.projectile.FishingHook;
 import org.spongepowered.asm.mixin.Mixin;
 

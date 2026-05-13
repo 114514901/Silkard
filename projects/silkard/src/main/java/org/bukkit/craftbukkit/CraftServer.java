@@ -1155,7 +1155,8 @@ public final class CraftServer implements Server {
         }
 
         ServerLevel internal = (ServerLevel) new ServerLevel(console, console.executor, worldSession, serverleveldata, worldKey, levelstem,
-                serverleveldata.isDebugWorld(), j, creator.environment() == Environment.NORMAL ? list : ImmutableList.of(), true, dimensiondatastorage, dataAndSettings.genSettings(), creator.environment(), generator, biomeProvider);
+                //serverleveldata.isDebugWorld(), j, creator.environment() == Environment.NORMAL ? list : ImmutableList.of(), true, dimensiondatastorage, dataAndSettings.genSettings(), creator.environment(), generator, biomeProvider);
+                serverleveldata.isDebugWorld(), j, creator.environment() == Environment.NORMAL ? list : ImmutableList.of(), true);
 
         if (!(worlds.containsKey(name.toLowerCase(Locale.ROOT)))) {
             return null;
@@ -1260,6 +1261,10 @@ public final class CraftServer implements Server {
     @Override
     public Logger getLogger() {
         return logger;
+    }
+
+    public Terminal getTerminal() {
+        return console.terminal();
     }
 
     @Override

@@ -2,6 +2,7 @@ package org.bukkit.craftbukkit.entity;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Predicate;
@@ -129,7 +130,7 @@ public class CraftVillager extends CraftAbstractVillager implements Villager {
 
     @Override
     public ZombieVillager zombify() {
-        net.minecraft.world.entity.monster.zombie.ZombieVillager zombievillager = Zombie.convertVillagerToZombieVillager(getHandle().level().getMinecraftWorld(), getHandle(), getHandle().blockPosition(), isSilent(), EntityTransformEvent.TransformReason.INFECTION, CreatureSpawnEvent.SpawnReason.CUSTOM);
+        net.minecraft.world.entity.monster.zombie.ZombieVillager zombievillager = BukkitUtils.convertVillagerToZombieVillager(getHandle().level().getMinecraftWorld(), getHandle(), getHandle().blockPosition(), isSilent(), EntityTransformEvent.TransformReason.INFECTION, CreatureSpawnEvent.SpawnReason.CUSTOM);
         return (zombievillager != null) ? (ZombieVillager) zombievillager.getBukkitEntity() : null;
     }
 
@@ -198,12 +199,12 @@ public class CraftVillager extends CraftAbstractVillager implements Villager {
 
     @Override
     public void setGossipDecayTime(long ticks) {
-        getHandle().gossipDecayInterval = ticks;
+        getHandle().silkard$gossipDecayInterval(ticks);
     }
 
     @Override
     public long getGossipDecayTime() {
-        return getHandle().gossipDecayInterval;
+        return getHandle().silkard$gossipDecayInterval();
     }
 
     public static class CraftType extends CraftOldEnumRegistryItem<Type, VillagerType> implements Type {

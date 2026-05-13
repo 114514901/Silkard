@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity.animal.allay;
 
 import com.mohistmc.silkard.injected.world.entity.animal.allay.ContextAllay;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;

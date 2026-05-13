@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity.monster;
 
 import com.mohistmc.silkard.injected.world.entity.monster.ContextGuardian;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.world.entity.monster.Guardian;
 import org.spongepowered.asm.mixin.Mixin;
 

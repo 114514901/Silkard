@@ -1,6 +1,7 @@
 package org.bukkit.craftbukkit.block;
 
 import com.google.common.base.Preconditions;
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -469,15 +470,15 @@ public class CraftBlock implements Block {
         UseOnContext context = new UseOnContext(world, null, InteractionHand.MAIN_HAND, Items.BONE_MEAL.getDefaultInstance(), new BlockHitResult(Vec3.ZERO, direction, getPosition(), false));
 
         // SPIGOT-6895: Call StructureGrowEvent and BlockFertilizeEvent
-        world.captureTreeGeneration = true;
-        InteractionResult result = BoneMealItem.applyBonemeal(context);
-        world.captureTreeGeneration = false;
+        world.silkard$captureTreeGeneration(true);
+        InteractionResult result = BukkitUtils.applyBonemeal(context);
+        world.silkard$captureTreeGeneration(false);
 
-        if (world.capturedBlockStates.size() > 0) {
-            TreeType treeType = SaplingBlock.treeType;
-            SaplingBlock.treeType = null;
-            List<BlockState> blocks = new ArrayList<>(world.capturedBlockStates.values());
-            world.capturedBlockStates.clear();
+        if (world.silkard$capturedBlockStates().size() > 0) {
+            TreeType treeType = BukkitUtils.treeType;
+            BukkitUtils.setTreeType(null);
+            List<BlockState> blocks = new ArrayList<>(world.silkard$capturedBlockStates().values());
+            world.silkard$capturedBlockStates().clear();
             StructureGrowEvent structureEvent = null;
 
             if (treeType != null) {

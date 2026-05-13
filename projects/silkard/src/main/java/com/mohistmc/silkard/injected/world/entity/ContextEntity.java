@@ -2,6 +2,7 @@ package com.mohistmc.silkard.injected.world.entity;
 
 import com.mohistmc.silkard.injected.world.level.entity.ContextEntityAccess;
 import com.mohistmc.silkard.util.ContextStateException;
+import java.util.Set;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -19,8 +20,6 @@ import org.bukkit.event.entity.EntityRemoveEvent;
 import org.bukkit.event.entity.EntityUnleashEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Set;
 
 public interface ContextEntity extends ContextEntityAccess {
 

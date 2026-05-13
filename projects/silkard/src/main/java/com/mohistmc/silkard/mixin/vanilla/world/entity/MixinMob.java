@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity;
 
 import com.mohistmc.silkard.injected.world.entity.ContextMob;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.world.entity.Mob;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

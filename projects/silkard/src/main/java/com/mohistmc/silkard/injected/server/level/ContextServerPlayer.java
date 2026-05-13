@@ -3,22 +3,21 @@ package com.mohistmc.silkard.injected.server.level;
 import com.mohistmc.silkard.injected.world.entity.player.ContextPlayer;
 import com.mohistmc.silkard.util.ContextStateException;
 import com.mojang.datafixers.util.Either;
-import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Unit;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.border.WorldBorder;
 import org.bukkit.WeatherType;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.event.player.PlayerSpawnChangeEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public interface ContextServerPlayer extends ContextPlayer {
 
@@ -183,11 +182,11 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void setRespawnPosition(ResourceKey<Level> resourcekey, @Nullable BlockPos blockposition, float f, boolean flag, boolean flag1, PlayerSpawnChangeEvent.Cause cause) {
+    default void setRespawnPosition(ServerPlayer.@Nullable RespawnConfig respawnConfig, boolean showMessage, PlayerSpawnChangeEvent.Cause cause) {
         throw new ContextStateException("Not implemented");
     }
 
-    default long getPlayerTime() {
+    default long getPlayerTime(long totalTicks) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -235,7 +234,7 @@ public interface ContextServerPlayer extends ContextPlayer {
         throw new ContextStateException("Not implemented");
     }
 
-    default void resendItemInHarnds() {
+    default ItemEntity dropItem(boolean dropAll) {
         throw new ContextStateException("Not implemented");
     }
 }

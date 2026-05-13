@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity;
 
 import com.mohistmc.silkard.injected.world.entity.ContextEntity;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;

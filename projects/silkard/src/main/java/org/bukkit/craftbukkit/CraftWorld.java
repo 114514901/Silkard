@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.mohistmc.silkard.bukkit.BukkitUtils;
 import com.mohistmc.silkard.injected.server.level.ContextTicket;
 import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
@@ -625,13 +626,13 @@ public class CraftWorld extends CraftRegionAccessor implements World {
 
     @Override
     public boolean generateTree(Location loc, TreeType type, BlockChangeDelegate delegate) {
-        world.captureTreeGeneration = true;
-        world.captureBlockStates = true;
+        world.silkard$captureTreeGeneration(true);
+        world.silkard$captureBlockStates(true);
         boolean grownTree = generateTree(loc, type);
-        world.captureBlockStates = false;
-        world.captureTreeGeneration = false;
+        world.silkard$captureBlockStates(false);
+        world.silkard$captureTreeGeneration(false);
         if (grownTree) { // Copy block data to delegate
-            for (BlockState blockstate : world.capturedBlockStates.values()) {
+            for (BlockState blockstate : world.silkard$capturedBlockStates().values()) {
                 BlockPos position = ((CraftBlockState) blockstate).getPosition();
                 net.minecraft.world.level.block.state.BlockState oldBlock = world.getBlockState(position);
                 int flag = ((CraftBlockState) blockstate).getFlag();
@@ -639,10 +640,10 @@ public class CraftWorld extends CraftRegionAccessor implements World {
                 net.minecraft.world.level.block.state.BlockState newBlock = world.getBlockState(position);
                 world.notifyAndUpdatePhysics(position, null, oldBlock, newBlock, newBlock, flag, 512);
             }
-            world.capturedBlockStates.clear();
+            world.silkard$capturedBlockStates().clear();
             return true;
         } else {
-            world.capturedBlockStates.clear();
+            world.silkard$capturedBlockStates().clear();
             return false;
         }
     }
@@ -654,7 +655,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
 
     @Override
     public UUID getUID() {
-        return world.uuid;
+        return world.silkard$uuid();
     }
 
     @Override
@@ -725,7 +726,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
         }
 
         net.minecraft.world.entity.Entity entity = (source == null) ? null : ((CraftEntity) source).getHandle();
-        return !world.explode0(entity, Explosion.getDefaultDamageSource(world, entity), null, x, y, z, power, setFire, explosionType, ParticleTypes.EXPLOSION, ParticleTypes.EXPLOSION_EMITTER, net.minecraft.world.level.Level.DEFAULT_EXPLOSION_BLOCK_PARTICLES, SoundEvents.GENERIC_EXPLODE).wasCanceled;
+        return !world.explode0(entity, Explosion.getDefaultDamageSource(world, entity), null, x, y, z, power, setFire, explosionType, ParticleTypes.EXPLOSION, ParticleTypes.EXPLOSION_EMITTER, net.minecraft.world.level.Level.DEFAULT_EXPLOSION_BLOCK_PARTICLES, SoundEvents.GENERIC_EXPLODE).silkard$wasCanceled();
     }
 
     @Override
@@ -1079,7 +1080,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
 
     @Override
     public void setDifficulty(Difficulty difficulty) {
-        this.getHandle().serverLevelData.setDifficulty(net.minecraft.world.Difficulty.byId(difficulty.getValue()));
+        this.getHandle().silkard$serverLevelDataCB().setDifficulty(net.minecraft.world.Difficulty.byId(difficulty.getValue()));
     }
 
     @Override
@@ -1236,7 +1237,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
         Preconditions.checkArgument(material != null, "Material cannot be null");
         Preconditions.checkArgument(material.isBlock(), "Material.%s must be a block", material);
 
-        FallingBlockEntity entity = FallingBlockEntity.fall(world, BlockPos.containing(location.getX(), location.getY(), location.getZ()), CraftBlockType.bukkitToMinecraft(material).defaultBlockState(), SpawnReason.CUSTOM);
+        FallingBlockEntity entity = BukkitUtils.fall(world, BlockPos.containing(location.getX(), location.getY(), location.getZ()), CraftBlockType.bukkitToMinecraft(material).defaultBlockState(), SpawnReason.CUSTOM);
         return (FallingBlock) entity.getBukkitEntity();
     }
 
@@ -1245,7 +1246,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
         Preconditions.checkArgument(location != null, "Location cannot be null");
         Preconditions.checkArgument(data != null, "BlockData cannot be null");
 
-        FallingBlockEntity entity = FallingBlockEntity.fall(world, BlockPos.containing(location.getX(), location.getY(), location.getZ()), ((CraftBlockData) data).getState(), SpawnReason.CUSTOM);
+        FallingBlockEntity entity = BukkitUtils.fall(world, BlockPos.containing(location.getX(), location.getY(), location.getZ()), ((CraftBlockData) data).getState(), SpawnReason.CUSTOM);
         return (FallingBlock) entity.getBukkitEntity();
     }
 
@@ -1399,7 +1400,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
 
     @Override
     public void setHardcore(boolean hardcore) {
-        world.serverLevelData.settings.difficultySettings().hardcore = hardcore;
+        world.silkard$serverLevelDataCB().settings.difficultySettings().hardcore = hardcore;
     }
 
     @Override
@@ -1479,7 +1480,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
         Preconditions.checkArgument(spawnCategory != null, "SpawnCategory cannot be null");
         Preconditions.checkArgument(CraftSpawnCategory.isValidForLimits(spawnCategory), "SpawnCategory.%s are not supported", spawnCategory);
 
-        world.ticksPerSpawnCategory.put(spawnCategory, (long) ticksPerCategorySpawn);
+        world.silkard$ticksPerSpawnCategory().put(spawnCategory, (long) ticksPerCategorySpawn);
     }
 
     @Override
@@ -1487,7 +1488,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
         Preconditions.checkArgument(spawnCategory != null, "SpawnCategory cannot be null");
         Preconditions.checkArgument(CraftSpawnCategory.isValidForLimits(spawnCategory), "SpawnCategory.%s are not supported", spawnCategory);
 
-        return world.ticksPerSpawnCategory.getLong(spawnCategory);
+        return world.silkard$ticksPerSpawnCategory().getLong(spawnCategory);
     }
 
     @Override

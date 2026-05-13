@@ -61,7 +61,7 @@ public interface ContextLevel {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCaptureBlockStates(boolean captureState) {
+    default void silkard$captureBlockStates(boolean captureState) {
         throw new ContextStateException("Not implemented");
     }
 
@@ -69,7 +69,7 @@ public interface ContextLevel {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setCaptureTreeGeneration(boolean treeGeneration) {
+    default void silkard$captureTreeGeneration(boolean treeGeneration) {
         throw new ContextStateException("Not implemented");
     }
 

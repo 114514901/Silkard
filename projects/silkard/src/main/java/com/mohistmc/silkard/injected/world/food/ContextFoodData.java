@@ -2,7 +2,6 @@ package com.mohistmc.silkard.injected.world.food;
 
 import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 

@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity.vehicle.minecart;
 
 import com.mohistmc.silkard.injected.world.entity.vehicle.minecart.ContextMinecartTNT;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.world.entity.vehicle.minecart.MinecartTNT;
 import org.spongepowered.asm.mixin.Mixin;
 

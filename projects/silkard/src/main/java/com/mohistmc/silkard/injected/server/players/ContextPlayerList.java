@@ -1,8 +1,6 @@
 package com.mohistmc.silkard.injected.server.players;
 
 import com.mohistmc.silkard.util.ContextStateException;
-import java.util.UUID;
-
 import com.mojang.authlib.GameProfile;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;

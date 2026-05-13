@@ -50,7 +50,7 @@ public class CraftContainer extends AbstractContainerMenu {
         this(new CraftAbstractInventoryView() {
 
             private final String originalTitle = (inventory instanceof CraftInventoryCustom) ? ((CraftInventoryCustom.MinecraftInventory) ((CraftInventory) inventory).getInventory()).getTitle() : inventory.getType().getDefaultTitle();
-            private String title = originalTitle;
+            private String title;
 
             @Override
             public Inventory getTopInventory() {
@@ -68,12 +68,19 @@ public class CraftContainer extends AbstractContainerMenu {
             }
 
             @Override
+            public void setPlayer(HumanEntity player) {
+            }
+
+            @Override
             public InventoryType getType() {
                 return inventory.getType();
             }
 
             @Override
             public String getTitle() {
+                if (title == null) {
+                    this.title = originalTitle;
+                }
                 return title;
             }
 
@@ -174,7 +181,7 @@ public class CraftContainer extends AbstractContainerMenu {
                 delegate = new BlastFurnaceMenu(windowId, bottom, top, new SimpleContainerData(4));
                 break;
             case LECTERN:
-                delegate = new LecternMenu(windowId, top, new SimpleContainerData(1), bottom);
+                delegate = new LecternMenu(windowId, top, new SimpleContainerData(1)).silkard$player(bottom);
                 break;
             case SMOKER:
                 delegate = new SmokerMenu(windowId, bottom, top, new SimpleContainerData(4));

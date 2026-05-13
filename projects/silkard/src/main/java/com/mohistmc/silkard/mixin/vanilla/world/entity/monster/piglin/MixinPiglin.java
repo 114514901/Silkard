@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity.monster.piglin;
 
 import com.mohistmc.silkard.injected.world.entity.monster.piglin.ContextPiglin;
-import com.mohistmc.silkard.util.ContextStateException;
 import java.util.HashSet;
 import java.util.Set;
 import net.minecraft.world.entity.monster.piglin.Piglin;

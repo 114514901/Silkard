@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity;
 
 import com.mohistmc.silkard.injected.world.entity.ContextLivingEntity;
-import com.mohistmc.silkard.util.ContextStateException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;

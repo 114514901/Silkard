@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.server.level;
 
 import com.mohistmc.silkard.injected.server.level.ContextServerLevel;
-import com.mohistmc.silkard.util.ContextStateException;
 import java.util.UUID;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -88,7 +87,7 @@ public abstract class MixinServerLevel implements ContextServerLevel {
 
     @Override
     public ResourceKey<LevelStem> getTypeKey() {
-        return storageSource.dimensionType;
+        return storageSource.silkard$getTypeKey();
     }
 
     @Override

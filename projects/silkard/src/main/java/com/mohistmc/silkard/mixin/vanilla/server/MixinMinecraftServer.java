@@ -2,16 +2,13 @@ package com.mohistmc.silkard.mixin.vanilla.server;
 
 import com.mohistmc.silkard.bukkit.BukkitUtils;
 import com.mohistmc.silkard.injected.server.ContextMinecraftServer;
-import com.mohistmc.silkard.util.ContextStateException;
 import io.izzel.arclight.mixin.TransformAccess;
 import joptsimple.OptionSet;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.WorldLoader;
-import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.craftbukkit.CraftRegistry;
 import org.bukkit.craftbukkit.CraftServer;
 import org.jline.terminal.Terminal;
 import org.objectweb.asm.Opcodes;

@@ -37,9 +37,8 @@ public class CraftMerchantRecipe extends MerchantRecipe {
                 maxUses,
                 experience,
                 priceMultiplier,
-                demand,
-                this
-        );
+                demand
+        ).bukkit(this);
         this.setSpecialPrice(specialPrice);
         this.setExperienceReward(experienceReward);
     }

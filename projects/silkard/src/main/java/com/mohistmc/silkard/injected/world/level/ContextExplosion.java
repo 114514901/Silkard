@@ -16,7 +16,7 @@ public interface ContextExplosion {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setWasCanceled(boolean wasCanceled) {
+    default void silkard$wasCanceled(boolean wasCanceled) {
         throw new ContextStateException("Not implemented");
     }
 }

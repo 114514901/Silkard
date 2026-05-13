@@ -8,7 +8,7 @@ public interface ContextVillager {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setGossipDecayInterval(long gossipDecayInterval) {
+    default void silkard$gossipDecayInterval(long gossipDecayInterval) {
         throw new ContextStateException("Not implemented");
     }
 }

@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity.vehicle.boat;
 
 import com.mohistmc.silkard.injected.world.entity.vehicle.boat.ContextAbstractBoat;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
 import org.spongepowered.asm.mixin.Mixin;
 

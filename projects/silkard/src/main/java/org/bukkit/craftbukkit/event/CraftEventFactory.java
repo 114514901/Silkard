@@ -5,6 +5,7 @@ import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
+import com.mohistmc.silkard.injected.world.entity.player.ContextPlayerBedSleepingProblem;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.JsonOps;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -312,9 +313,7 @@ public class CraftEventFactory {
      * PlayerBedEnterEvent
      */
     public static Either<Player.BedSleepingProblem, Unit> callPlayerBedEnterEvent(ServerPlayer player, BlockPos bed, Either<Player.BedSleepingProblem, Unit> nmsBedResult) {
-        BedEnterResult bedEnterResult = nmsBedResult.mapBoth((t) -> {
-           return t.bukkit();
-        }, t -> BedEnterResult.OK).map(java.util.function.Function.identity(), java.util.function.Function.identity());
+        BedEnterResult bedEnterResult = nmsBedResult.mapBoth(ContextPlayerBedSleepingProblem::bukkit, t -> BedEnterResult.OK).map(java.util.function.Function.identity(), java.util.function.Function.identity());
 
         PlayerBedEnterEvent event = new PlayerBedEnterEvent(player.getBukkitEntity(), CraftBlock.at(player.level(), bed), bedEnterResult);
         Bukkit.getServer().getPluginManager().callEvent(event);
@@ -1883,8 +1882,8 @@ public class CraftEventFactory {
 
         // Handle based on explosion or damage source whether we need to call EntityExplodeEvent
         if (serverExplosion.getDirectSourceEntity() != null || serverExplosion.getDamageSource().getCausingDamager() != null) {
-            EntityExplodeEvent event = CraftEventFactory.callEntityExplodeEvent((serverExplosion.getDirectSourceEntity() != null) ? serverExplosion.getDirectSourceEntity() : serverExplosion.getDamageSource().getCausingDamager(), blockList, serverExplosion.yield, serverExplosion.getBlockInteraction());
-            serverExplosion.silkard$setWasCanceled(event.isCancelled());
+            EntityExplodeEvent event = CraftEventFactory.callEntityExplodeEvent((serverExplosion.getDirectSourceEntity() != null) ? serverExplosion.getDirectSourceEntity() : serverExplosion.getDamageSource().getCausingDamager(), blockList, serverExplosion.silkard$getYield(), serverExplosion.getBlockInteraction());
+            serverExplosion.silkard$wasCanceled(event.isCancelled());
             serverExplosion.silkard$setYield(event.getYield());
             return event.blockList();
         }
@@ -1894,7 +1893,7 @@ public class CraftEventFactory {
         org.bukkit.block.Block block = location.getBlock();
         org.bukkit.block.BlockState blockState = (serverExplosion.getDamageSource().getDirectBlockState() != null) ? serverExplosion.getDamageSource().getDirectBlockState() : block.getState();
         BlockExplodeEvent event = CraftEventFactory.callBlockExplodeEvent(block, blockState, blockList, serverExplosion.silkard$getYield(), serverExplosion.getBlockInteraction());
-        serverExplosion.silkard$setWasCanceled(event.isCancelled());
+        serverExplosion.silkard$wasCanceled(event.isCancelled());
         serverExplosion.silkard$setYield(event.getYield());
 
         return event.blockList();

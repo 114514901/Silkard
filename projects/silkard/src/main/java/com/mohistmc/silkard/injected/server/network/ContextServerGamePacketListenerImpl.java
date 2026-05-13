@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.injected.server.network;
 
 import com.mohistmc.silkard.util.ContextStateException;
-import java.util.Set;
 import net.minecraft.network.chat.PlayerChatMessage;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.CraftServer;

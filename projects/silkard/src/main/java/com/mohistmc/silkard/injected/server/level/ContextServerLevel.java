@@ -3,15 +3,24 @@ package com.mohistmc.silkard.injected.server.level;
 import com.mohistmc.silkard.injected.world.level.ContextLevel;
 import com.mohistmc.silkard.util.ContextStateException;
 import java.util.UUID;
+import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ExplosionParticleInfo;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.random.WeightedList;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.ExplosionDamageCalculator;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerExplosion;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.WorldGenSettings;
 import net.minecraft.world.level.storage.LevelStorageSource;
 import net.minecraft.world.level.storage.PrimaryLevelData;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.weather.LightningStrikeEvent;
+import org.jspecify.annotations.Nullable;
 
 public interface ContextServerLevel extends ContextLevel {
 
@@ -72,6 +81,10 @@ public interface ContextServerLevel extends ContextLevel {
     }
 
     default WorldGenSettings getWorldGenSettings() {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default ServerExplosion explode0(@Nullable Entity source, @Nullable DamageSource damageSource, @Nullable ExplosionDamageCalculator damageCalculator, double x, double y, double z, float r, boolean fire, Level.ExplosionInteraction interactionType, ParticleOptions smallExplosionParticles, ParticleOptions largeExplosionParticles, WeightedList<ExplosionParticleInfo> blockParticles, Holder<SoundEvent> explosionSound) {
         throw new ContextStateException("Not implemented");
     }
 }

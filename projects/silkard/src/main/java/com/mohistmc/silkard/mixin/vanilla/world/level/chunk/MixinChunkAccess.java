@@ -1,7 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.level.chunk;
 
 import com.mohistmc.silkard.injected.world.level.chunk.ContextChunkAccess;
-import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.ReportedException;

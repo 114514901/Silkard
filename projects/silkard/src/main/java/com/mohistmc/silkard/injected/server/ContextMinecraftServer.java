@@ -1,6 +1,7 @@
 package com.mohistmc.silkard.injected.server;
 
 import com.mohistmc.silkard.util.ContextStateException;
+import java.util.Optional;
 import joptsimple.OptionSet;
 import net.minecraft.commands.Commands;
 import net.minecraft.nbt.Tag;
@@ -16,8 +17,7 @@ import net.minecraft.world.level.storage.WorldData;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.RemoteConsoleCommandSender;
 import org.bukkit.craftbukkit.CraftServer;
-
-import java.util.Optional;
+import org.jline.terminal.Terminal;
 
 public interface ContextMinecraftServer {
 
@@ -70,6 +70,10 @@ public interface ContextMinecraftServer {
     }
 
     default void silkard_console(ConsoleCommandSender console) {
+        throw new ContextStateException("Not implemented");
+    }
+
+    default Terminal terminal() {
         throw new ContextStateException("Not implemented");
     }
 

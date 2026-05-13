@@ -1,6 +1,7 @@
 package org.bukkit.craftbukkit.inventory;
 
 import com.google.common.base.Preconditions;
+import com.mohistmc.silkard.bukkit.inventory.BukkitLecternInventory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
@@ -490,7 +491,7 @@ public class CraftInventory implements Inventory {
             return InventoryType.SHULKER_BOX;
         } else if (inventory instanceof BarrelBlockEntity) {
             return InventoryType.BARREL;
-        } else if (inventory instanceof LecternBlockEntity.LecternInventory) {
+        } else if (inventory instanceof BukkitLecternInventory) {
             return InventoryType.LECTERN;
         } else if (inventory instanceof ChiseledBookShelfBlockEntity) {
             return InventoryType.CHISELED_BOOKSHELF;

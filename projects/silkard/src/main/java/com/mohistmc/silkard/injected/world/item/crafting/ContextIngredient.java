@@ -1,17 +1,16 @@
 package com.mohistmc.silkard.injected.world.item.crafting;
 
 import com.mohistmc.silkard.util.ContextStateException;
-import net.minecraft.world.item.ItemStack;
-
 import java.util.List;
+import net.minecraft.world.item.ItemStack;
 
 public interface ContextIngredient {
 
-    default boolean silkard$exact() {
+    default boolean isExact() {
         throw new ContextStateException("Not implemented");
     }
 
-    default void silkard$setItemStacks(List<ItemStack> itemStacks) {
+    default void silkard$itemStacks(List<ItemStack> itemStacks) {
         throw new ContextStateException("Not implemented");
     }
 
