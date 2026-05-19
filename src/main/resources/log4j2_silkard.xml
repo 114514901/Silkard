@@ -38,17 +38,16 @@
             </Policies>
             <DefaultRolloverStrategy max="5"/>
         </RollingRandomAccessFile>
-        <Async name="Async">
-            <AppenderRef ref="File"/>
-            <AppenderRef ref="TerminalConsole" level="info"/>
-        </Async>
     </Appenders>
     <Loggers>
-        <Root level="info">
-            <filters>
-                <MarkerFilter marker="NETWORK_PACKETS" onMatch="DENY" onMismatch="NEUTRAL" />
-            </filters>
-            <AppenderRef ref="Async"/>
+        <!-- make sure mojang's logging is set to 'info' so that their LOGGER.isDebugEnabled() behavior isn't active -->
+        <Logger level="info" name="com.mojang"/>
+        <Logger level="info" name="net.minecraft"/>
+        <Root level="all">
+            <AppenderRef ref="Console" level="INFO"/>
+            <AppenderRef ref="TerminalConsole" level="info"/>
+            <AppenderRef ref="File" level="INFO"/>
+            <AppenderRef ref="DebugFile" level="DEBUG"/>
         </Root>
     </Loggers>
 </Configuration>
