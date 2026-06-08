@@ -1,5 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.inventory;
 
+import com.mohistmc.silkard.injected.world.inventory.ContextLocationContainer;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -17,6 +18,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(StonecutterMenu.class)
 public abstract class MixinStonecutterMenu extends AbstractContainerMenu {
@@ -51,5 +53,14 @@ public abstract class MixinStonecutterMenu extends AbstractContainerMenu {
     @Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/inventory/ContainerLevelAccess;)V", at = @At("RETURN"))
     public void silkard$init(int containerId, Inventory inventory, ContainerLevelAccess access, CallbackInfo ci) {
         this.player = (org.bukkit.entity.Player) inventory.player.getBukkitEntity();
+        // CraftBukkit - set location on anonymous container
+        ((ContextLocationContainer) this.container).silkard$setLocation(access.getLocation());
+    }
+
+    @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
+    public void silkard$stillValid(net.minecraft.world.entity.player.Player player, CallbackInfoReturnable<Boolean> cir) {
+        if (!silkard$checkReachable()) {
+            cir.setReturnValue(true);
+        }
     }
 }

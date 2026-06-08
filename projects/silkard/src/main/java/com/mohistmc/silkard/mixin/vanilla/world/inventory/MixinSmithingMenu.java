@@ -14,6 +14,10 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SmithingMenu.class)
 public abstract class MixinSmithingMenu extends AbstractContainerMenu {
@@ -43,4 +47,19 @@ public abstract class MixinSmithingMenu extends AbstractContainerMenu {
         return bukkitEntity;
     }
     // CraftBukkit end
+
+    @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
+    public void silkard$stillValid(net.minecraft.world.entity.player.Player player, CallbackInfoReturnable<Boolean> cir) {
+        if (!silkard$checkReachable()) {
+            cir.setReturnValue(true);
+        }
+    }
+
+    @Inject(method = "createResult", at = @At("HEAD"), cancellable = true)
+    private void silkard$createResult(CallbackInfo ci) {
+        org.bukkit.craftbukkit.event.CraftEventFactory.callPrepareSmithingEvent(getBukkitView(), this.resultSlots.getItem(0));
+        ((AbstractContainerMenu)(Object)this).sendAllDataToRemote();
+        this.broadcastChanges();
+        ci.cancel();
+    }
 }

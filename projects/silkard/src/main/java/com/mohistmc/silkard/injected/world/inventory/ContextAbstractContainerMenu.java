@@ -56,4 +56,8 @@ public interface ContextAbstractContainerMenu {
     default void startOpen() {
 
     }
+
+    default boolean opened() {
+        return false;
+    }
 }

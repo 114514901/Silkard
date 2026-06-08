@@ -12,6 +12,12 @@ import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.bukkit.Bukkit;
+import org.bukkit.event.player.PlayerTakeLecternBookEvent;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * @author Mgazul
@@ -46,5 +52,22 @@ public abstract class MixinLecternMenu extends AbstractContainerMenu implements 
     public LecternMenu silkard$player(Inventory playerInventory) {
         player = (org.bukkit.entity.Player) playerInventory.player.getBukkitEntity(); // CraftBukkit
         return (LecternMenu) (Object) this;
+    }
+
+    @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
+    public void silkard$stillValid(net.minecraft.world.entity.player.Player player, CallbackInfoReturnable<Boolean> cir) {
+        // CraftBukkit - checkReachable
+        if (!silkard$checkReachable()) {
+            cir.setReturnValue(true);
+        }
+    }
+
+    @Inject(method = "clickMenuButton", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Container;removeItemNoUpdate(I)Lnet/minecraft/world/item/ItemStack;", shift = At.Shift.BEFORE), cancellable = true)
+    private void silkard$clickMenuButton(net.minecraft.world.entity.player.Player player, int buttonId, CallbackInfoReturnable<Boolean> cir) {
+        PlayerTakeLecternBookEvent event = new PlayerTakeLecternBookEvent(this.player, ((CraftInventoryLectern) getBukkitView().getTopInventory()).getHolder());
+        Bukkit.getServer().getPluginManager().callEvent(event);
+        if (event.isCancelled()) {
+            cir.setReturnValue(false);
+        }
     }
 }

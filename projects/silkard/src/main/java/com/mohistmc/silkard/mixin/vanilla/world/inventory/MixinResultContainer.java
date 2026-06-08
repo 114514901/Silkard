@@ -1,5 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.inventory;
 
+import com.mohistmc.silkard.injected.world.inventory.ContextLocationContainer;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.NonNullList;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.Unique;
  * @date 2026/6/8
  */
 @Mixin(ResultContainer.class)
-public class MixinResultContainer {
+public class MixinResultContainer implements ContextLocationContainer {
 
     // @formatter:off
     @Shadow private NonNullList<ItemStack> itemStacks;
@@ -26,6 +27,9 @@ public class MixinResultContainer {
     // CraftBukkit start
     @Unique
     private int maxStack = 64;
+
+    @Unique
+    private Location silkard$location;
 
     public List<ItemStack> getContents() {
         return this.itemStacks;
@@ -53,8 +57,14 @@ public class MixinResultContainer {
         maxStack = size;
     }
 
+    @Override
     public Location getLocation() {
-        return null;
+        return silkard$location;
+    }
+
+    @Override
+    public void silkard$setLocation(Location location) {
+        this.silkard$location = location;
     }
     // CraftBukkit end
 }

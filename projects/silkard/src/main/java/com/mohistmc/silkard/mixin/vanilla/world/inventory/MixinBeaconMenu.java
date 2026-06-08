@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BeaconMenu.class)
 public abstract class MixinBeaconMenu extends AbstractContainerMenu {
@@ -49,5 +50,12 @@ public abstract class MixinBeaconMenu extends AbstractContainerMenu {
     @Inject(method = "<init>(ILnet/minecraft/world/Container;Lnet/minecraft/world/inventory/ContainerData;Lnet/minecraft/world/inventory/ContainerLevelAccess;)V", at = @At("RETURN"))
     public void silkard$init(int containerId, Container inventory, ContainerData beaconData, ContainerLevelAccess access, CallbackInfo ci) {
         this.player = (Inventory) inventory;
+    }
+
+    @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
+    public void silkard$stillValid(net.minecraft.world.entity.player.Player player, CallbackInfoReturnable<Boolean> cir) {
+        if (!silkard$checkReachable()) {
+            cir.setReturnValue(true);
+        }
     }
 }

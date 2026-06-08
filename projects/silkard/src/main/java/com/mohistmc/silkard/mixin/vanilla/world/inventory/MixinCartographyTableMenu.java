@@ -7,6 +7,7 @@ import net.minecraft.world.inventory.CartographyTableMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.ResultContainer;
+import com.mohistmc.silkard.injected.world.inventory.ContextLocationContainer;
 import org.bukkit.craftbukkit.inventory.CraftInventoryCartography;
 import org.bukkit.craftbukkit.inventory.CraftInventoryView;
 import org.jspecify.annotations.Nullable;
@@ -17,6 +18,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CartographyTableMenu.class)
 public abstract class MixinCartographyTableMenu extends AbstractContainerMenu {
@@ -51,5 +53,15 @@ public abstract class MixinCartographyTableMenu extends AbstractContainerMenu {
     @Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/inventory/ContainerLevelAccess;)V", at = @At("RETURN"))
     public void silkard$init(int containerId, Inventory inventory, ContainerLevelAccess access, CallbackInfo ci) {
         this.player = (org.bukkit.entity.Player) inventory.player.getBukkitEntity();
+        // CraftBukkit - set location on anonymous containers
+        ((ContextLocationContainer) this.container).silkard$setLocation(access.getLocation());
+        ((ContextLocationContainer) (Object) this.resultContainer).silkard$setLocation(access.getLocation());
+    }
+
+    @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
+    public void silkard$stillValid(net.minecraft.world.entity.player.Player player, CallbackInfoReturnable<Boolean> cir) {
+        if (!silkard$checkReachable()) {
+            cir.setReturnValue(true);
+        }
     }
 }

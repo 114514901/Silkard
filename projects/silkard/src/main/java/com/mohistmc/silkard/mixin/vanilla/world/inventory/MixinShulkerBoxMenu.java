@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ShulkerBoxMenu.class)
 public abstract class MixinShulkerBoxMenu extends AbstractContainerMenu {
@@ -52,5 +53,12 @@ public abstract class MixinShulkerBoxMenu extends AbstractContainerMenu {
     @Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/Container;)V", at = @At("RETURN"))
     public void silkard$init(int containerId, Inventory inventory, Container container, CallbackInfo ci) {
         this.player = inventory;
+    }
+
+    @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
+    public void silkard$stillValid(net.minecraft.world.entity.player.Player player, CallbackInfoReturnable<Boolean> cir) {
+        if (!silkard$checkReachable()) {
+            cir.setReturnValue(true);
+        }
     }
 }
