@@ -64,7 +64,7 @@ jar {
 
     def serverLibsDir = project(":server").layout.buildDirectory.dir("libs").get().asFile
     from(serverLibsDir) {
-        include "*-server.jar"
+        include "${project.archives_base_name}-${project.minecraft_version}-${gradleutils.gitInfo.abbreviatedId}-server.jar"
         into "META-INF/libraries/com/mohistmc/silkard/${version}"
     }
 
