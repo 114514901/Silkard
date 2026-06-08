@@ -1,13 +1,16 @@
 package com.mohistmc.silkard.mixin.vanilla.world.level.entity;
 
 import com.mohistmc.silkard.injected.world.level.entity.ContextEntityAccess;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.entity.EntityAccess;
+import org.bukkit.event.entity.EntityRemoveEvent;
 import org.spongepowered.asm.mixin.Mixin;
 
-/**
- * @author Mgazul
- * @date 2026/6/8
- */
 @Mixin(EntityAccess.class)
 public interface MixinEntityAccess extends ContextEntityAccess {
+
+    @Override
+    default void setRemoved(Entity.RemovalReason entity_removalreason, EntityRemoveEvent.Cause cause) {
+        setRemoved(entity_removalreason);
+    }
 }

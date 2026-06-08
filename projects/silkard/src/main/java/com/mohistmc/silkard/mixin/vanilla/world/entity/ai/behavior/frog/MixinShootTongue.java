@@ -1,0 +1,16 @@
+package com.mohistmc.silkard.mixin.vanilla.world.entity.ai.behavior.frog;
+
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.behavior.frog.ShootTongue;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
+
+@Mixin(ShootTongue.class)
+public class MixinShootTongue {
+
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;remove(Lnet/minecraft/world/entity/Entity$RemovalReason;)V"))
+    private void silkard_remove(Entity entity, Entity.RemovalReason reason) {
+        entity.remove(Entity.RemovalReason.KILLED, org.bukkit.event.entity.EntityRemoveEvent.Cause.DEATH);
+    }
+}
