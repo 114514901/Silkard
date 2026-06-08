@@ -653,7 +653,6 @@ transitive-inject-interface	net/minecraft/server/rcon/RconConsoleSource	com/mohi
 transitive-inject-interface	net/minecraft/util/TickThrottler	com/mohistmc/silkard/injected/util/ContextTickThrottler
 transitive-inject-interface	net/minecraft/world/Container	com/mohistmc/silkard/injected/world/ContextContainer
 transitive-inject-interface	net/minecraft/world/clock/ServerClockManager	com/mohistmc/silkard/injected/world/clock/ContextServerClockManager
-transitive-inject-interface	net/minecraft/world/damagesource/CombatEntry	com/mohistmc/silkard/injected/world/damagesource/ContextCombatEntry
 transitive-inject-interface	net/minecraft/world/damagesource/DamageSource	com/mohistmc/silkard/injected/world/damagesource/ContextDamageSource
 transitive-inject-interface	net/minecraft/world/damagesource/DamageSources	com/mohistmc/silkard/injected/world/damagesource/ContextDamageSources
 transitive-inject-interface	net/minecraft/world/entity/animal/equine/AbstractHorse	com/mohistmc/silkard/injected/world/entity/animal/equine/ContextAbstractHorse

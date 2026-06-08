@@ -2,6 +2,7 @@ package com.mohistmc.silkard.mixin.vanilla.advancements;
 
 import com.mohistmc.silkard.injected.advancements.ContextAdvancementHolder;
 import net.minecraft.advancements.AdvancementHolder;
+import org.bukkit.craftbukkit.advancement.CraftAdvancement;
 import org.spongepowered.asm.mixin.Mixin;
 
 /**
@@ -9,5 +10,12 @@ import org.spongepowered.asm.mixin.Mixin;
  * @date 2026/6/8
  */
 @Mixin(AdvancementHolder.class)
-public class MixinAdvancementHolder implements ContextAdvancementHolder {
+public abstract class MixinAdvancementHolder implements ContextAdvancementHolder {
+
+    // CraftBukkit start
+    @Override
+    public org.bukkit.advancement.Advancement toBukkit() {
+        return new CraftAdvancement((AdvancementHolder) (Object) this);
+    }
+    // CraftBukkit end
 }
