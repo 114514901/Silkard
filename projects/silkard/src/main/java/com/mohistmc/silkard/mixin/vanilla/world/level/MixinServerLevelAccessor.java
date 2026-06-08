@@ -1,5 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.level;
 
+import com.mohistmc.silkard.injected.world.level.ContextLevelWriter;
 import com.mohistmc.silkard.injected.world.level.ContextServerLevelAccessor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -18,10 +19,10 @@ public interface MixinServerLevelAccessor extends ContextServerLevelAccessor {
 
     @Override
     default void addFreshEntityWithPassengers(Entity entity, CreatureSpawnEvent.SpawnReason reason) {
-        entity.getSelfAndPassengers().forEach((e) -> this.addFreshEntity(e, reason));
+        entity.getSelfAndPassengers().forEach((e) -> ((ContextLevelWriter) this).addFreshEntity(e, reason));
     }
 
     default ServerLevel getMinecraftWorld() {
-        return getLevel();
+        return ((ServerLevelAccessor) this).getLevel();
     }
 }

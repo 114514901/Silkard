@@ -15,11 +15,4 @@ public class MixinDropExperienceBlock {
     protected void spawnAfterBreak(BlockState state, ServerLevel level, BlockPos pos, ItemStack tool, boolean dropExperience) {
         // CraftBukkit - delegate to getExpDrop
     }
-
-    public int getExpDrop(BlockState state, ServerLevel level, BlockPos pos, ItemStack tool, boolean dropExperience) {
-        if (dropExperience) {
-            return ((DropExperienceBlock) (Object) this).tryDropExperience(level, pos, tool, ((DropExperienceBlock) (Object) this).xpRange);
-        }
-        return 0;
-    }
 }

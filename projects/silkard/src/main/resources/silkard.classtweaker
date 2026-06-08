@@ -8,6 +8,11 @@ accessible class net/minecraft/server/level/ChunkMap$TrackedEntity
 accessible class net/minecraft/server/level/ServerPlayer$RespawnPosAngle
 accessible class net/minecraft/world/entity/Interaction$PlayerAction
 accessible class net/minecraft/world/entity/monster/Guardian$GuardianAttackGoal
+accessible class net/minecraft/world/effect/HungerMobEffect
+accessible class net/minecraft/world/effect/InfestedMobEffect
+accessible class net/minecraft/world/effect/OozingMobEffect
+accessible class net/minecraft/world/effect/RegenerationMobEffect
+
 accessible class net/minecraft/world/entity/monster/illager/SpellcasterIllager$IllagerSpell
 accessible class net/minecraft/world/entity/projectile/FishingHook$FishHookState
 accessible class net/minecraft/world/level/biome/Biome$ClimateSettings
@@ -308,6 +313,22 @@ accessible field net/minecraft/world/entity/monster/piglin/AbstractPiglin timeIn
 accessible field net/minecraft/world/entity/monster/piglin/Piglin cannotHunt Z
 accessible field net/minecraft/world/entity/monster/piglin/Piglin inventory Lnet/minecraft/world/SimpleContainer;
 accessible field net/minecraft/world/entity/monster/skeleton/Skeleton DATA_STRAY_CONVERSION_ID Lnet/minecraft/network/syncher/EntityDataAccessor;
+accessible field net/minecraft/world/entity/monster/skeleton/Bogged DATA_SHEARED Lnet/minecraft/network/syncher/EntityDataAccessor;
+
+accessible field net/minecraft/world/level/block/CoralBlock deadBlock Lnet/minecraft/world/level/block/Block;
+accessible field net/minecraft/world/level/block/CoralFanBlock deadBlock Lnet/minecraft/world/level/block/Block;
+accessible field net/minecraft/world/level/block/CoralPlantBlock deadBlock Lnet/minecraft/world/level/block/Block;
+accessible field net/minecraft/world/level/block/CoralWallFanBlock deadBlock Lnet/minecraft/world/level/block/Block;
+accessible method net/minecraft/world/level/block/DecoratedPotBlock getFluidState (Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/material/FluidState;
+accessible field net/minecraft/world/level/block/DropExperienceBlock xpRange Lnet/minecraft/util/valueproviders/IntProvider;
+accessible method net/minecraft/world/level/block/DropExperienceBlock tryDropExperience (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/util/valueproviders/IntProvider;)V;
+accessible field net/minecraft/world/level/block/EyeblossomBlock type Lnet/minecraft/world/level/block/EyeblossomBlock$Type;
+accessible field net/minecraft/world/level/block/SculkCatalystBlock xpRange Lnet/minecraft/util/valueproviders/IntProvider;
+accessible method net/minecraft/world/level/block/SculkCatalystBlock tryDropExperience (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/util/valueproviders/IntProvider;)V;
+accessible method net/minecraft/world/level/Level addFreshEntity (Lnet/minecraft/world/entity/Entity;Lorg/bukkit/event/entity/CreatureSpawnEvent$SpawnReason;)Z
+accessible method net/minecraft/server/level/ServerLevel addFreshEntityWithPassengers (Lnet/minecraft/world/entity/Entity;Lorg/bukkit/event/entity/CreatureSpawnEvent$SpawnReason;)V
+accessible method net/minecraft/world/entity/Entity setRemoved (Lnet/minecraft/world/entity/Entity$RemovalReason;Lorg/bukkit/event/entity/EntityRemoveEvent$Cause;)V
+accessible method net/minecraft/server/level/ServerLevel addFreshEntity (Lnet/minecraft/world/entity/Entity;Lorg/bukkit/event/entity/CreatureSpawnEvent$SpawnReason;)Z
 accessible field net/minecraft/world/entity/monster/skeleton/Skeleton conversionTime I
 accessible field net/minecraft/world/entity/monster/zombie/Zombie DATA_DROWNED_CONVERSION_ID Lnet/minecraft/network/syncher/EntityDataAccessor;
 accessible field net/minecraft/world/entity/monster/zombie/Zombie conversionTime I

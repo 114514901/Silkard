@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class MixinEvoker {
 
     @Redirect(method = "performSpellCasting", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;addFreshEntityWithPassengers(Lnet/minecraft/world/entity/Entity;)Z"))
-    private boolean silkard_addFreshEntityWithPassengers(ServerLevel level, Entity entity) {
-        return level.addFreshEntityWithPassengers(entity, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.SPELL);
+    private void silkard_addFreshEntityWithPassengers(ServerLevel level, Entity entity) {
+        level.addFreshEntityWithPassengers(entity, org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason.SPELL);
     }
 }

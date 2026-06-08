@@ -1,5 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity.monster;
 
+import java.util.Optional;
 import net.minecraft.world.entity.monster.Vex;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

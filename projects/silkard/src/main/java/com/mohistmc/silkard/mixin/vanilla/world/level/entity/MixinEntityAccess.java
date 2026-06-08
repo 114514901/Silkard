@@ -9,8 +9,4 @@ import org.spongepowered.asm.mixin.Mixin;
 @Mixin(EntityAccess.class)
 public interface MixinEntityAccess extends ContextEntityAccess {
 
-    @Override
-    default void setRemoved(Entity.RemovalReason entity_removalreason, EntityRemoveEvent.Cause cause) {
-        setRemoved(entity_removalreason);
-    }
 }

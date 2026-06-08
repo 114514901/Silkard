@@ -15,7 +15,7 @@ public class MixinIceBlock {
 
     @Inject(method = "melt", at = @At("HEAD"), cancellable = true)
     private void silkard$melt(BlockState state, Level level, BlockPos pos, CallbackInfo ci) {
-        if (CraftEventFactory.callBlockFadeEvent(level, pos, level.environmentAttributes().getValue(net.minecraft.world.level.block.EnvironmentAttributes.WATER_EVAPORATES, pos) ? net.minecraft.world.level.block.Blocks.AIR.defaultBlockState() : ((IceBlock) (Object) this).meltsInto()).isCancelled()) {
+        if (CraftEventFactory.callBlockFadeEvent(level, pos, ((IceBlock) (Object) this).meltsInto()).isCancelled()) {
             ci.cancel();
         }
     }

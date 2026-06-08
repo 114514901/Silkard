@@ -16,6 +16,6 @@ public class MixinServerFunctionManager {
 
     @Redirect(method = "getDispatcher", at = @At(value = "INVOKE", target = "Lnet/minecraft/commands/Commands;getDispatcher()Lcom/mojang/brigadier/CommandDispatcher;"))
     private com.mojang.brigadier.CommandDispatcher<CommandSourceStack> silkard_getDispatcher(net.minecraft.commands.Commands commands) {
-        return this.server.vanillaCommandDispatcher.getDispatcher();
+        return this.server.getCommands().getDispatcher();
     }
 }

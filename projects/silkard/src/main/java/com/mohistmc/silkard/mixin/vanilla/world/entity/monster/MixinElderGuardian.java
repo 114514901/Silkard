@@ -15,8 +15,8 @@ import java.util.List;
 @Mixin(ElderGuardian.class)
 public class MixinElderGuardian {
 
-    @Redirect(method = "customServerAiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/effect/MobEffectUtil;addEffectToPlayersAround(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/phys/Vec3;DLnet/minecraft/world/effect/MobEffectInstance;I)Ljava/util/List;"))
-    private List<ServerPlayer> silkard$customServerAiStep(ServerLevel level, net.minecraft.world.entity.LivingEntity entity, Vec3 pos, double radius, MobEffectInstance effect, int duration) {
-        return net.minecraft.world.effect.MobEffectUtil.addEffectToPlayersAround(level, entity, pos, radius, effect, duration, EntityPotionEffectEvent.Cause.ATTACK);
+    @Redirect(method = "customServerAiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/effect/MobEffectUtil;addEffectToPlayersAround(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/Vec3;DLnet/minecraft/world/effect/MobEffectInstance;I)Ljava/util/List;"))
+    private List<ServerPlayer> silkard$customServerAiStep(ServerLevel level, net.minecraft.world.entity.Entity entity, Vec3 pos, double radius, MobEffectInstance effect, int duration) {
+        return net.minecraft.world.effect.MobEffectUtil.addEffectToPlayersAround(level, entity, pos, radius, effect, duration);
     }
 }
