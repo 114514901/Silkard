@@ -1,8 +1,7 @@
 package org.bukkit.craftbukkit.inventory;
 
 import com.mohistmc.silkard.bukkit.BukkitUtils;
-import net.minecraft.advancements.criterion.MinMaxBounds;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.advancements.predicates.MinMaxBounds;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;

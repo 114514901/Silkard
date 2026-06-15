@@ -8,10 +8,15 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(ServerLevelAccessor.class)
 public interface MixinServerLevelAccessor extends ContextServerLevelAccessor {
 
+    /**
+     * @author
+     * @reason
+     */
     @Overwrite
     default void addFreshEntityWithPassengers(Entity entity) {
         this.addFreshEntityWithPassengers(entity, CreatureSpawnEvent.SpawnReason.DEFAULT);
@@ -22,6 +27,7 @@ public interface MixinServerLevelAccessor extends ContextServerLevelAccessor {
         entity.getSelfAndPassengers().forEach((e) -> ((ContextLevelWriter) this).addFreshEntity(e, reason));
     }
 
+    @Unique
     default ServerLevel getMinecraftWorld() {
         return ((ServerLevelAccessor) this).getLevel();
     }

@@ -4,6 +4,7 @@ import com.mohistmc.silkard.injected.world.entity.animal.allay.ContextAllay;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.level.Level;
@@ -29,7 +30,7 @@ public abstract class MixinAllay extends PathfinderMob implements ContextAllay {
     }
 
     public Allay duplicateAllay0() {
-        Allay allay = EntityType.ALLAY.create(this.level(), EntitySpawnReason.BREEDING);
+        Allay allay = EntityTypes.ALLAY.create(this.level(), EntitySpawnReason.BREEDING);
 
         if (allay != null) {
             allay.snapTo(this.position());

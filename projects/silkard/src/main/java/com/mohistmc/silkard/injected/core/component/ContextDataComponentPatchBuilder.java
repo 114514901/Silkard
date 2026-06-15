@@ -4,7 +4,7 @@ import com.mohistmc.silkard.util.ContextStateException;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponentType;
 
-public interface ContextDataComponentPatch$Builder {
+public interface ContextDataComponentPatchBuilder {
 
     default void copy(DataComponentPatch orig) {
         throw new ContextStateException("Not implemented");

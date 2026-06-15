@@ -457,7 +457,6 @@ accessible field net/minecraft/world/level/block/entity/BeaconBlockEntity lockKe
 accessible field net/minecraft/world/level/block/entity/BeaconBlockEntity name Lnet/minecraft/network/chat/Component;
 accessible field net/minecraft/world/level/block/entity/BeaconBlockEntity primaryPower Lnet/minecraft/core/Holder;
 accessible field net/minecraft/world/level/block/entity/BeaconBlockEntity secondaryPower Lnet/minecraft/core/Holder;
-accessible field net/minecraft/world/level/block/entity/BedBlockEntity color Lnet/minecraft/world/item/DyeColor;
 accessible field net/minecraft/world/level/block/entity/BeehiveBlockEntity savedFlowerPos Lnet/minecraft/core/BlockPos;
 accessible field net/minecraft/world/level/block/entity/BellBlockEntity resonating Z
 accessible field net/minecraft/world/level/block/entity/BellBlockEntity resonationTicks I
@@ -643,7 +642,7 @@ transitive-inject-interface	net/minecraft/commands/Commands	com/mohistmc/silkard
 transitive-inject-interface	net/minecraft/commands/CommandSource	com/mohistmc/silkard/injected/commands/ContextCommandSource
 transitive-inject-interface	net/minecraft/commands/CommandSourceStack	com/mohistmc/silkard/injected/commands/ContextCommandSourceStack
 transitive-inject-interface	net/minecraft/network/chat/Component	com/mohistmc/silkard/injected/network/chat/ContextComponent
-transitive-inject-interface	net/minecraft/core/component/DataComponentPatch$Builder	com/mohistmc/silkard/injected/core/component/ContextDataComponentPatch$Builder
+transitive-inject-interface	net/minecraft/core/component/DataComponentPatch$Builder	com/mohistmc/silkard/injected/core/component/ContextDataComponentPatchBuilder
 transitive-inject-interface	net/minecraft/network/chat/TextColor	com/mohistmc/silkard/injected/network/chat/ContextTextColor
 transitive-inject-interface	net/minecraft/network/Connection	com/mohistmc/silkard/injected/network/ContextConnection
 transitive-inject-interface	net/minecraft/network/protocol/game/ClientboundSectionBlocksUpdatePacket	com/mohistmc/silkard/injected/network/protocol/game/ContextClientboundSectionBlocksUpdatePacket
@@ -693,7 +692,7 @@ transitive-inject-interface	net/minecraft/world/entity/item/PrimedTnt	com/mohist
 transitive-inject-interface	net/minecraft/world/entity/decoration/ArmorStand	com/mohistmc/silkard/injected/world/entity/decoration/ContextArmorStand
 transitive-inject-interface	net/minecraft/world/entity/decoration/ItemFrame	com/mohistmc/silkard/injected/world/entity/decoration/ContextItemFrame
 transitive-inject-interface	net/minecraft/world/entity/monster/Creeper	com/mohistmc/silkard/injected/world/entity/monster/ContextCreeper
-transitive-inject-interface	net/minecraft/world/entity/monster/Slime	com/mohistmc/silkard/injected/world/entity/monster/ContextSlime
+transitive-inject-interface	net/minecraft/world/entity/monster/cubemob/Slime	com/mohistmc/silkard/injected/world/entity/monster/cubemob/ContextSlime
 transitive-inject-interface	net/minecraft/world/entity/npc/villager/Villager	com/mohistmc/silkard/injected/world/entity/npc/villager/ContextVillager
 transitive-inject-interface	net/minecraft/world/entity/player/Inventory	com/mohistmc/silkard/injected/world/entity/player/ContextInventory
 transitive-inject-interface	net/minecraft/world/entity/player/Player	com/mohistmc/silkard/injected/world/entity/player/ContextPlayer

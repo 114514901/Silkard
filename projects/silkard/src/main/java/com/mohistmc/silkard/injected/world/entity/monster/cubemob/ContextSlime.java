@@ -1,4 +1,4 @@
-package com.mohistmc.silkard.injected.world.entity.monster;
+package com.mohistmc.silkard.injected.world.entity.monster.cubemob;
 
 import com.mohistmc.silkard.util.ContextStateException;
 

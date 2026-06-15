@@ -3,9 +3,12 @@ package com.mohistmc.silkard.bukkit;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.commands.ReloadCommand;
 import net.minecraft.server.level.ServerLevel;
@@ -18,6 +21,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityReference;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.monster.zombie.Zombie;
@@ -151,7 +155,7 @@ public class BukkitUtils {
 
     public static ZombieVillager convertVillagerToZombieVillager(ServerLevel level, Villager villager, net.minecraft.core.BlockPos blockPosition, boolean silent, EntityTransformEvent.TransformReason transformReason, CreatureSpawnEvent.SpawnReason spawnReason) {
         // CraftBukkit end
-        ZombieVillager zombievillager = (ZombieVillager) villager.convertTo(EntityType.ZOMBIE_VILLAGER, ConversionParams.single(villager, true, true), (zombievillager1) -> {
+        ZombieVillager zombievillager = (ZombieVillager) villager.convertTo(EntityTypes.ZOMBIE_VILLAGER, ConversionParams.single(villager, true, true), (zombievillager1) -> {
             zombievillager1.finalizeSpawn(level, level.getCurrentDifficultyAt(zombievillager1.blockPosition()), EntitySpawnReason.CONVERSION, new Zombie.ZombieGroupData(false, true));
             zombievillager1.setVillagerData(villager.getVillagerData());
             zombievillager1.setGossips(villager.getGossips().copy());
@@ -214,5 +218,9 @@ public class BukkitUtils {
 
     public static void setTreeType(TreeType btreeType) {
         treeType = btreeType;
+    }
+
+    public static Optional<EntityType<?>> byString(String id) {
+        return BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.tryParse(id));
     }
 }

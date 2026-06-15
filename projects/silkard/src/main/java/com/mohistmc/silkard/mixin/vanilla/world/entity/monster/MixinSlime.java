@@ -1,7 +1,7 @@
 package com.mohistmc.silkard.mixin.vanilla.world.entity.monster;
 
-import com.mohistmc.silkard.injected.world.entity.monster.ContextSlime;
-import net.minecraft.world.entity.monster.Slime;
+import com.mohistmc.silkard.injected.world.entity.monster.cubemob.ContextSlime;
+import net.minecraft.world.entity.monster.cubemob.Slime;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 

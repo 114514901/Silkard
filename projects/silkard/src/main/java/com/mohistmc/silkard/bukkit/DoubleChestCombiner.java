@@ -43,10 +43,6 @@ public class DoubleChestCombiner implements DoubleBlockCombiner.Combiner<ChestBl
             }
             // CraftBukkit end
 
-            {
-                // $FF impossible: Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
-            }
-
             @Override
             public @Nullable AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
                 if (first.canOpen(player) && second.canOpen(player)) {
@@ -54,11 +50,10 @@ public class DoubleChestCombiner implements DoubleBlockCombiner.Combiner<ChestBl
                     second.unpackLootTable(inventory.player);
                     return ChestMenu.sixRows(containerId, inventory, container);
                 } else {
-                    Direction direction = ChestBlock.getConnectedDirection(first.getBlockState());
-                    Vec3 vec3 = first.getBlockPos().getCenter();
-                    Vec3 vec31 = vec3.add((double) direction.getStepX() / 2.0D, 0.0D, (double) direction.getStepZ() / 2.0D);
-
-                    BaseContainerBlockEntity.sendChestLockedNotifications(vec31, player, this.getDisplayName());
+                    Direction connectedDirection = ChestBlock.getConnectedDirection(first.getBlockState());
+                    Vec3 firstCenter = Vec3.atCenterOf(first.getBlockPos());
+                    Vec3 centerBetweenChests = firstCenter.add(connectedDirection.getStepX() / 2.0, 0.0, connectedDirection.getStepZ() / 2.0);
+                    BaseContainerBlockEntity.sendChestLockedNotifications(centerBetweenChests, player, this.getDisplayName());
                     return null;
                 }
             }

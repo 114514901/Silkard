@@ -1,6 +1,6 @@
 package com.mohistmc.silkard.mixin.vanilla.core.component;
 
-import com.mohistmc.silkard.injected.core.component.ContextDataComponentPatch$Builder;
+import com.mohistmc.silkard.injected.core.component.ContextDataComponentPatchBuilder;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import java.util.Optional;
 import net.minecraft.core.component.DataComponentPatch;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Shadow;
  * @date 2026/4/2 16:04
  */
 @Mixin(DataComponentPatch.Builder.class)
-public class MixinDataComponentPatch$Builder implements ContextDataComponentPatch$Builder {
+public class MixinDataComponentPatch$Builder implements ContextDataComponentPatchBuilder {
 
     @Shadow
     @Final
