@@ -1,6 +1,6 @@
 {
   "installer": {
-    "minecraft": "26.2-rc-2",
+    "minecraft": "26.2",
     "fabricLoader": "0.19.3",
     "fabricLoaderHash": "354dfaa02d0552e11867f85dff7cdbfaf813ba3e"
   },
