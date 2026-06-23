@@ -23,7 +23,7 @@ public class CraftDataPack implements DataPack {
 
     public CraftDataPack(Pack handler) {
         this.handle = handler;
-        try (PackResources packresources = this.handle.resources.openPrimary(this.handle.location())) {
+        try (var packresources = this.handle.resources.openMetadata(this.handle.location())) {
             PackMetadataSection packmetadatasection = packresources.getMetadataSection(PackMetadataSection.SERVER_TYPE);
 
             if (packmetadatasection == null) {

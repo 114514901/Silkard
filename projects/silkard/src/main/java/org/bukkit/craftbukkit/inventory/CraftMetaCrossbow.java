@@ -40,7 +40,7 @@ public class CraftMetaCrossbow extends CraftMetaItem implements CrossbowMeta {
         super(tag);
 
         getOrEmpty(tag, CHARGED_PROJECTILES).ifPresent((p) -> {
-            List<net.minecraft.world.item.ItemStack> list = p.itemCopies();
+            List<net.minecraft.world.item.ItemStack> list = p.itemCopies().toList();
 
             if (list != null && !list.isEmpty()) {
                 chargedProjectiles = new ArrayList<>();

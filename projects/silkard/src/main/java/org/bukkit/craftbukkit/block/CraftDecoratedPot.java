@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import net.minecraft.world.item.Item;
+import java.util.stream.Stream;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.world.level.block.entity.PotDecorations;
@@ -48,7 +49,7 @@ public class CraftDecoratedPot extends CraftBlockEntityState<DecoratedPotBlockEn
         Preconditions.checkArgument(face != null, "face must not be null");
         Preconditions.checkArgument(sherd == null || sherd == Material.BRICK || Tag.ITEMS_DECORATED_POT_SHERDS.isTagged(sherd), "sherd is not a valid sherd material: %s", sherd);
 
-        Optional<Item> sherdItem = (sherd != null) ? Optional.of(CraftItemType.bukkitToMinecraft(sherd)) : Optional.of(Items.BRICK);
+        Optional<ItemStackTemplate> sherdItem = (sherd != null) ? Optional.of(new ItemStackTemplate(CraftItemType.bukkitToMinecraft(sherd))) : Optional.of(new ItemStackTemplate(Items.BRICK));
         PotDecorations decorations = getSnapshot().getDecorations();
 
         switch (face) {
@@ -65,7 +66,7 @@ public class CraftDecoratedPot extends CraftBlockEntityState<DecoratedPotBlockEn
         Preconditions.checkArgument(face != null, "face must not be null");
 
         PotDecorations decorations = getSnapshot().getDecorations();
-        Optional<Item> sherdItem = switch (face) {
+        Optional<ItemStackTemplate> sherdItem = switch (face) {
             case BACK -> decorations.back();
             case LEFT -> decorations.left();
             case RIGHT -> decorations.right();
@@ -73,7 +74,7 @@ public class CraftDecoratedPot extends CraftBlockEntityState<DecoratedPotBlockEn
             default -> throw new IllegalArgumentException("Unexpected value: " + face);
         };
 
-        return CraftItemType.minecraftToBukkit(sherdItem.orElse(Items.BRICK));
+        return CraftItemType.minecraftToBukkit(sherdItem.orElse(new ItemStackTemplate(Items.BRICK)).item().value());
     }
 
     @Override
@@ -81,16 +82,20 @@ public class CraftDecoratedPot extends CraftBlockEntityState<DecoratedPotBlockEn
         PotDecorations decorations = getSnapshot().getDecorations();
 
         Map<Side, Material> sherds = new EnumMap<>(Side.class);
-        sherds.put(Side.BACK, CraftItemType.minecraftToBukkit(decorations.back().orElse(Items.BRICK)));
-        sherds.put(Side.LEFT, CraftItemType.minecraftToBukkit(decorations.left().orElse(Items.BRICK)));
-        sherds.put(Side.RIGHT, CraftItemType.minecraftToBukkit(decorations.right().orElse(Items.BRICK)));
-        sherds.put(Side.FRONT, CraftItemType.minecraftToBukkit(decorations.front().orElse(Items.BRICK)));
+        sherds.put(Side.BACK, CraftItemType.minecraftToBukkit(decorations.back().orElse(new ItemStackTemplate(Items.BRICK)).item().value()));
+        sherds.put(Side.LEFT, CraftItemType.minecraftToBukkit(decorations.left().orElse(new ItemStackTemplate(Items.BRICK)).item().value()));
+        sherds.put(Side.RIGHT, CraftItemType.minecraftToBukkit(decorations.right().orElse(new ItemStackTemplate(Items.BRICK)).item().value()));
+        sherds.put(Side.FRONT, CraftItemType.minecraftToBukkit(decorations.front().orElse(new ItemStackTemplate(Items.BRICK)).item().value()));
         return sherds;
     }
 
     @Override
     public List<Material> getShards() {
-        return getSnapshot().getDecorations().ordered().stream().map(CraftItemType::minecraftToBukkit).collect(Collectors.toUnmodifiableList());
+        PotDecorations decorations = getSnapshot().getDecorations();
+        return Stream.of(decorations.back(), decorations.left(), decorations.right(), decorations.front())
+                .flatMap(Optional::stream)
+                .map(template -> CraftItemType.minecraftToBukkit(template.item().value()))
+                .collect(Collectors.toUnmodifiableList());
     }
 
     @Override

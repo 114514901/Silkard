@@ -158,7 +158,7 @@ public class CraftBlockType<B extends BlockData> extends CraftRegistryItem<Block
 
     @Override
     public boolean isSolid() {
-        return getHandle().defaultBlockState().blocksMotion();
+        return getHandle().defaultBlockState().isSolid();
     }
 
     @Override
