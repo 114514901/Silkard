@@ -21,6 +21,7 @@ import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.CarvingMask;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
 import net.minecraft.world.level.chunk.LevelChunkSection;
@@ -37,6 +38,7 @@ import org.bukkit.craftbukkit.util.RandomSourceWrapper;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.ChunkGenerator.BiomeGrid;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
+import org.jspecify.annotations.Nullable;
 
 public class CustomChunkGenerator extends InternalChunkGenerator {
 
@@ -220,14 +222,14 @@ public class CustomChunkGenerator extends InternalChunkGenerator {
     }
 
     @Override
-    public void applyCarvers(WorldGenRegion worldgenregion, long seed, RandomState randomstate, BiomeManager biomemanager, StructureManager structuremanager, ChunkAccess chunkaccess) {
+    public void applyCarvers(WorldGenRegion worldgenregion, long seed, RandomState randomstate, BiomeManager biomemanager, StructureManager structuremanager, ChunkAccess chunkaccess, CarvingMask.@Nullable Filter filter) {
         WorldgenRandom random = getSeededRandom();
         int x = chunkaccess.getPos().x();
         int z = chunkaccess.getPos().z();
 
         random.setSeed(Mth.getSeed(x, "should-caves".hashCode(), z) ^ worldgenregion.getSeed());
         if (generator.shouldGenerateCaves(this.world.getWorld(), new RandomSourceWrapper.RandomWrapper(random), x, z)) {
-            delegate.applyCarvers(worldgenregion, seed, randomstate, biomemanager, structuremanager, chunkaccess);
+            delegate.applyCarvers(worldgenregion, seed, randomstate, biomemanager, structuremanager, chunkaccess, filter);
         }
 
         // Minecraft removed the LIQUID_CARVERS stage from world generation, without removing the LIQUID Carving enum.
